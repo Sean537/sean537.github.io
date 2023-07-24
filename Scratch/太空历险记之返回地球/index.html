@@ -1,1 +1,25 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scratch Project</title>
+    <style>
+        #scratch-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="scratch-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/scratch-gui@0.4.1/dist/scratch-gui.min.js"></script>
+    <script>
+        var app = new window.ScratchGui();
+        app.loadProject("https://github.com/Sean537/sean537.github.io/blob/main/Scratch/%E5%A4%AA%E7%A9%BA%E5%8E%86%E9%99%A9%E8%AE%B0%E4%B9%8B%E8%BF%94%E5%9B%9E%E5%9C%B0%E7%90%83/%E5%A4%AA%E7%A9%BA%E6%95%91%E6%8F%B4--%E8%BF%94%E5%9B%9E%E5%9C%B0%E7%90%83.sb3");
+        app.mount(document.getElementById('scratch-container'));
+    </script>
+</body>
+</html>
