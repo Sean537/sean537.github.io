@@ -1,55 +1,34 @@
 <head>
     <title>537工作室官网</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/wallpaper.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <link rel="icon" href="537logo.ico" type="image/x-icon">
-<style>
-    body {
-        background-image: url("wallpaper.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-</style>
-<style>
-    .custom-button {
-        width: 150px;
-        height: 50px;
-        background-color: skyblue;
-        color: white;
-        border-radius: 10px;
-        border: none;
-    }
 
-    .custom-button:hover {
-        background-color: orange;
-    }
-</style>
+<div class="container">
+    <nav class="nav">
+        <input type="radio" name="nav-item-opt" id="nav-item-opt-1" checked>
+        <label class="nav-item" for="nav-item-opt-1">首页</label>
 
-<img src="537logo.png" alt="537logo">
-<audio controls>
-    <source src="537Welcome.MP3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-<h3>海内存知己，天涯若比邻。</h3>
-<h3>您好，欢迎来到537工作室的官网。</h3>
-<h2>我们的最新软件产品：537文本编辑器1.3版本</h2>
-<a href="software/537Test1.3Setup.exe" download target="_self"><button class="custom-button">Windows（x64）下载</button></a>
-<h3>老版本软件下载：</h3>
-<h4>1. 537文本编辑器1.0版本</h4><a href="software/537Test1.0Setup.exe" download target="_self"><button class="custom-button">Windows（x64）下载</button></a>
-<h4>2. 537文本编辑器1.2版本</h4><a href="software/537Test1.2Setup.exe" download target="_self"><button class="custom-button">Windows（x64）下载</button></a>
-<h3>帮助文档</h3><a href="https://sean537.github.io/help/howtouse.html" target="_blank"><button class="custom-button">查看</button></a>
-<h3>关于我们：</h3>
-<table border=1>
-    <caption>我们的成员</caption> <!--表示表格的整体大标题,写在table标签内部-->
-    <tr>
-        <th>吴少荃</th>   <!--表示一列小标题，通常写于表格的第一行 -->
-        <th>冯仲涵</th>
-    </tr>
-    <tr>
-        <th>许羽墨</th>
-        <th>赵宇晨</th>
-    </tr>
-</table>
-<h4><a href="https://blog.csdn.net/wushaoquan537?type=blog" target="_blank">CSDN博客</a></h4>
-<h4><a href="https://tieba.baidu.com/f?kw=537%E8%BD%AF%E4%BB%B6&fr=sharewise&source=12_16_sharecard_a" target="_blank">百度贴吧</a></h4>
-<h4>电子邮件：wushaoquan666@outlook.com</h4>
+        <input type="radio" name="nav-item-opt" id="nav-item-opt-2">
+        <label class="nav-item" for="nav-item-opt-2">下载</label>
+
+        <input type="radio" name="nav-item-opt" id="nav-item-opt-3">
+        <label class="nav-item" for="nav-item-opt-3" onclick="location.href='help/howtouse.html';">帮助</label>
+
+        <input type="radio" name="nav-item-opt" id="nav-item-opt-4">
+        <label class="nav-item" for="nav-item-opt-4">关于</label>
+
+        <div class="tracker"></div>
+    </nav>
+    <div class="container"><img src="537logo.png" alt="537logo"></div>
+    <div class="titletext">海内存知己，天涯若比邻。</div>
+    <div class="text1">您好，欢迎来到537工作室的官网。</div>
+    <div class="text2">最新软件：537文本编辑器1.3</div>
+    <div class="element"><a href="software/537Text1.3x64Setup.exe" download target="_self">Windows（x64）下载</a></div>
+    <div class="element"><a href="software/537Text1.3x86Setup.exe" download target="_self">Windows（x86）下载</a></div>
+    <div class="element"><a href="software/537文本编辑器1.3便携式.exe" download target="_self">Windows便携式下载</a></div>
+    <div class="text1">应部分网友的建议，我们的网站正在全面更新，所以部分功能暂时不可用或存在问题，敬请期待。</div>
+</div>
