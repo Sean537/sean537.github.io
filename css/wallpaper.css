@@ -46,6 +46,14 @@ body{
     /* 字间距 */
     letter-spacing: 4px;
 }
+.text3 {
+    margin-right: auto;
+    margin-left: auto;
+    color: #fff;
+    font-size: 20px;
+    /* 字间距 */
+    letter-spacing: 2px;
+}
 /* 定义动画 */
 @keyframes bgAnimation {
     0%{
