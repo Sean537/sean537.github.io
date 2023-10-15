@@ -15,13 +15,13 @@ body {
 
 .dock {
     position: fixed;
-    top: 30px; /* DockÀ¸¾àÀëÒ³Ãæ¶¥²¿30px */
-    left: 50%; /* DockÀ¸´ÓÆÁÄ»ÖĞ¼ä¿ªÊ¼ */
-    transform: translateX(-50%); /* Ê¹ÓÃtransformÊ¹DockÀ¸ÕæÕı¾ÓÖĞ */
+    top: 30px; /* Dockæ è·ç¦»é¡µé¢é¡¶éƒ¨30px */
+    left: 50%; /* Dockæ ä»å±å¹•ä¸­é—´å¼€å§‹ */
+    transform: translateX(-50%); /* ä½¿ç”¨transformä½¿Dockæ çœŸæ­£å±…ä¸­ */
     width: 600px;
     height: 80px;
     display: flex;
-    align-items: center; /* Õâ½«Ê¹DockÀ¸ÄÚµÄÔªËØÔÚ´¹Ö±·½ÏòÉÏ¾ÓÖĞ */
+    align-items: center; /* è¿™å°†ä½¿Dockæ å†…çš„å…ƒç´ åœ¨å‚ç›´æ–¹å‘ä¸Šå±…ä¸­ */
 }
 
     .dock li {
