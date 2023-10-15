@@ -5,15 +5,9 @@ body{
     /* 100%窗口高度 */
     height: auto;
     /* 弹性布局 水平垂直居中 */
-    display: flex;
+    display: auto;
     justify-content: center;
     align-items: center;
-    /* 渐变背景 */
-    background: linear-gradient(125deg,#2c3e50,#27ae60,#2980b9,#e74c3c,#8e44ad);
-    /* 指定背景图像的大小 */
-    background-size: 500%;
-    /* 执行动画：动画名 时长 线性的 无限次播放 */
-    animation: bgAnimation 15s linear infinite;
 }
 .element {
     width: auto; /* 根据需要设置元素的宽度 */
@@ -22,6 +16,9 @@ body{
     margin-left: auto;
     color: #fff;
 }
+
+
+
 .titletext {
     margin-right: auto;
     margin-left: auto;

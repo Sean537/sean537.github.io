@@ -1,78 +1,69 @@
-:root {
-    --bg-color: #eaecf0;
-    --main-color: #5080ef;
-    --nav-item-width: 220px;
-    --nav-item-height: 35px;
-    --nav-item-border-width: 4px;
-}
-
 * {
-    padding: 0;
-    margin: 0;
-}
-
-html,
-body {
-    width: 100vw;
-    height: auto;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  background: rgba(0, 0, 0, 10);
+}
+#bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dock {
+    position: fixed;
+    top: 30px; /* Dock栏距离页面顶部30px */
+    left: 50%; /* Dock栏从屏幕中间开始 */
+    transform: translateX(-50%); /* 使用transform使Dock栏真正居中 */
+    width: 600px;
+    height: 80px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: center; /* 这将使Dock栏内的元素在垂直方向上居中 */
 }
 
-.nav {
-    position: relative;
-    background: white;
-    border-radius: 24px;
-    font-size: 0;
-    padding: var(--nav-item-border-width);
-    z-index: 1;
-}
+    .dock li {
+        width: 100px;
+        height: 60px;
+        margin: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: all 0.5s ease;
+    }
 
-.nav-item {
-    width: var(--nav-item-width);
-    height: var(--nav-item-height);
-    font-size: 14px;
-    color: var(--main-color);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: color .3s ease-in-out;
-}
+        .dock li:hover {
+            transform: scale(1.5);
+            z-index: 1;
+        }
 
-.nav>input[type="radio"] {
-    width: 0;
-    height: 0;
-    opacity: 0;
-}
+            .dock li:hover + li {
+                transform: translateX(20px) scale(1.25);
+            }
 
-.nav>input[type="radio"]:checked+label {
-    color: white;
-}
+            .dock li:hover ~ li {
+                transform: translateX(-20px) scale(1.00);
+            }
 
-.tracker {
-    width: var(--nav-item-width);
-    height: var(--nav-item-height);
-    background: var(--main-color);
-    z-index: -1;
-    position: absolute;
-    left: var(--nav-item-border-width);
-    top: var(--nav-item-border-width);
-    border-radius: 24px;
-    transition: transform .3s ease-in-out;
-}
+        .dock li.active {
+            animation: bounce 1s infinite;
+        }
 
-#nav-item-opt-2:checked~.tracker {
-    transform: translateX(calc(var(--nav-item-width)));
-}
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
 
-#nav-item-opt-3:checked~.tracker {
-    transform: translateX(calc(var(--nav-item-width)*2));
-}
-#nav-item-opt-4:checked ~ .tracker {
-    transform: translateX(calc(var(--nav-item-width)*3));
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
