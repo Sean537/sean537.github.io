@@ -1,49 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>537工作室官网</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="css/wallpaper.css">
+    <link rel="icon" href="537logo.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/wallpaper.css" />
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/wallpaper.js" defer></script>
+    <script src="js/style.js" defer></script>
 </head>
-<link rel="icon" href="537logo.ico" type="image/x-icon">
 
-<div class="container">
-    <nav class="nav">
-        <input type="radio" name="nav-item-opt" id="nav-item-opt-1" checked>
-        <label class="nav-item" for="nav-item-opt-1">首页/Home</label>
+<body>
+    <canvas id="bg"></canvas>
+    <center class="container">
+        <div class="navbar">
+            <ul class="dock">
+                <li class="home"><a href="">首页</a></li>
+                <li class="download"><a href="./download">下载</a></li>
+                <li class="help"><a href="./help">帮助</a></li>
+                <li class="about"><a href="./about">关于</a></li>
+            </ul>
+        </div>
 
-        <input type="radio" name="nav-item-opt" id="nav-item-opt-2">
-        <label class="nav-item" for="nav-item-opt-2" onclick="location.href='download';">下载/Download</label>
+        <center>&nbsp</center>
+        <center>&nbsp</center>
+        <center>&nbsp</center>
+        <center>&nbsp</center>
+        <center>&nbsp</center>
+        <center>&nbsp</center>
+        <center>&nbsp</center>
+        <center><img src="537logo.png" alt="537logo"></center>
 
-        <input type="radio" name="nav-item-opt" id="nav-item-opt-3">
-        <label class="nav-item" for="nav-item-opt-3" onclick="location.href='help';">帮助/Help</label>
+        <audio id="537Welcome" controls="controls" autoplay>
+            <source src="537Welcome.MP3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="titletext">海内存知己，天涯若比邻。</div>
+        <div class="text1">您好，欢迎来到537工作室的官网。</div>
+        <div class="titletext">----------------------------------</div>
+        <div class="text2">最新软件：537文本编辑器1.3</div>
+        <div class="element"><a href="software/537Text1.3x64Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x64）下载&nbsp&nbsp&nbsp</a></div>
+        <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：237KB；</div>
+        <div class="element"><a href="software/537Text1.3x86Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x86）下载&nbsp&nbsp&nbsp</a></div>
+        <div class="text3">32位版本兼容性：Windows95 x86及以上版本，大小：209KB；</div>
+        <div class="element"><a href="software/537文本编辑器1.3便携式.exe" download target="_self">&nbsp&nbsp&nbspWindows便携式下载&nbsp&nbsp&nbsp</a></div>
+        <div class="text3">便携式版本兼容性：Windows95 x86及以上版本，大小：121KB</div>
+        <div class="titletext">----------------------------------</div>
+        <div class="text1">使用过程中欢迎反馈：<a href="mailto:wushaoquan666@outlook.com">wushaoquan666@outlook.com</a></div>
+        </div>
 
-        <input type="radio" name="nav-item-opt" id="nav-item-opt-4">
-        <label class="nav-item" for="nav-item-opt-4"  onclick="location.href='about';">关于/About</label>
-
-        <div class="tracker"></div>
-    </nav>
-    <div class="container"><img src="537logo.png" alt="537logo"></div>
-    <audio id="myAudio" controls="none" autoplay>
-    <source src="537Welcome.MP3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-    <div class="titletext">海内存知己，天涯若比邻。</div>
-    <div class="text1">您好，欢迎来到537工作室的官网。</div>
-    <div class="titletext">----------------------------------</div>
-    <div class="text2">最新软件：537文本编辑器2.0</div>
-    <div class="element"><a href="software/537Text2.0x64Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x64）下载&nbsp&nbsp&nbsp</a></div>
-    <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：255KB；</div>
-    <div class="element"><a href="software/537Text2.0x86Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x86）下载&nbsp&nbsp&nbsp</a></div>
-    <div class="text3">32位版本兼容性：Windows95 x86及以上版本，大小：255KB；</div>
-    <div class="element"><a href="software/537文本编辑器便携式2.0.exe" download target="_self">&nbsp&nbsp&nbspWindows便携式下载&nbsp&nbsp&nbsp</a></div>
-    <div class="text3">便携式版本兼容性：Windows95 x86及以上版本，大小：126KB</div>
-    <div class="text2">已开源1.3版本源代码，请至<a href="download">&nbsp下载&nbsp</a>界面下载。</div>
-    <div class="titletext">----------------------------------</div>
-    <div class="text2">计算搬桶学号1.3.1&nbsp&nbsp&nbsp已开源</div>
-    <div class="element"><a href="software/计算搬桶学号.zip" download target="_self">&nbsp&nbsp&nbspWindows（x64）程序及源代码下载&nbsp&nbsp&nbsp</a></div>
-    <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：1.84MB；</div>
-    <div class="titletext">----------------------------------</div>
-    <a href="https://www.zwjl1234.com/">&nbsp&nbsp&nbsp537作文交流网&nbsp&nbsp&nbsp</a>
-    <div class="text1">使用过程中欢迎反馈：<a href="mailto:wushaoquan666@outlook.com">&nbsp&nbspwushaoquan666@outlook.com&nbsp&nbsp</a></div>
-</div>
+</body>
+</html>
