@@ -1,133 +1,131 @@
-body{
-    /* 初始化 取消内外边距 */
-    margin: 0;
-    padding: 0;
-    /* 100%窗口高度 */
-    height: auto;
-    /* 弹性布局 水平垂直居中 */
-    display: auto;
-    justify-content: center;
-    align-items: center;
+body {
+  /* 初始化 取消内外边距 */
+  margin: 0;
+  padding: 0;
+  /* 100%窗口高度 */
+  height: auto;
+  /* 弹性布局 水平垂直居中 */
+  display: auto;
+  justify-content: center;
+  align-items: center;
 }
 .element {
-    width: auto; /* 根据需要设置元素的宽度 */
-    height: auto; /* 根据需要设置元素的高度 */
-    margin-right: auto;
-    margin-left: auto;
-    color: #fff;
+  width: auto; /* 根据需要设置元素的宽度 */
+  height: auto; /* 根据需要设置元素的高度 */
+  margin-right: auto;
+  margin-left: auto;
+  color: #fff;
 }
-
-
 
 .titletext {
-    margin-right: auto;
-    margin-left: auto;
-    color: #fff;
-    font-size: 30px;
-    /* 字间距 */
-    letter-spacing: 12px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #fff;
+  font-size: 30px;
+  /* 字间距 */
+  letter-spacing: 12px;
 }
 .text1 {
-    margin-right: auto;
-    margin-left: auto;
-    color: #fff;
-    font-size: 26px;
-    /* 字间距 */
-    letter-spacing: 5px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #fff;
+  font-size: 26px;
+  /* 字间距 */
+  letter-spacing: 5px;
 }
 .text2 {
-    margin-right: auto;
-    margin-left: auto;
-    color: #fff;
-    font-size: 24px;
-    /* 字间距 */
-    letter-spacing: 4px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #fff;
+  font-size: 24px;
+  /* 字间距 */
+  letter-spacing: 4px;
 }
 .text3 {
-    margin-right: auto;
-    margin-left: auto;
-    color: #fff;
-    font-size: 20px;
-    /* 字间距 */
-    letter-spacing: 2px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #fff;
+  font-size: 20px;
+  /* 字间距 */
+  letter-spacing: 2px;
 }
 /* 定义动画 */
 @keyframes bgAnimation {
-    0%{
-        background-position: 0% 50%;
-    }
-    50%{
-        background-position: 100% 50%;
-    }
-    100%{
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 * {
-    /* 初始化 取消页面的内外边距 */
-    margin: 0;
-    padding: 0;
+  /* 初始化 取消页面的内外边距 */
+  margin: 0;
+  padding: 0;
 }
 
 buttonbody {
-    /* 弹性布局 让页面元素水平、垂直居中 */
-    display: flex;
-    align-items: center;
-    /* 设置body高度为100%窗口高度 */
-    height: 100vh;
-    background-color: #000;
+  /* 弹性布局 让页面元素水平、垂直居中 */
+  display: flex;
+  align-items: center;
+  /* 设置body高度为100%窗口高度 */
+  height: 100vh;
+  background-color: #000;
 }
 
 a {
-    position: relative;
-    width: 400px;
-    height: 100px;
-    line-height: 75px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 25px;
-    color: #fff;
-    /* 背景渐变 */
-    background: linear-gradient(to right,#03a9f4,#f441a5,#ffeb3b,#09a8f4);
-    /* 背景渐变色大小 */
-    background-size: 400%;
-    /* 圆角 */
-    border-radius: 20px;
-    z-index: 1;
+  position: relative;
+  width: 180px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  /* 背景渐变 */
+  background: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+  /* 背景渐变色大小 */
+  background-size: 400%;
+  /* 圆角 */
+  border-radius: 20px;
+  z-index: 1;
 }
-    /* 发光效果 */
-    a::before {
-        content: "";
-        position: absolute;
-        top: -5px;
-        left: -5px;
-        bottom: -5px;
-        right: -5px;
-        /* 背景渐变 */
-        background: linear-gradient(to right,#03a9f4,#f441a5,#ffeb3b,#09a8f4);
-        /* 背景渐变色大小 */
-        background-size: 400%;
-        /* 圆角 */
-        border-radius: 50px;
-        z-index: -1;
-        /* 设置模糊度 显示发光效果 */
-        filter: blur(20px);
-    }
+/* 发光效果 */
+a::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  bottom: -5px;
+  right: -5px;
+  /* 背景渐变 */
+  background: linear-gradient(to right, #03a9f4, #f441a5, #ffeb3b, #09a8f4);
+  /* 背景渐变色大小 */
+  background-size: 400%;
+  /* 圆角 */
+  border-radius: 50px;
+  z-index: -1;
+  /* 设置模糊度 显示发光效果 */
+  filter: blur(20px);
+}
 
-    a:hover {
-        /* 动画：名称 时间 infinite是无限次播放 */
-        animation: streamer 8s infinite;
-    }
+a:hover {
+  /* 动画：名称 时间 infinite是无限次播放 */
+  animation: streamer 8s infinite;
+}
 
-        a:hover::before {
-            /* 动画：名称 时间 infinite是无限次播放 */
-            animation: streamer 8s infinite;
-        }
+a:hover::before {
+  /* 动画：名称 时间 infinite是无限次播放 */
+  animation: streamer 8s infinite;
+}
 /* 定义动画 */
 @keyframes streamer {
-    100% {
-        /* 背景位置 */
-        background-position: -400% 0;
-    }
+  100% {
+    /* 背景位置 */
+    background-position: -400% 0;
+  }
 }
