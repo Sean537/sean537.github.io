@@ -6,19 +6,59 @@
 body {
   background: rgba(0, 0, 0, 10);
 }
+
+.container {
+  
+  text-align: center;
+}
+
+.blur {
+  padding: 100px;
+  margin: 100px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 350px; */
+  /* height: 450px; */
+  /*
+  border-top是毛玻璃边框的上面
+  border-left是毛玻璃边框的左边
+  border-bottom是毛玻璃边框的下面
+  border-right是毛玻璃边框的右边
+  */
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  /*毛玻璃的浓度*/
+  backdrop-filter: blur(5px);
+  background: rgba(50, 50, 50, 0.3);
+}
+
 #bg {
   position: fixed;
   top: 0;
 }
 
+.logo {
+  margin-top: 250px;
+}
+
 .dock {
-  position: absolute;
-  top: 30px; /* Dock栏距离页面顶部30px */
-  left: 50%; /* Dock栏从屏幕中间开始 */
-  transform: translateX(-50%); /* 使用transform使Dock栏真正居中 */
+  position: fixed;
+  top: 30px;
+  /* Dock栏距离页面顶部30px */
+  left: 50%;
+  /* Dock栏从屏幕中间开始 */
+  transform: translateX(-50%);
+  /* 使用transform使Dock栏真正居中 */
   height: 80px;
   display: flex;
-  align-items: center; /* 这将使Dock栏内的元素在垂直方向上居中 */
+  align-items: center;
+  /* 这将使Dock栏内的元素在垂直方向上居中 */
+  z-index: 1;
 }
 
 .dock li {
@@ -39,11 +79,11 @@ body {
   z-index: 1;
 }
 
-.dock li:hover + li {
+.dock li:hover+li {
   transform: translateX(20px) scale(1.25);
 }
 
-.dock li:hover ~ li {
+.dock li:hover~li {
   transform: translateX(-20px) scale(1);
 }
 
