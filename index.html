@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <title>537工作室官网</title>
     <link rel="icon" href="537logo.ico" type="image/x-icon" />
@@ -14,7 +14,7 @@
 
 <body>
     <canvas id="bg"></canvas>
-    <center class="container">
+    <div class="container">
         <div class="navbar">
             <ul class="dock">
                 <li class="home"><a href="">首页</a></li>
@@ -24,40 +24,53 @@
             </ul>
         </div>
 
+        <!-- <center>&nbsp</center>
         <center>&nbsp</center>
         <center>&nbsp</center>
         <center>&nbsp</center>
         <center>&nbsp</center>
         <center>&nbsp</center>
         <center>&nbsp</center>
-        <center>&nbsp</center>
-        <center><img src="537logo.png" alt="537logo"></center>
+        在HTML5中，center标签已经被废弃，推荐的做法是使用 CSS 来实现居中对齐的效果。例如，可以使用 text-align: center; 样式来将内容居中对齐。-->
+        <div class="logo">
+            <img src="537logo.png" alt="537logo">
+        </div>
+        <br>
 
-        <audio id="537Welcome" controls="controls" autoplay>
+        <audio id="537Welcome" controls="controls" autoplay > 
+            <!-- 在现代浏览器中，使用autoplay属性会被浏览器阻止自动播放，用户访问网页的时候没有阻止自动播放，用户对网站产生比较反感 -->
             <source src="537Welcome.MP3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
-        <div class="titletext">海内存知己，天涯若比邻。</div>
-        <div class="text1">您好，欢迎来到537工作室的官网。</div>
-        <div class="titletext">----------------------------------</div>
-        <div class="text2">最新软件：537文本编辑器2.1版本</div>
-        <div class="element"><a href="software/537Text2.1x64Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x64）下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：552KB；</div>
-        <div class="element"><a href="software/537Text2.1x86Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x86）下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">32位版本兼容性：Windows95 x86及以上版本，大小：453KB；</div>
-        <div class="element"><a href="software/537文本编辑器2.1便携式.exe" download target="_self">&nbsp&nbsp&nbspWindows便携式下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">便携式版本兼容性：Windows95 x86及以上版本，大小：316KB</div>
-        <div class="text2">已开源1.3版本源代码，请至<a href="./download">&nbsp&nbsp下载&nbsp&nbsp</a>界面下载。</div>
-        <div class="titletext">----------------------------------</div>
-        <div class="text2">计算搬桶学号&nbsp&nbsp&nbsp1.3.1版本</div>
-        <div class="element"><a href="software/计算搬桶学号.zip" download target="_self">&nbsp&nbsp&nbspWindows（x64）软件及源代码下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：1.83MB；可编译修改代码，无下限。</div>
-        <div class="titletext">----------------------------------</div>
-        <div class="element"><a href="https://www.zwjl1234.com" target="_blank">&nbsp&nbsp&nbsp537作文交流网&nbsp&nbsp&nbsp</a></div>
-        <div class="text1">立即加入我们！<a href="mailto:wushaoquan666@outlook.com">&nbsp&nbsp发送申请&nbsp&nbsp</a></div>
-        <div class="text3">我们重视每一位人才。<br>只要您愿意付出或是帮助，无论您擅长编程、绘画、音乐还是更多，都可以加入我们的团队！<br>我们欢迎各位贤士加入！</div>
-        <div class="text1">使用过程中欢迎反馈：<a href="mailto:wushaoquan666@outlook.com">&nbsp&nbspwushaoquan666@outlook.com&nbsp&nbsp</a></div>
+        <div class="blur">
+            <div class="titletext">海内存知己，天涯若比邻。</div>
+            <div class="text1">您好，欢迎来到537工作室的官网。</div>
         </div>
+
+        <div class="blur">
+            <div class="text2">最新软件：537文本编辑器2.1版本</div>
+            <div class="element"><a href="software/537Text2.1x64Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x64）下载&nbsp&nbsp&nbsp</a></div>
+            <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：552KB；</div>
+            <div class="element"><a href="software/537Text2.1x86Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x86）下载&nbsp&nbsp&nbsp</a></div>
+            <div class="text3">32位版本兼容性：Windows95 x86及以上版本，大小：453KB；</div>
+            <div class="element"><a href="software/537文本编辑器2.1便携式.exe" download target="_self">&nbsp&nbsp&nbspWindows便携式下载&nbsp&nbsp&nbsp</a></div>
+            <div class="text3">便携式版本兼容性：Windows95 x86及以上版本，大小：316KB</div>
+            <div class="text2">已开源1.3版本源代码，请至<a href="./download">&nbsp&nbsp下载&nbsp&nbsp</a>界面下载。</div>
+        </div>
+
+        <div class="blur">
+            <div class="text2">计算搬桶学号&nbsp&nbsp&nbsp1.3.1版本</div>
+            <div class="element"><a href="software/计算搬桶学号.zip" download target="_self">&nbsp&nbsp&nbspWindows（x64）软件及源代码下载&nbsp&nbsp&nbsp</a></div>
+            <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：1.83MB；可编译修改代码，无下限。</div>
+        </div>
+
+        <div class="blur">
+            <div class="element"><a href="https://www.zwjl1234.com" target="_blank">&nbsp&nbsp&nbsp537作文交流网&nbsp&nbsp&nbsp</a></div>
+            <div class="text1">立即加入我们！<a href="mailto:wushaoquan666@outlook.com">&nbsp&nbsp发送申请&nbsp&nbsp</a></div>
+            <div class="text3">我们重视每一位人才。<br>只要您愿意付出或是帮助，无论您擅长编程、绘画、音乐还是更多，都可以加入我们的团队！<br>我们欢迎各位贤士加入！</div>
+            <div class="text1">使用过程中欢迎反馈：<a href="mailto:wushaoquan666@outlook.com">&nbsp&nbspwushaoquan666@outlook.com&nbsp&nbsp</a></div>
+        </div>
+    </div>
 
 </body>
 </html>
