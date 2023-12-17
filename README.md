@@ -5,10 +5,10 @@
 
 <img src="537logo.png" alt="537logo">
 <h2>该网站已过时。
-<h4>我们已经有了新的域名：<a href="www.537studio.com">www.537studio.com<br>关于537网站的更多信息，请访问新网站。
+<h4>我们已经有了新的域名：<a href="https://www.537studio.com"  target="_blank">www.537studio.com<br>关于537网站的更多信息，请访问新网站。
 <h5>GitHub上的分支会被保留。但是由于加载过慢影响用户体验，我们可能不会进行较大更新。
 <br><br>
 <h3>当前537工作室拥有网站：
-<h4></h4>537工作室官方网站：<br><a href="www.537studio.com">www.537studio.com</a><br><a href="sean537.xinpro.cn">sean537.xinpro.cn</a><br><a href="sean537.github.io">sean537.github.io</a><br>537作文交流网：<a href="www.zwjl1234.com">www.zwjl1234.com</a>
+<h4></h4>537工作室官方网站：<br><a href="https://www.537studio.com"  target="_blank">www.537studio.com</a><br><a href="https://sean537.xinpro.cn"  target="_blank">sean537.xinpro.cn</a><br><a href="https://sean537.github.io"  target="_blank">sean537.github.io</a><br>537作文交流网：<a href="https://www.zwjl1234.com"  target="_blank">www.zwjl1234.com</a>
 <h3>非常感谢大家的支持。<br>联系电子邮箱：<a href="mailto:wushaoquan666@outlook.com">wushaoquan666@outlook.com
 
