@@ -1,68 +1,84 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 <head>
-    <title>537工作室官网</title>
-    <link rel="icon" href="537logo.ico" type="image/x-icon" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/wallpaper.css" />
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/wallpaper.js" defer></script>
-    <script src="js/style.js" defer></script>
-    <h1>537工作室官方网站，提供了537软件下载、帮助文档等功能。537工作室成立于2023年5月11日，主营科技、互联网、软件产品，现有26名成员。</h1>
+  <title>537工作室官网</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+  />
+  <link rel="stylesheet" href="css/wallpaper.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="m/js/jud.js"></script>
 </head>
+<link rel="icon" href="img/537logo.ico" type="image/x-icon" />
 
-<body>
-    <canvas id="bg"></canvas>
-    <center class="container">
-        <div class="navbar">
-            <ul class="dock">
-                <li class="home"><a href="">首页</a></li>
-                <li class="download"><a href="./download">下载</a></li>
-                <li class="help"><a href="./help">帮助</a></li>
-                <li class="about"><a href="./about">关于</a></li>
-            </ul>
-        </div>
+<div class="container">
+  <nav class="nav">
+    <input type="radio" name="nav-item-opt" id="nav-item-opt-1" checked />
+    <label class="nav-item" for="nav-item-opt-1">首页/Home</label>
 
-        <center>&nbsp</center>
-        <center>&nbsp</center>
-        <center>&nbsp</center>
-        <center>&nbsp</center>
-        <center>&nbsp</center>
-        <center>&nbsp</center>
-        <center>&nbsp</center>
-        <center><img src="537logo.png" alt="537logo"></center>
+    <input type="radio" name="nav-item-opt" id="nav-item-opt-2" />
+    <label
+      class="nav-item"
+      for="nav-item-opt-2"
+      onclick="location.href='files/download.html';"
+      >下载/Download</label
+    >
 
-        <audio id="537Welcome" controls="controls" autoplay>
-            <source src="537Welcome.MP3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        <div class="titletext">海内存知己，天涯若比邻。</div>
-        <div class="text1">您好，欢迎来到537工作室的官网。</div>
-        <div class="titletext">----------------------------------</div>
-        <div class="text2">537文本编辑器2.2版本</div>
-        <div class="element"><a href="software/537Text2.2x64Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x64）下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：495KB；</div>
-        <div class="element"><a href="software/537Text2.2x86Setup.exe" download target="_self">&nbsp&nbsp&nbspWindows（x86）下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">32位版本兼容性：Windows95 x86及以上版本，大小：495KB；</div>
-        <div class="element"><a href="software/537文本编辑器2.2便携式.exe" download target="_self">&nbsp&nbsp&nbspWindows便携式下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">便携式版本兼容性：Windows95 x86及以上版本，大小：1371KB</div>
-        <div class="text2">1.3版本源代码下载:<a href="https://github.com/Sean537/537TextEditor" target="_blank">&nbsp&nbspGitHub&nbsp&nbsp</a>&nbsp<a href="https://gitee.com/FTS-537Studio/537TextEditor" target="_blank">&nbsp&nbspGitee&nbsp&nbsp</a></div>
-        <div class="titletext">----------------------------------</div>
-        <div class="text2">537秒表&nbsp&nbsp&nbsp1.0版本</div>
-        <div class="element"><a href="software/537Clock1.0x64.exe" download target="_self">&nbsp&nbsp&nbspWindows（x64）便携式下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：1.84MB</div>
-        <div class="titletext">----------------------------------</div>
-        <div class="text2">计算搬桶学号&nbsp&nbsp&nbsp1.3.1版本</div>
-        <div class="element"><a href="software/计算搬桶学号.zip" download target="_self">&nbsp&nbsp&nbspWindows（x64）软件及源代码下载&nbsp&nbsp&nbsp</a></div>
-        <div class="text3">64位版本兼容性：WindowsXP x64及以上版本，大小：1.83MB；可编译修改代码，无下限。</div>
-        <div class="titletext">----------------------------------</div>
-        <div class="element"><a href="https://www.zwjl1234.com" target="_blank">&nbsp&nbsp&nbsp537作文交流网&nbsp&nbsp&nbsp</a></div>
-        <div class="text1">立即加入我们！<a href="mailto:hello@537studio.com">&nbsp&nbsp发送申请&nbsp&nbsp</a></div>
-        <div class="text3">我们重视每一位人才。<br>只要您愿意付出或是帮助，无论您擅长编程、绘画、音乐还是更多，都可以加入我们的团队！<br>我们欢迎各位贤士加入！</div>
-        <div class="text1">使用过程中欢迎反馈：<a href="mailto:hello@537studio.com">&nbsp;&nbsphello@537studio.com&nbsp;&nbsp</a></div>
-        </div>
-        <div class="text3"><center>Copyright©537Studio 2023-2024.All rights reserved.</center></div>
-</body>
-</html>
+    <input type="radio" name="nav-item-opt" id="nav-item-opt-3" />
+    <label
+      class="nav-item"
+      for="nav-item-opt-3"
+      onclick="location.href='files/Help.html';"
+      >帮助/Help</label
+    >
+
+    <input type="radio" name="nav-item-opt" id="nav-item-opt-4" />
+    <label
+      class="nav-item"
+      for="nav-item-opt-4"
+      onclick="location.href='files/about.html';"
+      >关于/About</label
+    >
+
+    <div class="tracker"></div>
+  </nav>
+  <div class="container"><img src="img/537logo.png" alt="537logo" /></div>
+  <audio id="myAudio" controls="none" autoplay>
+    <source src="music/537Welcome.MP3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <div class="titletext">海内存知己，天涯若比邻。</div>
+  <div class="text1">您好，欢迎来到537工作室的官网。</div>
+  <div class="titletext">----------------------------------</div>
+  <div class="text2">最新软件：537文本编辑器1.3</div>
+  <div class="element">
+    <a href="software/537Text1.3x64Setup.exe" download target="_self"
+      >&nbsp&nbsp&nbspWindows（x64）下载&nbsp&nbsp&nbsp</a
+    >
+  </div>
+  <div class="text3">
+    64位版本兼容性：WindowsXP x64及以上版本，大小：237KB；
+  </div>
+  <div class="element">
+    <a href="software/537Text1.3x86Setup.exe" download target="_self"
+      >&nbsp&nbsp&nbspWindows（x86）下载&nbsp&nbsp&nbsp</a
+    >
+  </div>
+  <div class="text3">
+    32位版本兼容性：Windows95 x86及以上版本，大小：209KB；
+  </div>
+  <div class="element">
+    <a href="software/537文本编辑器1.3便携式.exe" download target="_self"
+      >&nbsp&nbsp&nbspWindows便携式下载&nbsp&nbsp&nbsp</a
+    >
+  </div>
+  <div class="text3">
+    便携式版本兼容性：Windows95 x86及以上版本，大小：121KB
+  </div>
+  <div class="titletext">----------------------------------</div>
+  <div class="text1">
+    使用过程中欢迎反馈：<a href="mailto:wushaoquan666@outlook.com"
+      >wushaoquan666@outlook.com</a
+    >
+  </div>
+</div>

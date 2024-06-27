@@ -1,0 +1,66 @@
+.bg {
+  width: 100%;
+  background: url(../img/关于背景.jpg) no-repeat top center fixed;
+  background-size: 170% 100%;
+}
+.top {
+  width: 100%;
+  background: none;
+  box-shadow: none;
+}
+.about_us,
+.member,
+.contact,
+.teamlog {
+  margin: 10px 10px 20px;
+  font-family: JinBuTi;
+}
+.about_us h3,
+.member h3,
+.contact h3,
+.teamlog h3 {
+  font-size: 25px;
+  color: #dfdfdf;
+  text-shadow: 1px 1px 3px grey;
+}
+.block {
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 3px 5px 0;
+  padding: 10px;
+  height: 150px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 11px rgba(255, 255, 255, 0.4);
+}
+.about_us p,
+.member p,
+.contact p,
+.teamlog p {
+  font-size: 16px;
+  line-height: 1.6em;
+  color: #333;
+}
+.block a {
+  color: #333;
+}
+.something {
+  margin: 10px 10px 20px;
+}
+.something h3 {
+  font-family: LanaPixel;
+  font-size: 25px;
+  color: #dfdfdf;
+  text-shadow: 1px 1px 3px grey;
+}
+.something .block p {
+  font-size: 16px;
+  text-indent: 2em;
+  font-family: CEFFontsCJK-Regular;
+  color: #333;
+}
+.foot {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  padding: 20px 0;
+}
