@@ -305,7 +305,7 @@ ul#nav li.current a { color: #147EFF; }
 .bars li em {
 	font: 15px 'opensans-bold', sans-serif;
    color: #313131;
-	text-transform: uppercase;
+	text-transform: normal;
    letter-spacing: 2px;
 	font-weight: normal;
    position: relative;
@@ -318,7 +318,7 @@ ul#nav li.current a { color: #147EFF; }
 
    margin: 0;
    padding-right: 24px;
-  	background: #313131;
+  	background: #147EFF;
    display: inline-block;
   	height: 42px;
    line-height: 42px;
@@ -327,38 +327,38 @@ ul#nav li.current a { color: #147EFF; }
 
 .C-plus-plus {
   	width: 80%;
-  	-moz-animation: photoshop 2s ease;
-  	-webkit-animation: photoshop 2s ease;
+  	-moz-animation: C-plus-plus 2.5s ease;
+  	-webkit-animation: C-plus-plus 2.5s ease;
 }
 .Python {
   	width: 55%;
-  	-moz-animation: illustrator 2s ease;
-  	-webkit-animation: illustrator 2s ease;
+  	-moz-animation: Python 1.7s ease;
+  	-webkit-animation: Python 1.7s ease;
 }
 .Swift {
   	width: 30%;
-  	-moz-animation: wordpress 2s ease;
-  	-webkit-animation: wordpress 2s ease;
+  	-moz-animation: Swift 1.2s ease;
+  	-webkit-animation: Swift 1.2s ease;
 }
 .HTML {
   	width: 90%;
-  	-moz-animation: css 2s ease;
-  	-webkit-animation: css 2s ease;
+  	-moz-animation: HTML 2s ease;
+  	-webkit-animation: HTML 2s ease;
 }
 .CSS {
   	width: 35%;
-  	-moz-animation: html5 2s ease;
-  	-webkit-animation: html5 2s ease;
+  	-moz-animation: CSS 1.8s ease;
+  	-webkit-animation: CSS 1.8s ease;
 }
 .Movie-Making {
   	width: 70%;
-  	-moz-animation: jquery 2s ease;
-  	-webkit-animation: jquery 2s ease;
+  	-moz-animation: Movie-Making 2s ease;
+  	-webkit-animation: Movie-Making 2s ease;
 }
 .Linux {
    width: 50%;
-   -moz-animation: jquery 2s ease;
-   -webkit-animation: jquery 2s ease;
+   -moz-animation: Linux 2.2s ease;
+   -webkit-animation: Linux 2.2s ease;
 }
 
 @-moz-keyframes C-plus-plus {
