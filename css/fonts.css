@@ -5,50 +5,50 @@
 ================================================================================ */
 @font-face {
     font-family: 'Arial-Rounded-MT-Bold-normal-normal';
-    src: url('fonts/Arial-Rounded-MT-Bold.ttf');
+    src: url('fonts/Arial-Rounded-MT-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Arial-Rounded-MT-Bold-normal-bold';
-    src: url('fonts/Arial-Rounded-MT-Bold.ttf');
+    src: url('fonts/Arial-Rounded-MT-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 @font-face {
     font-family: 'Arial-Rounded-MT-Bold-normal-bolder';
-    src: url('fonts/Arial-Rounded-MT-Bold.ttf');
+    src: url('fonts/Arial-Rounded-MT-Bold.ttf') format('truetype');
     font-weight: bolder;
     font-style: normal;
 }
 @font-face {
     font-family: 'Arial-Rounded-MT-Bold-normal-lighter';
-    src: url('fonts/Arial-Rounded-MT-Bold.ttf');
+    src: url('fonts/Arial-Rounded-MT-Bold.ttf') format('truetype');
     font-weight: lighter;
     font-style: normal;
 }
 @font-face {
     font-family: 'Arial-Rounded-MT-Bold-italic-normal';
-    src: url('fonts/Arial-Rounded-MT-Bold.ttf');
+    src: url('fonts/Arial-Rounded-MT-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Arial-Rounded-MT-Bold-italic-bold';
-    src: url('fonts/Arial-Rounded-MT-Bold.ttf');
+    src: url('fonts/Arial-Rounded-MT-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: italic;
 }
 @font-face {
     font-family: 'Arial-Rounded-MT-Bold-italic-bolder';
-    src: url('fonts/Arial-Rounded-MT-Bold.ttf');
+    src: url('fonts/Arial-Rounded-MT-Bold.ttf') format('truetype');
     font-weight: bolder;
     font-style: italic;
 }
 @font-face {
     font-family: 'Arial-Rounded-MT-Bold-italic-lighter';
-    src: url('fonts/Arial-Rounded-MT-Bold.ttf');
+    src: url('fonts/Arial-Rounded-MT-Bold.ttf') format('truetype');
     font-weight: lighter;
     font-style: italic;
 }
