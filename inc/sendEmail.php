@@ -1,7 +1,7 @@
 ﻿<?php
 
 // Replace this with your own email address
-$siteOwnersEmail = 'user@website.com';
+$siteOwnersEmail = 'wushaoquan666@outlook.com';
 
 
 if($_POST) {
@@ -24,7 +24,7 @@ if($_POST) {
 		$error['message'] = "Please enter your message. It should have at least 15 characters.";
 	}
    // Subject
-	if ($subject == '') { $subject = "Contact Form Submission"; }
+	if ($subject == '') { $subject = "Sean537's Website Contact Details Form"; }
 
 
    // Set Message
@@ -32,7 +32,7 @@ if($_POST) {
 	$message .= "Email address: " . $email . "<br />";
    $message .= "Message: <br />";
    $message .= $contact_message;
-   $message .= "<br /> ----- <br /> This email was sent from your site's contact form. <br />";
+   $message .= "<br /> ----- <br /> This email was sent from Sean537's Website's contact details form. <br />";
 
    // Set From: header
    $from =  $name . " <" . $email . ">";
