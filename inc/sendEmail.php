@@ -1,5 +1,7 @@
 ﻿<?php
 
+// This document is not officially used
+
 // Replace this with your own email address
 $siteOwnersEmail = 'wushaoquan666@outlook.com';
 
