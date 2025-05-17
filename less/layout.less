@@ -1,0 +1,743 @@
+/* Import Settings */
+@import url('setting.less');
+
+/***
+**** Copyright © mateCard by beshleyua. All Rights Reserved.
+***/
+
+/* TABLE OF CONTENTS
+	1. Basic
+	2. Materialize
+	3. Section
+	4. Started
+	5. Portfolio
+	6. Pricing
+	7. Blog
+	8. Contacts
+	9. Footer
+	10. Popups
+*/
+
+
+/*** 
+**** 1. Basic 
+***/
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: @default-font;
+	color: @default-color;
+	font-weight: 400;
+	background: @light-color;
+}
+
+/* preloader */
+.preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: @white-color;
+	z-index: 1000;
+	text-align: center;
+}
+
+/* aligment */
+.centrize {
+	display: table !important;
+	table-layout: fixed !important;
+	height: 100% !important;
+	position: relative !important;
+	&.full-width {
+		width: 100% !important;
+	}
+}
+
+.vertical-center {
+	display: table-cell !important;
+	vertical-align: middle !important;
+}
+
+/* container */
+.container {
+	padding: 2%;
+	width: auto;
+	max-width: 1920px;
+	@media only screen and (max-width : 680px) {
+		padding: 4%;
+	}
+}
+
+header {
+	position: relative;
+}
+
+main {
+	padding-left: 300px;
+	@media only screen and (max-width : 1140px) {
+		padding-left: 0;
+	}
+}
+
+/* shadows */
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
+}
+
+/* text-box */
+.text-box {
+	p {
+		margin: 0 0 20px 0;
+	}
+}
+
+
+/*** 
+**** 2. Materialize
+***/
+
+/* Navbar */
+.top-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: none;
+	z-index: 997;
+	@media only screen and (max-width : 1140px) {
+		display: block;
+	}
+}
+
+/* SideNav */
+.side-nav {
+	width: 300px;
+	.background {
+		overflow: hidden;
+		img {
+			width: auto;
+			height: 100%;
+		}
+	}
+	.userView {
+		margin-bottom: 0;
+		.avatar {
+			margin-bottom: 15px;
+			width: 64px;
+			height: 64px;
+		}
+		.email {
+			padding-bottom: 15px;
+		}
+	}
+	.social {
+		padding-bottom: 15px;
+		line-height: normal;
+		a {
+			margin-right: 10px;
+			padding: 0;
+			display: inline-block;
+			vertical-align: top;
+			width: 16px;
+			height: 20px;
+			font-size: 0;
+			color: @white-color;
+			text-align: center;
+		}
+		.ion {
+			font-size: 16px;
+		}
+	}
+	li.active {
+		a {
+			transition: all 0.2s ease-out;
+		}
+		.material-icons {
+			transition: all 0.2s ease-out;
+		}
+	}
+	@media only screen and (max-width : 680px) {
+		width: 280px;
+	}
+}
+
+/* Elements */
+.material-icons {
+	position: relative;
+	vertical-align: middle;
+}
+
+.tag {
+	padding: 2px 4px;
+	font-size: 0.8rem;
+	color: @white-color;
+	font-weight: 300;
+	background-clip: padding-box;
+	.border-radius(2px);
+}
+
+.ultra-small {
+	margin: 0;
+	padding: 0;
+	font-size: 0.8rem;
+}
+
+/* Collections */
+.collection {
+	margin: 0 0 1.5rem 0;
+	border: none;
+	&.collection-info {
+		.collection-item {
+			i {
+				margin-right: 5px;
+				width: 20px;
+				font-size: 16px;
+				text-align: center;
+			}
+		}
+	}
+	&.collection-skills {
+		.progress {
+			margin: 0.5rem 0;
+		}
+	}
+	.title {
+		color: @dark-color;
+	}
+	.collection-item {
+		&.avatar {
+			padding-top: 22px;
+			height: auto;
+		}
+	}
+}
+
+/* Cards */
+.card {
+	margin: 0 0 1.5rem 0;
+	&.profile {
+		&.inner {
+			margin-bottom: 0;
+			.card-profile-image {
+				float: left;
+				margin-top: -20px;
+				width: 94px;
+				height: 40px;
+			}
+		}
+		.card-image {
+			height: 364px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		.card-profile-image {
+			margin: -80px 0 0 0;
+			float: left;
+			width: 110px;
+			&.small {
+				margin-top: -20px;
+				width: 94px;
+				height: 40px;
+			}
+		}
+		.card-content {
+			padding: 30px 20px;
+			position: relative;
+			z-index: 2;
+			.card-profile-desc {
+				margin-left: 130px;
+				.card-title {
+					margin-top: 0;
+				}
+			}
+			.card-title {
+				margin: 0 0 0.3rem 0;
+				line-height: normal;
+			}
+		}
+		.row {
+			margin-bottom: 0;
+			.col {
+				position: relative;
+			}
+		}
+		@media only screen and (max-width : 1140px) {
+			margin-top: 70px;
+			.card-content {
+				.card-profile-desc {
+					margin-left: 90px;
+				}
+			}
+		}
+		@media only screen and (max-width : 992px) {
+			.card-profile-image {
+				margin: -10px 0 0 0;
+				width: 70px;
+			}
+		}
+		@media only screen and (max-width : 680px) {
+			margin-top: 60px;
+			.card-image {
+				height: 268px;
+			}
+			.card-content {
+				padding: 20px 15px;
+				.card-profile-desc {
+					.card-title {
+						margin-top: 0;
+					}
+					p {
+						font-size: 14px;
+					}
+				}
+				.card-title {
+					margin: 1.2rem 0 0.3rem 0;
+				}
+				p {
+					font-size: 11px;
+				}
+			}
+		}
+	}
+	&.work-item {
+		.card-content {
+			.card-title {
+				margin: 0;
+				font-size: 18px;
+				line-height: 24px;
+				font-weight: 400;
+				&:after {
+					content: '';
+					display: block;
+					clear: both;
+				}
+				span {
+					margin: 0 0 5px 0;
+					float: left;
+					width: 80%;
+					min-height: 48px;
+					color: @dark-color;
+				}
+				.material-icons {
+					color: @dark-color;
+				}
+			}
+		}
+	}
+	&.horizontal {
+		.card-image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100%;
+			.circle {
+				margin: -21px 0 0 -21px;
+				position: absolute;
+				overflow: hidden;
+				top: 50%;
+				left: 50%;
+				display: inline-block;
+				vertical-align: middle;
+				width: 42px;
+				height: 42px;
+				font-size: 38px;
+				line-height: 42px;
+				color: @white-color;
+				text-align: center;
+			}
+		}
+		.card-stacked {
+			margin-left: 100px;
+			.title {
+				font-size: 16px;
+				color: @dark-color;
+			}
+		}
+		.card-action {
+			p {
+				margin: 0;
+			}
+		}
+	}
+}
+
+.card-panel {
+	margin: 0 0 1.5rem 0;
+}
+
+
+/*** 
+**** 3. Section
+***/
+
+.section {
+	padding: 0 0 2em 0;
+	position: relative;
+	&.last {
+		padding: 0;
+	}
+	.row {
+		.row {
+			margin-bottom: 0;
+		}
+	}
+}
+
+
+/*** 
+**** 4. Started
+***/
+
+.section.started {
+	.material-icons {
+		top: -1px;
+	}
+	.stats {
+		.row {
+			margin-bottom: 0;
+		}
+		p {
+			margin: 0 0 5px 0;
+		}
+	}
+}
+
+
+/*** 
+**** 5. Portfolio
+***/
+
+.section.works {
+	.row {
+		.col {
+			min-height: 0;
+		}
+	}
+	.filter {
+		a {
+			cursor: pointer;
+		}
+	}
+}
+
+
+/*** 
+**** 6. Pricing
+***/
+
+.section.pricing {
+	padding-bottom: 20px;
+}
+
+.pricing-table {
+	position: relative;
+	text-align: center;
+	.pt-title {
+		margin: 20px 0 35px 0;
+		font-size: @large-size;
+		color: @dark-color;
+		font-weight: 400;
+	}
+	.pt-amount {
+		margin: 35px 0;
+		.amount {
+			margin: 0 3px;
+			position: relative;
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 56px;
+			line-height: 48px;
+			color: @dark-color;
+			font-weight: 700;
+		}
+		.dollar, .period {
+			margin: 0 3px;
+			position: relative;
+			bottom: 2px;
+			display: inline-block;
+			vertical-align: top;
+			font-size: @h5-size;
+			color: @dark-color;
+			font-weight: 300;
+		}
+		.period {
+			bottom: auto;
+			top: 2px;
+			vertical-align: bottom;
+		}
+	}
+	.pt-feature-list {
+		margin: 35px 0;
+		ul {
+			li {
+				padding: 8px 0;
+				font-size: @default-size;
+				color: @dark-color;
+				font-weight: 400;
+				&:last-child {
+					border-bottom: none;
+				}
+				&.disable {
+					text-decoration: line-through;
+					opacity: 0.6;
+				}
+				.badge {
+					margin: 0 0 0 5px;
+					float: none;
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+	.btn {
+		margin-bottom: 20px;
+	}
+}
+
+/* 7. Blog */
+.section.blog {
+	.card-image {
+		.btn-floating {
+			position: absolute;
+			right: 24px;
+			bottom: -28px;
+		}
+	}
+	.card-title {
+		margin: 0 0 5px 0;
+		display: block;
+		color: @dark-color;
+	}
+	.badges {
+		float: left;
+		.badge {
+			margin: 0 10px 0 0;
+			float: none;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+	.date {
+		float: right;
+		font-size: 14px;
+	}
+}
+
+.text-box {
+	h1, h2, h3 {
+		font-size: 26px;
+		line-height: 24px;
+		margin: 12px 0;
+		color: @dark-color;
+		font-weight: bold;
+	}
+	.subtitle {
+		font-size: 22px;
+		line-height: 24px;
+		margin: 25px 0 30px 0;
+		color: #000;
+		font-weight: bold;
+	}
+	.blog-image {
+		margin-bottom: 30px;
+		img {
+			width: 100%;
+		}
+	}
+	.blog-detail {
+		font-size: 13px;
+		color: #b9b9b9;
+		margin-bottom: 30px;
+	}
+	.blog-content {
+		margin-bottom: 60px;
+	}
+	ul.list-style {
+		padding: 30px;
+		line-height: 24px;
+		li {
+			font-size: 14px;
+			list-style: circle;
+		}
+	}
+	.post-lightbox {
+		padding: 30px 0 0;
+		a {
+			outline: none;
+		}
+		img {
+			width: 100%;
+			padding-bottom: 30px;
+		}
+	}
+	ul.post-comment li {
+		width: 100%;
+		border-bottom: 1px solid #efefef;
+		padding: 15px 0;
+		margin-bottom: 50px;
+		list-style: none;
+		&:after {
+			content: '';
+			position: relative;
+			clear: both;
+			display: block;
+		}
+		img {
+			width: 100px;
+			float: left;
+		}
+		.comment-info {
+			margin-left: 120px;
+			padding-top: 5px;
+			.name {
+				position: relative;
+				margin: 0 0 5px 0;
+				a {
+					position: absolute;
+					top: 0;
+					right: 0;
+					font-size: 11px;
+					font-weight: bold;
+					color: #000;
+				}
+			}
+		}
+		h3 {
+			margin: 0;
+			font-size: 14px;
+			line-height: 20px;
+		}
+		span {
+			display: block;
+			width: 100%;
+			font-size: 12px;
+			color: #c5c5c5;
+		}
+	}
+}
+
+/* 8. Contacts */
+.section.contacts {
+	.collection, .card-panel {
+		min-height: 450px;
+	}
+}
+
+.contact-form {
+	h1, h2, h3, h4, h5, h6 {
+		margin-top: 0;
+	}
+	.input-field {
+		input, textarea {
+			margin-bottom: 5px;
+		}
+	}
+	.btn {
+		margin: 20px 0 0 0;
+	}
+	label.error {
+		display: none !important;
+	}
+}
+
+.map {
+	width: 100%;
+	height: 300px;
+}
+
+.alert-success {
+	display: none;
+	p {
+		margin: 30px 0;
+		font-size: @large-size;
+	}
+}
+
+/* 9. Footer */
+footer {
+	padding: 0 0 50px 0;
+	position: relative;
+	.copy {
+		font-size: @small-size;
+		color: @default-color;
+		text-align: center;
+	}
+	@media (max-width: 680px) {
+		padding: 0 0 30px 0;
+	}
+}
+
+/* 10. Popups */
+.popup-box {
+	margin: 30px auto;
+	padding: 10px;
+	position: relative;
+	width: 620px;
+	background: @white-color;
+	@media (max-width: 680px) {
+		width: 440px;
+	}
+	@media (max-width: 480px) {
+		width: 300px;
+	}
+	.image {
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+	.desc {
+		padding: 30px 20px;
+		h4 {
+			margin: 5px 0 15px 0;
+			display: block;
+			color: @dark-color;
+			font-size: @h4-size;
+			line-height: 1.4;
+			font-weight: 400;
+		}
+		p {
+			margin: 0 0 25px 0;
+		}
+	}
+	.mfp-close {
+		background: @white-color;
+		opacity: 1;
+	}
+}
+
+.mfp-fade.mfp-bg {
+	opacity: 0;
+	.transition(all 0.16s ease-out);
+}
+
+/* overlay animate in */
+.mfp-fade.mfp-bg.mfp-ready {
+	opacity: 0.8;
+}
+
+/* overlay animate out */
+.mfp-fade.mfp-bg.mfp-removing {
+	opacity: 0;
+}
+
+/* content at start */
+.mfp-fade.mfp-wrap .mfp-content {
+	opacity: 0;
+	.transition(all 0.16s ease-out);
+}
+
+/* content animate it */
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+	opacity: 1;
+}
+
+/* content animate out */
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+	opacity: 0;
+}

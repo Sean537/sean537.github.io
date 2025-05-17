@@ -1,0 +1,1412 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>mateCard - Materialize vCard/CV/Resume HTML Template</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="assets/style.css">
+	<link rel="stylesheet" href="assets/table.css">
+</head>
+<body>
+	<header class="dt-header dt-header_blue">
+		<span class="dt-logo">mateCard - Materialize vCard/CV/Resume HTML Template</span>
+	</header>	
+	<div class="dt-container dt-container_flex">
+		<aside class="dt-navbar">
+			<nav class="dt-navbar__nav">
+				<div class="dt-navbar__section">
+					<ul class="dt-navbar__list">
+						<li><a href="#files_structure" class="dt-navbar__link">文件结构</a></li>
+						<li><a href="#settings" class="dt-navbar__link">设置</a></li>
+						<li><a href="#include_fonts" class="dt-navbar__link">字体</a></li>
+						<li><a href="#include_php" class="dt-navbar__link">PHP联系表格</a></li>
+						<li><a href="#include_materialize" class="dt-navbar__link">实现</a></li>
+						<li>
+							<a href="#html_structure" class="dt-navbar__link">HTML结构</a>
+							<ul class="dt-navbar__list">
+								<li><a href="#html_structure_home" class="dt-navbar__link dt-navbar__link_nested">"首页"部分</a></li>
+								<li><a href="#html_structure_about" class="dt-navbar__link dt-navbar__link_nested">"关于"部分</a></li>
+								<li><a href="#html_structure_resume" class="dt-navbar__link dt-navbar__link_nested">"Resume" section</a></li>
+								<li><a href="#html_structure_services" class="dt-navbar__link dt-navbar__link_nested">"Services" section</a></li>
+								<li><a href="#html_structure_portfolio" class="dt-navbar__link dt-navbar__link_nested">"Portfolio" section</a></li>
+								<li><a href="#html_structure_pricing" class="dt-navbar__link dt-navbar__link_nested">"Pricing" section</a></li>
+								<li><a href="#html_structure_blog" class="dt-navbar__link dt-navbar__link_nested">"博客"部分</a></li>
+								<li><a href="#html_structure_contacts" class="dt-navbar__link dt-navbar__link_nested">"联系"部分</a></li>
+							</ul>
+						</li>
+						<li><a href="#icons" class="dt-navbar__link">图标</a></li>
+						<li><a href="#credits" class="dt-navbar__link">Credits</a></li>
+					</ul>
+				</div>		
+			</nav>
+		</aside>	
+		<div class="dt-content dt-content_scroll-bar-yes">
+			<div class="dt-section">
+				<h2 class="dt-title">mateCard - Materialize vCard/CV/Resume HTML Template</h2>
+				<p>By: beshleyua</p>
+			
+			</div>		
+			<article id="files_structure" class="dt-section">
+				<h2 class="dt-title">文件结构</h2>
+				<p>解压缩存档后，您将看到以下结构：</p>
+				<div class="dt-info-block">
+					<pre class="code language-html">
+						<code>
+html/
+│ 
+├──doc/
+├──themplate/		
+│──│──default/
+│──│──│──css/
+│──│──│──│──animate.css
+│──│──│──│──layout.css
+│──│──│──│──ionicons.css
+│──│──│──│──magnific-popup.css
+│──│──│──│──materialize.css
+│──│──│──fonts/
+│──│──│──images/
+│──│──│──js/
+│──│──│──│──main.js
+│──│──│──│──materialize.js
+│──│──│──│──jquery.min.js
+│──│──│──│──jquery.validate.js
+│──│──│──│──magnific-popup.js
+│──│──│──less/
+│──│──│──│──layout.less
+│──│──│──│──setting.less
+│──│──│──index.html
+│──│──│──blog.html
+│──│──│──blog-post.html
+						</code>
+					</pre>
+				</div>
+				<ul class="dt-list dt-list_nested dt-info-block">
+					<li>
+						<span class="dt-label dt-label_bold">css</span> - 所有页面CSS
+						<ul class="dt-list dt-list_nested">
+							<li><span class="dt-label dt-label_bold">animate.css</span> - 动画CSS</li>
+							<li><span class="dt-label dt-label_bold">ionicons.css</span> - "ionicons"图标CSS</li>
+							<li><span class="dt-label dt-label_bold">magnific-popup.css</span> - "Magnific Popup"插件CSS</li>
+							<li><span class="dt-label dt-label_bold">layout.css</span> - 主题布局CSS</li>
+							<li><span class="dt-label dt-label_bold">materialize</span> - 实现CSS</li>
+						</ul>
+					</li>
+					<li>
+						<span class="dt-label dt-label_bold">less</span> - 所有页面LESS
+						<ul class="dt-list dt-list_nested">
+							<li><span class="dt-label dt-label_bold">setting.less</span> - 设置主题LESS</li>
+							<li><span class="dt-label dt-label_bold">layout.less</span> - 主题布局LESS</li>
+						</ul>
+					</li>
+					<li>
+						<span class="dt-label dt-label_bold">js</span> - 所有页面JS
+						<ul class="dt-list dt-list_nested">
+							<li><span class="dt-label dt-label_bold">main.js</span> - 主要的主题JS</li>
+							<li><span class="dt-label dt-label_bold">jquery.min.js</span> - jQuery库</li>
+							<li><span class="dt-label dt-label_bold">jquery.validate.js</span> - 用于验证表单的 JS 插件</li>
+							<li><span class="dt-label dt-label_bold">magnific-popup.js</span> - 弹出窗口的 JS 插件</li>
+							<li><span class="dt-label dt-label_bold">materialize.js</span> - 实现JS</li>
+						</ul>
+					</li>
+				</ul>
+			</article>
+			<article id="settings" class="dt-section">
+				<h2 class="dt-title">设置</h2>
+				<p>
+					要编辑主题，您可以使用以下设置，文件夹 “/less/setting.less” 。
+				</p>
+
+				<table>
+					<thead>
+					<tr>
+						<th>名称</th>
+						<th>值</th>
+						<th>描述</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="3"><span class="dt-label dt-label_bold">主题元素的颜色设置</span></td>
+						</tr>
+						<tr>
+							<td>@default-color</td>
+							<td>#868686</td>
+							<td>默认颜色</td>
+						</tr>
+						<tr>
+							<td>@dark-color</td>
+							<td>#363636</td>
+							<td>深色</td>
+						</tr>
+						<tr>
+							<td>@light-color</td>
+							<td>#fcfcfc</td>
+							<td>浅色</td>
+						</tr>
+						<tr>
+							<td>@white-color</td>
+							<td>#fff</td>
+							<td>白色</td>
+						</tr>
+						<tr>
+							<td>@error-color</td>
+							<td>red</td>
+							<td>错误字段颜色</td>
+						</tr>
+						<tr>
+							<td colspan="3"><span class="dt-label dt-label_bold">主题的字体设置</span></td>
+						</tr>
+						<tr>
+							<td>@default-font</td>
+							<td>'Roboto'</td>
+							<td>主题的默认字体</td>
+						</tr>
+						<tr>
+							<td>@icons-font</td>
+							<td>'Ionicons'</td>
+							<td>主题的图标字体</td>
+						</tr>
+						<tr>
+							<td colspan="3"><span class="dt-label dt-label_bold">主题的大小设置</span></td>
+						</tr>
+						<tr>
+							<td>@large-size</td>
+							<td>17px</td>
+							<td>大尺寸</td>
+						</tr>
+						<tr>
+							<td>@default-size</td>
+							<td>16px</td>
+							<td>默认尺寸</td>
+						</tr>
+						<tr>
+							<td>@small-size</td>
+							<td>14px</td>
+							<td>小尺寸</td>
+						</tr>
+						<tr>
+							<td>@h1-size</td>
+							<td>36px</td>
+							<td>H1 Size</td>
+						</tr>
+						<tr>
+							<td>@h2-size</td>
+							<td>32px</td>
+							<td>H2 Size</td>
+						</tr>
+						<tr>
+							<td>@h3-size</td>
+							<td>28px</td>
+							<td>H3 Size</td>
+						</tr>
+						<tr>
+							<td>@h4-size</td>
+							<td>24px</td>
+							<td>H4 Size</td>
+						</tr>
+						<tr>
+							<td>@h5-size</td>
+							<td>20px</td>
+							<td>H5 Size</td>
+						</tr>
+						<tr>
+							<td>@h6-size</td>
+							<td>16px</td>
+							<td>H6 Size</td>
+						</tr>
+					</tbody>
+				</table>				
+			</article>
+			<article id="include_fonts" class="dt-section">
+				<h2 class="dt-title">Include of fonts</h2>
+				<p>To use fonts, you must add one tag 'link' from section below to head section.</p>
+				<pre class="code language-html">
+					<code>
+&lt;link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic" rel="stylesheet"&gt;
+					</code>
+				</pre>	
+				<p>
+					Next step is to set the @default-font option with using settings table.
+				</p>				
+			</article>
+			<article id="include_php" class="dt-section">
+				<h2 class="dt-title">Contact Form PHP</h2>
+				<p>To modify the form is submitted, you can use the following settings, folders "/mailer/form_setting.php" and "/mailer/feedback.php"</p>				
+			</article>
+			<article id="include_materialize" class="dt-section">
+				<h2 class="dt-title">Materialize</h2>
+				<p>The template structure is built on Materialize, you can see in detail here - <a href="http://materializecss.com/getting-started.html">http://materializecss.com/getting-started.html</a></p>				
+			</article>
+			<article id="html_structure" class="dt-section">
+				<h2 class="dt-title">HTML structure</h2>
+				<pre class="code language-html">
+					<code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+	
+	&lt;!-- Basic --&gt;
+	&lt;meta charset="UTF-8" /&gt;
+	&lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+	&lt;title&gt;mateCard - Materialize vCard/CV/Resume HTML Template&lt;/title&gt;
+	&lt;meta name="description" content="mateCard - Materialize vCard/CV/Resume HTML Template" /&gt;
+	&lt;meta name="keywords" content="vcard, responsive, materialize, resume, jquery, css3, bootstrap, Material CV, portfolio" /&gt;
+	&lt;meta name="author" content="beshleyua" /&gt;
+	
+	&lt;!-- Mobile Specific Metas --&gt;
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /&gt;
+	
+	&lt;!-- Load Fonts --&gt;
+	&lt;link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"&gt;
+	
+	&lt;!-- CSS --&gt;
+	&lt;link rel="stylesheet" href="css/materialize.css" /&gt;
+	&lt;link rel="stylesheet" href="css/layout.css" /&gt;
+	&lt;link rel="stylesheet" href="css/magnific-popup.css" /&gt;
+	&lt;link rel="stylesheet" href="css/animate.css" /&gt;
+	&lt;link rel="stylesheet" href="css/ionicons.css" /&gt;
+	
+	&lt;!--[if lt IE 9]&gt;
+	&lt;script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"&gt;&lt;/script&gt;
+	&lt;script src="http://html5shim.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt;
+	&lt;![endif]--&gt;
+	
+	&lt;!-- Favicon --&gt;
+	&lt;link rel="shortcut icon" href="images/favicons/favicon.ico"&gt;
+	
+&lt;/head&gt;
+
+&lt;body&gt;
+	
+	&lt;!-- Page --&gt;
+	&lt;div class="page" id="home-section"&gt;
+
+		&lt;!-- Preloader --&gt;
+		&lt;div class="preloader"&gt;
+			&lt;div class="centrize full-width"&gt;
+				&lt;div class="vertical-center"&gt;
+					&lt;div class="preloader-wrapper spinner big active"&gt;
+						&lt;div class="spinner-layer spinner-blue"&gt;
+							&lt;div class="circle-clipper left"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="gap-patch"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="circle-clipper right"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="spinner-layer spinner-red"&gt;
+							&lt;div class="circle-clipper left"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="gap-patch"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="circle-clipper right"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="spinner-layer spinner-green"&gt;
+							&lt;div class="circle-clipper left"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="gap-patch"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+							&lt;div class="circle-clipper right"&gt;
+								&lt;div class="circle"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+
+		&lt;!-- Header --&gt;
+		&lt;header&gt;
+
+			&lt;!-- SideNav --&gt;
+			&lt;ul class="side-nav fixed" id="nav-mobile"&gt;
+				&lt;li class="curent"&gt;
+					&lt;div class="userView"&gt;
+	  					&lt;div class="background"&gt;
+	  						&lt;img src="images/slide-bg.jpg" alt="" /&gt;
+	  					&lt;/div&gt;
+	  					&lt;img class="avatar circle" src="images/man.png" alt="" /&gt;
+	  					&lt;div class="white-text name"&gt;Sean Stevenson&lt;/div&gt;
+	  					&lt;div class="white-text email"&gt;stevenson@gmail.com&lt;/div&gt;
+	  					&lt;div class="social"&gt;
+							&lt;a href="https://www.facebook.com" target="blank"&gt;&lt;i class="ion ion-social-facebook"&gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;a href="https://www.dribbble.com" target="blank"&gt;&lt;i class="ion ion-social-dribbble"&gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;a href="https://www.twitter.com" target="blank"&gt;&lt;i class="ion ion-social-twitter"&gt;&lt;/i&gt;&lt;/a&gt;
+							&lt;a href="https://plus.google.com" target="blank"&gt;&lt;i class="ion ion-social-googleplus"&gt;&lt;/i&gt;&lt;/a&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="active"&gt;
+					&lt;a href="#started-section" class="waves-effect waves-light"&gt;
+						&lt;i class="material-icons"&gt;home&lt;/i&gt;Home
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#about-section" class="waves-effect waves-light"&gt;
+						&lt;i class="material-icons"&gt;person_pin&lt;/i&gt;About
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#experience-section" class="waves-effect waves-light"&gt;
+						&lt;i class="material-icons"&gt;assignment&lt;/i&gt;Resume
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#experience-section" class="waves-effect waves-light"&gt;
+						&lt;i class="material-icons"&gt;settings&lt;/i&gt;Services
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#works-section" class=" waves-effect waves-light"&gt;
+						&lt;i class="material-icons"&gt;work&lt;/i&gt;Portfolio
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#pricing-section" class="waves-effect waves-light"&gt;
+						&lt;i class="material-icons"&gt;view_carousel&lt;/i&gt;Pricing
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#blog-section" class="waves-effect waves-light"&gt;
+						&lt;i class="material-icons"&gt;library_books&lt;/i&gt;Blog
+					&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#contact-section" class="waves-effect waves-light"&gt;
+						&lt;i class="material-icons"&gt;phone&lt;/i&gt;Contact
+					&lt;/a&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+
+			&lt;!-- Top menu --&gt;
+			&lt;nav class="top-menu"&gt;
+				&lt;div class="nav-wrapper"&gt;
+					&lt;ul&gt;
+						&lt;li&gt;
+							&lt;a href="#" data-activates="nav-mobile" class="menu-btn"&gt;&lt;i class="material-icons"&gt;menu&lt;/i&gt;&lt;/a&gt;
+						&lt;/li&gt;
+						&lt;!--&lt;li class="right"&gt;
+							&lt;a href="#"&gt;&lt;i class="material-icons"&gt;arrow_back&lt;/i&gt;&lt;/a&gt;
+						&lt;/li&gt;--&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+			&lt;/nav&gt;
+
+		&lt;/header&gt;
+
+		&lt;main&gt;
+
+			&lt;!-- Container --&gt;
+			&lt;div class="container scrollspy" id="started-section"&gt;
+
+				
+				
+			&lt;/div&gt;
+
+			&lt;!-- Footer --&gt;
+			&lt;footer&gt;
+				&lt;div class="copy"&gt;© 2016 mateCard. All rights reserved.&lt;/div&gt;
+			&lt;/footer&gt;
+
+		&lt;/main&gt;
+
+	&lt;/div&gt;
+	
+	&lt;!-- jQuery Scripts --&gt;
+	&lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
+	&lt;script src="js/materialize.js"&gt;&lt;/script&gt;
+	&lt;script src="js/jquery.validate.js"&gt;&lt;/script&gt;
+	&lt;script src="js/magnific-popup.js"&gt;&lt;/script&gt;
+
+	&lt;!-- Google map api --&gt;
+	&lt;script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"&gt;&lt;/script&gt;
+	
+	&lt;!-- Main Scripts --&gt;
+	&lt;script src="js/main.js"&gt;&lt;/script&gt;
+	
+&lt;/body&gt;
+&lt;/html&gt;
+					</code>
+				</pre>				
+			</article>
+			<article id="html_structure_started" class="dt-section">
+				<h2 class="dt-title">HTML structure of "Home" section</h2>
+				<pre class="code language-html">
+					<code>
+&lt;!-- Section Home --&gt;
+&lt;div class="section started"&gt;
+
+	&lt;!-- Profile --&gt;
+	&lt;div class="card profile"&gt;
+		&lt;div class="card-image" style="background-image: url(images/user-profile-bg.jpg);"&gt;&lt;/div&gt;
+		&lt;div class="card-content"&gt;
+			&lt;div class="row"&gt;
+				&lt;div class="col s12 m5 l6"&gt;
+					&lt;figure class="card-profile-image"&gt;
+						&lt;img class="circle z-depth-1 responsive-img" src="images/avatar.png" alt="" /&gt;
+					&lt;/figure&gt;
+					&lt;div class="card-profile-desc"&gt;
+						&lt;h4 class="card-title grey-text text-darken-4"&gt;Sean Stevenson&lt;/h4&gt;
+						&lt;p class="medium-small grey-text"&gt;Front-end Developer&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div class="col s4 m3 l2 center-align"&gt;
+					&lt;h4 class="card-title grey-text text-darken-4"&gt;96%&lt;/h4&gt;
+					&lt;p class="medium-small grey-text"&gt;Jobs Completed&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;div class="col s4 m2 l2 center-align"&gt;
+					&lt;h4 class="card-title grey-text text-darken-4"&gt;10&lt;/h4&gt;
+					&lt;p class="medium-small grey-text"&gt;Years Experience&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;div class="col s4 m2 l2 center-align"&gt;
+					&lt;h4 class="card-title grey-text text-darken-4"&gt;$25&lt;/h4&gt;
+					&lt;p class="medium-small grey-text"&gt;USD/hr&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;!-- Stats --&gt;
+	&lt;div class="stats"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col s12 m6 l3"&gt;
+				&lt;div class="card green darken-2"&gt;
+					&lt;div class="card-content white-text center-align"&gt;
+						&lt;p class="card-title"&gt;&lt;i class="material-icons"&gt;recent_actors&lt;/i&gt; 480+&lt;/p&gt;
+						&lt;p&gt;Happy Clients&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class="col s12 m6 l3"&gt;
+				&lt;div class="card cyan darken-2"&gt;
+					&lt;div class="card-content white-text center-align"&gt;
+						&lt;p class="card-title"&gt;&lt;i class="material-icons"&gt;done_all&lt;/i&gt; 400+&lt;/p&gt;
+						&lt;p&gt;Complated Projects&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class="col s12 m6 l3"&gt;
+				&lt;div class="card red darken-2"&gt;
+					&lt;div class="card-content white-text center-align"&gt;
+						&lt;p class="card-title"&gt;&lt;i class="material-icons"&gt;code&lt;/i&gt; 100 000+&lt;/p&gt;
+						&lt;p&gt;Lines of code&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class="col s12 m6 l3"&gt;
+				&lt;div class="card amber darken-2"&gt;
+					&lt;div class="card-content white-text center-align"&gt;
+						&lt;p class="card-title"&gt;&lt;i class="material-icons"&gt;supervisor_account&lt;/i&gt; 1000+&lt;/p&gt;
+						&lt;p&gt;Followers&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+&lt;/div&gt;
+					</code>
+				</pre>				
+			</article>
+			<article id="html_structure_about" class="dt-section">
+				<h2 class="dt-title">HTML structure of "About" section</h2>
+				<pre class="code language-html">
+					<code>
+&lt;!-- Section About --&gt;
+&lt;div class="section about scrollspy" id="about-section"&gt;
+
+	&lt;!-- Title --&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;h5 class="grey-text text-darken-2 left-align"&gt;About Me&lt;/h5&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;div class="card-panel"&gt;
+				&lt;div class="text-box"&gt;
+					&lt;p&gt;
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+						totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
+						Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed ut perspiciatis unde omnis iste natus 
+						error sit voluptatem accusantium doloremque.
+					&lt;/p&gt;
+					&lt;p&gt;
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+					&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;div class="bts"&gt;
+					&lt;a href="#" class="btn waves-effect waves-light"&gt;Download CV&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-info z-depth-1"&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m5 l5 grey-text darken-1"&gt;
+							&lt;i class="material-icons"&gt;perm_identity&lt;/i&gt; Age:
+						&lt;/div&gt;
+						&lt;div class="col s6 m7 l7 grey-text text-darken-4 right-align"&gt;22 Years&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m5 l5 grey-text darken-1"&gt;
+							&lt;i class="material-icons"&gt;work&lt;/i&gt; Job:
+						&lt;/div&gt;
+						&lt;div class="col s6 m7 l7 grey-text text-darken-4 right-align"&gt;Freelancer&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m5 l5 grey-text darken-1"&gt;
+							&lt;i class="material-icons"&gt;location_on&lt;/i&gt; Citizenship:
+						&lt;/div&gt;
+						&lt;div class="col s6 m7 l7 grey-text text-darken-4 right-align"&gt;United States&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m5 l5 grey-text darken-1"&gt;
+							&lt;i class="material-icons"&gt;business&lt;/i&gt; Address:
+						&lt;/div&gt;
+						&lt;div class="col s6 m7 l7 grey-text text-darken-4 right-align"&gt;358 W Jefferson St, Bensenville&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-info z-depth-1"&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s8 m5 l5 grey-text darken-1"&gt;
+							&lt;i class="material-icons"&gt;invert_colors&lt;/i&gt; Cups of coffee:
+						&lt;/div&gt;
+						&lt;div class="col s4 m7 l7 grey-text text-darken-4 right-align"&gt;20.000&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s8 m5 l5 grey-text darken-1"&gt;
+							&lt;i class="material-icons"&gt;language&lt;/i&gt; Countries Visited:
+						&lt;/div&gt;
+						&lt;div class="col s4 m7 l7 grey-text text-darken-4 right-align"&gt;28&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s8 m5 l5 grey-text darken-1"&gt;
+							&lt;i class="material-icons"&gt;stars&lt;/i&gt; Awards Won:
+						&lt;/div&gt;
+						&lt;div class="col s4 m7 l7 grey-text text-darken-4 right-align"&gt;16&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s8 m5 l5 grey-text darken-1"&gt;
+							&lt;i class="material-icons"&gt;album&lt;/i&gt; Albumes Listened:
+						&lt;/div&gt;
+						&lt;div class="col s4 m7 l7 grey-text text-darken-4 right-align"&gt;80&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-skills z-depth-1"&gt;
+				&lt;li class="collection-item avatar"&gt;
+					&lt;i class="material-icons circle green darken-2"&gt;person&lt;/i&gt;
+					&lt;div class="title"&gt;Professional Skills&lt;/div&gt;
+					&lt;p&gt;Sed ut perspiciatis&lt;/p&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;UI/UX Design&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress green lighten-5"&gt;
+								&lt;div class="determinate green darken-2" style="width: 70%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Web Delevopment&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress green lighten-5"&gt;
+								&lt;div class="determinate green darken-2" style="width: 90%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Mobile Application&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress green lighten-5"&gt;
+								&lt;div class="determinate green darken-2" style="width: 80%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Writing&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress green lighten-5"&gt;
+								&lt;div class="determinate green darken-2" style="width: 65%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Photography&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress green lighten-5"&gt;
+								&lt;div class="determinate green darken-2" style="width: 70%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-skills z-depth-1"&gt;
+				&lt;li class="collection-item avatar"&gt;
+					&lt;i class="material-icons circle red darken-2"&gt;forum&lt;/i&gt;
+					&lt;div class="title"&gt;Personal Skills&lt;/div&gt;
+					&lt;p&gt;Sed ut perspiciatis&lt;/p&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Communication&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress red lighten-5"&gt;
+								&lt;div class="determinate red darken-2" style="width: 80%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Team Work&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress red lighten-5"&gt;
+								&lt;div class="determinate red darken-2" style="width: 90%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Leadership&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress red lighten-5"&gt;
+								&lt;div class="determinate red darken-2" style="width: 65%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Creativity&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress red lighten-5"&gt;
+								&lt;div class="determinate red darken-2" style="width: 75%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s6 m4 l4"&gt;
+							&lt;div class="title"&gt;Language&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;div class="col s6 m8 l8"&gt;
+							&lt;div class="progress red lighten-5"&gt;
+								&lt;div class="determinate red darken-2" style="width: 80%"&gt;&lt;/div&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+&lt;/div&gt;
+					</code>
+				</pre>				
+			</article>
+			<article id="html_structure_skills" class="dt-section">
+				<h2 class="dt-title">HTML structure of "Resume" section</h2>
+				<pre class="code language-html">
+					<code>
+&lt;!-- Section Resume --&gt;
+&lt;div class="section experience scrollspy" id="experience-section"&gt;
+
+	&lt;!-- Title --&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;h5 class="grey-text text-darken-2 left-align"&gt;Experience & Education&lt;/h5&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;!-- Resume Items --&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-resume z-depth-1"&gt;
+				&lt;li class="collection-item avatar"&gt;
+					&lt;i class="material-icons circle green darken-2"&gt;assignment&lt;/i&gt;
+					&lt;span class="ultra-small red-text darken-2 right"&gt;PRESENT&lt;/span&gt;
+					&lt;div class="title"&gt;Facebook Inc.&lt;/div&gt;
+					&lt;span class="tag red darken-2"&gt;Art Director&lt;/span&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius illum vocent mediocritatem an, cule dicta iriure at. 
+						Ubique maluisset vel te, his dico vituperata ut. Pro ei phaedrum maluisset. Ex audire suavitate has, ei quodsi 
+						tacimates sapientem sed, pri zril ubique ut. Lorem ipsum dolor sit amet, in quodsi.
+					&lt;/p&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-resume z-depth-1"&gt;
+				&lt;li class="collection-item avatar"&gt;
+					&lt;i class="material-icons circle green darken-2"&gt;assignment&lt;/i&gt;
+					&lt;span class="ultra-small red-text darken-2 right"&gt;2014-2016&lt;/span&gt;
+					&lt;div class="title"&gt;Google Inc.&lt;/div&gt;
+					&lt;span class="tag red darken-2"&gt;Front-end Developer&lt;/span&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius illum vocent mediocritatem an, cule dicta iriure at. 
+						Ubique maluisset vel te, his dico vituperata ut. Pro ei phaedrum maluisset. Ex audire suavitate has, ei quodsi 
+						tacimates sapientem sed, pri zril ubique ut. Lorem ipsum dolor sit amet, in quodsi.
+					&lt;/p&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-resume z-depth-1"&gt;
+				&lt;li class="collection-item avatar"&gt;
+					&lt;i class="material-icons circle green darken-2"&gt;assignment&lt;/i&gt;
+					&lt;span class="ultra-small red-text darken-2 right"&gt;2012-2014&lt;/span&gt;
+					&lt;div class="title"&gt;Abc Inc.&lt;/div&gt;
+					&lt;span class="tag red darken-2"&gt;Senior Developer&lt;/span&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius illum vocent mediocritatem an, cule dicta iriure at. 
+						Ubique maluisset vel te, his dico vituperata ut. Pro ei phaedrum maluisset. Ex audire suavitate has, ei quodsi 
+						tacimates sapientem sed, pri zril ubique ut. Lorem ipsum dolor sit amet, in quodsi.
+					&lt;/p&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-resume z-depth-1"&gt;
+				&lt;li class="collection-item avatar"&gt;
+					&lt;i class="material-icons circle green darken-2"&gt;assignment&lt;/i&gt;
+					&lt;span class="ultra-small red-text darken-2 right"&gt;2009-2012&lt;/span&gt;
+					&lt;div class="title"&gt;Freelancer&lt;/div&gt;
+					&lt;span class="tag red darken-2"&gt;Senior Developer&lt;/span&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius illum vocent mediocritatem an, cule dicta iriure at. 
+						Ubique maluisset vel te, his dico vituperata ut. Pro ei phaedrum maluisset. Ex audire suavitate has, ei quodsi 
+						tacimates sapientem sed, pri zril ubique ut. Lorem ipsum dolor sit amet, in quodsi.
+					&lt;/p&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-resume z-depth-1"&gt;
+				&lt;li class="collection-item avatar"&gt;
+					&lt;i class="material-icons circle red darken-2"&gt;school&lt;/i&gt;
+					&lt;span class="ultra-small red-text darken-2 right"&gt;2008-2009&lt;/span&gt;
+					&lt;div class="title"&gt;Front-end Course&lt;/div&gt;
+					&lt;span class="tag red darken-2"&gt;London&lt;/span&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius illum vocent mediocritatem an, cule dicta iriure at. 
+						Ubique maluisset vel te, his dico vituperata ut. Pro ei phaedrum maluisset. Ex audire suavitate has, ei quodsi 
+						tacimates sapientem sed, pri zril ubique ut. Lorem ipsum dolor sit amet, in quodsi.
+					&lt;/p&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-resume z-depth-1"&gt;
+				&lt;li class="collection-item avatar"&gt;
+					&lt;i class="material-icons circle red darken-2"&gt;school&lt;/i&gt;
+					&lt;span class="ultra-small red-text darken-2 right"&gt;2005-2008&lt;/span&gt;
+					&lt;div class="title"&gt;Art University&lt;/div&gt;
+					&lt;span class="tag red darken-2"&gt;New York&lt;/span&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius illum vocent mediocritatem an, cule dicta iriure at. 
+						Ubique maluisset vel te, his dico vituperata ut. Pro ei phaedrum maluisset. Ex audire suavitate has, ei quodsi 
+						tacimates sapientem sed, pri zril ubique ut. Lorem ipsum dolor sit amet, in quodsi.
+					&lt;/p&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+&lt;/div&gt;
+					</code>
+				</pre>							
+			</article>
+			<article id="html_structure_experience" class="dt-section">
+				<h2 class="dt-title">HTML structure of "Services" section</h2>		
+				<pre class="code language-html">
+					<code>
+&lt;!-- Service --&gt;
+&lt;div class="section service scrollspy" id="service-section"&gt;
+	
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;h5 class="left-align"&gt;Services&lt;/h5&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;div class="card horizontal"&gt;
+				&lt;div class="card-image green darken-2"&gt;
+					&lt;i class="material-icons circle darken-2"&gt;dashboard&lt;/i&gt;
+				&lt;/div&gt;
+				&lt;div class="card-stacked"&gt;
+					&lt;div class="card-content"&gt;
+						&lt;div class="title"&gt;UI/UX Design&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class="card-action"&gt;
+						&lt;p&gt;I am a very simple card. I am good at containing small bits of information.&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;div class="card horizontal"&gt;
+				&lt;div class="card-image cyan darken-2"&gt;
+					&lt;i class="material-icons circle darken-2"&gt;web&lt;/i&gt;
+				&lt;/div&gt;
+				&lt;div class="card-stacked"&gt;
+					&lt;div class="card-content"&gt;
+						&lt;div class="title"&gt;Web Application&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class="card-action"&gt;
+						&lt;p&gt;I am a very simple card. I am good at containing small bits of information.&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;div class="card horizontal"&gt;
+				&lt;div class="card-image red darken-2"&gt;
+					&lt;i class="material-icons circle darken-2"&gt;android&lt;/i&gt;
+				&lt;/div&gt;
+				&lt;div class="card-stacked"&gt;
+					&lt;div class="card-content"&gt;
+						&lt;div class="title"&gt;Android Application&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class="card-action"&gt;
+						&lt;p&gt;I am a very simple card. I am good at containing small bits of information.&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;div class="card horizontal"&gt;
+				&lt;div class="card-image amber darken-2"&gt;
+					&lt;i class="material-icons circle darken-2"&gt;smartphone&lt;/i&gt;
+				&lt;/div&gt;
+				&lt;div class="card-stacked"&gt;
+					&lt;div class="card-content"&gt;
+						&lt;div class="title"&gt;Mobile Design&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class="card-action"&gt;
+						&lt;p&gt;I am a very simple card. I am good at containing small bits of information.&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;div class="card horizontal"&gt;
+				&lt;div class="card-image blue darken-2"&gt;
+					&lt;i class="material-icons circle darken-2"&gt;create&lt;/i&gt;
+				&lt;/div&gt;
+				&lt;div class="card-stacked"&gt;
+					&lt;div class="card-content"&gt;
+						&lt;div class="title"&gt;Writing&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class="card-action"&gt;
+						&lt;p&gt;I am a very simple card. I am good at containing small bits of information.&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;div class="card horizontal"&gt;
+				&lt;div class="card-image purple darken-2"&gt;
+					&lt;i class="material-icons circle darken-2"&gt;photo_camera&lt;/i&gt;
+				&lt;/div&gt;
+				&lt;div class="card-stacked"&gt;
+					&lt;div class="card-content"&gt;
+						&lt;div class="title"&gt;Photography&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class="card-action"&gt;
+						&lt;p&gt;I am a very simple card. I am good at containing small bits of information.&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+					</code>
+				</pre>							
+			</article>	
+			<article id="html_structure_education" class="dt-section">
+				<h2 class="dt-title">HTML structure of "Portfolio" section</h2>		
+				<pre class="code language-html">
+					<code>
+&lt;!-- Portfolio --&gt;
+&lt;div class="section works scrollspy" id="works-section"&gt;
+
+	&lt;!-- Title --&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;h5 class="grey-text text-darken-2 left-align"&gt;Portfolio&lt;/h5&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;ul class="tabs filter z-depth-1"&gt;
+				&lt;li class="tab"&gt;&lt;a class="active" data-filter=".all"&gt;All&lt;/a&gt;&lt;/li&gt;
+				&lt;li class="tab"&gt;&lt;a data-filter=".apps"&gt;apps&lt;/a&gt;&lt;/li&gt;
+				&lt;li class="tab"&gt;&lt;a data-filter=".graphics"&gt;Graphics&lt;/a&gt;&lt;/li&gt;
+				&lt;li class="tab"&gt;&lt;a data-filter=".icons"&gt;Icons&lt;/a&gt;&lt;/li&gt;
+				&lt;li class="tab"&gt;&lt;a data-filter=".ui"&gt;UI Kits&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m6 l4"&gt;
+			&lt;div class="card work-item apps all"&gt;
+				&lt;div class="card-image waves-effect waves-block waves-light"&gt;
+					&lt;a href="#popup-1" class="activator"&gt;&lt;img src="images/works/work1.jpg" alt="" /&gt;&lt;/a&gt;
+				&lt;/div&gt;
+				&lt;div class="card-content"&gt;
+					&lt;h3 class="card-title grey-text text-darken-4"&gt;
+						&lt;a href="#popup-1" class="activator"&gt;
+							&lt;span&gt;Realistic Business Cards MockUp&lt;/span&gt;
+							&lt;i class="material-icons right"&gt;more_vert&lt;/i&gt;
+						&lt;/a&gt;
+					&lt;/h3&gt;
+					&lt;span class="category blue-text text-darken-2"&gt;apps&lt;/span&gt;
+				&lt;/div&gt;
+				&lt;div id="popup-1" class="popup-box mfp-fade mfp-hide"&gt;
+					&lt;div class="content"&gt;
+						&lt;div class="image"&gt;
+							&lt;img src="images/works/work1.jpg" alt=""&gt;
+						&lt;/div&gt;
+						&lt;div class="desc"&gt;
+							&lt;div class="category"&gt;apps&lt;/div&gt;
+							&lt;h4&gt;Realistic Business Cards MockUp&lt;/h4&gt;
+							&lt;p&gt;
+								Here’s a new b-cards mock-up with several business cards scattered across the scene. The PSD file allows you 
+								to easily. Here’s a new b-cards mock-up with several business cards scattered across the scene.
+							&lt;/p&gt;
+							&lt;a href="#" class="btn waves-effect waves-light"&gt;View Project&lt;/a&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+					</code>
+				</pre>							
+			</article>
+			<article id="html_structure_pricing" class="dt-section">
+				<h2 class="dt-title">HTML structure of "Pricing" section</h2>		
+				<pre class="code language-html">
+					<code>
+&lt;!-- Section Pricing --&gt;
+&lt;div class="section pricing scrollspy" id="pricing-section"&gt;
+
+	&lt;!-- Title --&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;h5 class="grey-text text-darken-2 left-align"&gt;Pricing&lt;/h5&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m6 l3"&gt;
+			&lt;div class="card-panel"&gt;
+				&lt;div class="pricing-table"&gt;
+					&lt;div class="pt-title"&gt;Basic&lt;/div&gt;
+					&lt;div class="pt-amount"&gt;
+						&lt;span class="dollar"&gt;$&lt;/span&gt;
+						&lt;span class="amount"&gt;15&lt;/span&gt;
+						&lt;span class="period"&gt;/hr&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class="pt-feature-list"&gt;
+						&lt;ul&gt;
+							&lt;li class="disable"&gt;UI/UX Design&lt;/li&gt;
+							&lt;li&gt;Web Development&lt;/li&gt;
+							&lt;li class="disable"&gt;IOS Application &lt;span class="new badge red"&gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li class="disable"&gt;Android Application&lt;/li&gt;
+							&lt;li class="disable"&gt;Writing&lt;/li&gt;
+							&lt;li class="disable"&gt;Photography &lt;span class="new badge red"&gt;&lt;/span&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/div&gt;
+					&lt;a href="#" class="btn waves-effect waves-light"&gt;Buy Now&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m6 l3"&gt;
+			&lt;div class="card-panel"&gt;
+				&lt;div class="pricing-table"&gt;
+					&lt;div class="pt-title"&gt;Start-Up&lt;/div&gt;
+					&lt;div class="pt-amount"&gt;
+						&lt;span class="dollar"&gt;$&lt;/span&gt;
+						&lt;span class="amount"&gt;29&lt;/span&gt;
+						&lt;span class="period"&gt;/hr&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class="pt-feature-list"&gt;
+						&lt;ul&gt;
+							&lt;li&gt;UI/UX Design&lt;/li&gt;
+							&lt;li&gt;Web Development&lt;/li&gt;
+							&lt;li class="disable"&gt;IOS Application &lt;span class="new badge red"&gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li class="disable"&gt;Android Application&lt;/li&gt;
+							&lt;li class="disable"&gt;Writing&lt;/li&gt;
+							&lt;li class="disable"&gt;Photography &lt;span class="new badge red"&gt;&lt;/span&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/div&gt;
+					&lt;a href="#" class="btn waves-effect waves-light"&gt;Buy Now&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m6 l3"&gt;
+			&lt;div class="card-panel"&gt;
+				&lt;div class="pricing-table"&gt;
+					&lt;div class="pt-title"&gt;Business&lt;/div&gt;
+					&lt;div class="pt-amount"&gt;
+						&lt;span class="dollar"&gt;$&lt;/span&gt;
+						&lt;span class="amount"&gt;49&lt;/span&gt;
+						&lt;span class="period"&gt;/hr&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class="pt-feature-list"&gt;
+						&lt;ul&gt;
+							&lt;li&gt;UI/UX Design&lt;/li&gt;
+							&lt;li&gt;Web Development&lt;/li&gt;
+							&lt;li&gt;IOS Application &lt;span class="new badge red"&gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;Android Application&lt;/li&gt;
+							&lt;li class="disable"&gt;Writing&lt;/li&gt;
+							&lt;li class="disable"&gt;Photography &lt;span class="new badge red"&gt;&lt;/span&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/div&gt;
+					&lt;a href="#" class="btn waves-effect waves-light"&gt;Buy Now&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m6 l3"&gt;
+			&lt;div class="card-panel"&gt;
+				&lt;div class="pricing-table"&gt;
+					&lt;div class="pt-title"&gt;Enterprise&lt;/div&gt;
+					&lt;div class="pt-amount"&gt;
+						&lt;span class="dollar"&gt;$&lt;/span&gt;
+						&lt;span class="amount"&gt;89&lt;/span&gt;
+						&lt;span class="period"&gt;/hr&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class="pt-feature-list"&gt;
+						&lt;ul&gt;
+							&lt;li&gt;UI/UX Design&lt;/li&gt;
+							&lt;li&gt;Web Development&lt;/li&gt;
+							&lt;li&gt;IOS Application &lt;span class="new badge red"&gt;&lt;/span&gt;&lt;/li&gt;
+							&lt;li&gt;Android Application&lt;/li&gt;
+							&lt;li&gt;Writing&lt;/li&gt;
+							&lt;li&gt;Photography &lt;span class="new badge red"&gt;&lt;/span&gt;&lt;/li&gt;
+						&lt;/ul&gt;
+					&lt;/div&gt;
+					&lt;a href="#" class="btn waves-effect waves-light"&gt;Buy Now&lt;/a&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+					</code>
+				</pre>							
+			</article>	
+			<article id="html_structure_blog" class="dt-section">
+				<h2 class="dt-title">HTML structure of "Blog" section</h2>		
+				<pre class="code language-html">
+					<code>
+&lt;!-- Blog --&gt;
+&lt;div class="section blog scrollspy" id="blog-section"&gt;
+
+	&lt;!-- Title --&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;h5 class="grey-text text-darken-2 left-align"&gt;Blog&lt;/h5&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l4"&gt;
+			&lt;div class="card"&gt;
+				&lt;div class="card-image"&gt;
+					&lt;img src="images/blog/blog1.jpg" alt="" /&gt;
+					&lt;a class="btn-floating btn-large halfway-fab waves-effect waves-light"&gt;&lt;i class="material-icons"&gt;more_vert&lt;/i&gt;&lt;/a&gt;
+				&lt;/div&gt;
+				&lt;div class="card-content"&gt;
+					&lt;span class="card-title"&gt;Music Player Design&lt;/span&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt. 
+						In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel...
+					&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;div class="card-action"&gt;
+					&lt;div class="badges"&gt;
+						&lt;span class="new badge red" data-badge-caption=""&gt;branding&lt;/span&gt;
+						&lt;span class="new badge red" data-badge-caption=""&gt;ui-ux&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class="date"&gt;27 July&lt;/div&gt;
+					&lt;div class="clearfix"&gt;&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l4"&gt;
+			&lt;div class="card"&gt;
+				&lt;div class="card-image"&gt;
+					&lt;img src="images/blog/blog2.jpg" alt="" /&gt;
+					&lt;a class="btn-floating btn-large halfway-fab waves-effect waves-light"&gt;&lt;i class="material-icons"&gt;more_vert&lt;/i&gt;&lt;/a&gt;
+				&lt;/div&gt;
+				&lt;div class="card-content"&gt;
+					&lt;span class="card-title"&gt;Validate HTML Code&lt;/span&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt. 
+						In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel...
+					&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;div class="card-action"&gt;
+					&lt;div class="badges"&gt;
+						&lt;span class="new badge red" data-badge-caption=""&gt;html&lt;/span&gt;
+						&lt;span class="new badge red" data-badge-caption=""&gt;code&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class="date"&gt;18 July&lt;/div&gt;
+					&lt;div class="clearfix"&gt;&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l4"&gt;
+			&lt;div class="card"&gt;
+				&lt;div class="card-image"&gt;
+					&lt;img src="images/blog/blog1.jpg" alt="" /&gt;
+					&lt;a class="btn-floating btn-large halfway-fab waves-effect waves-light"&gt;&lt;i class="material-icons"&gt;more_vert&lt;/i&gt;&lt;/a&gt;
+				&lt;/div&gt;
+				&lt;div class="card-content"&gt;
+					&lt;span class="card-title"&gt;Music Player Design&lt;/span&gt;
+					&lt;p&gt;
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi venenatis et tortor ac tincidunt. 
+						In euismod iaculis lobortis. Vestibulum posuere molestie ipsum vel...
+					&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;div class="card-action"&gt;
+					&lt;div class="badges"&gt;
+						&lt;span class="new badge red" data-badge-caption=""&gt;branding&lt;/span&gt;
+						&lt;span class="new badge red" data-badge-caption=""&gt;ui-ux&lt;/span&gt;
+					&lt;/div&gt;
+					&lt;div class="date"&gt;27 July&lt;/div&gt;
+					&lt;div class="clearfix"&gt;&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="center-align"&gt;
+		&lt;a href="#" class="btn waves-effect waves-light"&gt;View Blog&lt;/a&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+					</code>
+				</pre>							
+			</article>
+			<article id="html_structure_contacts" class="dt-section">
+				<h2 class="dt-title">HTML structure of "Contacts" section</h2>		
+				<pre class="code language-html">
+					<code>
+&lt;!-- Section Contacts --&gt;
+&lt;div class="section contacts scrollspy last" id="contact-section"&gt;
+
+	&lt;!-- Title --&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l12"&gt;
+			&lt;h5 class="grey-text text-darken-2 left-align"&gt;Contact Me&lt;/h5&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="row"&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;ul class="collection collection-info z-depth-1"&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s5 grey-text darken-1"&gt;&lt;i class="material-icons"&gt;business&lt;/i&gt; Address:&lt;/div&gt;
+						&lt;div class="col s7 grey-text text-darken-4 right-align"&gt;
+							358 W Jefferson St, Bensenville
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s5 grey-text darken-1"&gt;&lt;i class="material-icons"&gt;local_phone&lt;/i&gt; Phone:&lt;/div&gt;
+						&lt;div class="col s7 grey-text text-darken-4 right-align"&gt;
+							&lt;a href="tel:12562548456"&gt;+1 256 254 84 56&lt;/a&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="col s5 grey-text darken-1"&gt;&lt;i class="material-icons"&gt;email&lt;/i&gt; E-mail:&lt;/div&gt;
+						&lt;div class="col s7 grey-text text-darken-4 right-align"&gt;
+							&lt;a href="mailto:smorgan@domain.com"&gt;smorgan@domain.com&lt;/a&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+				&lt;li class="collection-item"&gt;
+					&lt;div class="row"&gt;
+						&lt;div class="map" id="map"&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div class="col s12 m12 l6"&gt;
+			&lt;div class="card-panel"&gt;
+				&lt;div class="contact-form"&gt;
+					&lt;form id="cform" method="post"&gt;
+						&lt;h5&gt;Write a message:&lt;/h5&gt;
+						&lt;div class="row"&gt;
+							&lt;div class="input-field col s12"&gt;
+								&lt;input type="text" name="name" id="name_field" /&gt;
+								&lt;label for="name_field"&gt;Your Name&lt;/label&gt;
+							&lt;/div&gt;
+							&lt;div class="input-field col s12"&gt;
+								&lt;input type="text" name="email" id="email_field" /&gt;
+								&lt;label for="email_field"&gt;Your Email&lt;/label&gt;
+							&lt;/div&gt;
+							&lt;div class="input-field col s12"&gt;
+								&lt;input type="text" name="subject" id="subject_field" /&gt;
+								&lt;label for="subject_field"&gt;Subject&lt;/label&gt;
+							&lt;/div&gt;
+							&lt;div class="input-field col s12"&gt;
+								&lt;textarea name="message" id="message_field" class="materialize-textarea"&gt;&lt;/textarea&gt;
+								&lt;label for="message_field"&gt;Message&lt;/label&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						&lt;a class="btn waves-effect waves-light" onclick="$('#cform').submit(); return false;"&gt;Send Message&lt;/a&gt;
+					&lt;/form&gt;
+					&lt;div class="alert-success"&gt;
+						&lt;p&gt;Thanks, your message is sent successfully. We will contact you shortly!&lt;/p&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+					</code>
+				</pre>							
+			</article>
+			<article id="icons" class="dt-section">
+				<h2 class="dt-title">Icons</h2>
+				<p>
+					In this theme are defined some of classes for icons, your can see all icons here - http://ionicons.com/.
+				</p>
+			</article>
+			<article id="credits" class="dt-section">
+				<h2 class="dt-title">Sourse & Credits</h2>
+				<h3>Scripts</h3>
+				<ul class="dt-list dt-list_nested dt-info-block">
+					<li>
+						<span class="dt-label dt-label_bold">Animate.css</span> <a target="_blank" href="https://daneden.github.io/animate.css/">https://daneden.github.io/animate.css/</a>
+					</li>
+					<li>
+						<span class="dt-label dt-label_bold">jQuery</span> <a target="_blank" href="https://jquery.com/">https://jquery.com/</a>
+					</li>
+					<li>
+						<span class="dt-label dt-label_bold">jQuery Validation Plugin</span> <a target="_blank" href="http://jqueryvalidation.org/">http://jqueryvalidation.org/</a>
+					</li>
+					<li>
+						<span class="dt-label dt-label_bold">Magnific Popup</span> <a target="_blank" href="http://dimsemenov.com/plugins/magnific-popup/">http://dimsemenov.com/plugins/magnific-popup/</a>
+					</li>
+					<li>
+						<span class="dt-label dt-label_bold">Materialize</span> <a target="_blank" href="http://materializecss.com/">http://materializecss.com/</a>
+					</li>
+				</ul>
+				<h3>Fonts</h3>
+				<ul class="dt-list dt-list_nested dt-info-block">
+					<li>
+						<span class="dt-label dt-label_bold">Roboto</span> <a target="_blank" href="https://www.google.com/fonts/specimen/Roboto">https://www.google.com/fonts/specimen/Roboto</a>
+					</li>
+					<li>
+						<span class="dt-label dt-label_bold">Ionicons</span> <a target="_blank" href="http://ionicons.com/">http://ionicons.com/</a>
+					</li>
+				</ul>
+				<h3>Images</h3>
+				<p>Any Images or logos used in previews are not included in this item or final purchase.</p>
+				<ul class="dt-list dt-list_nested dt-info-block">
+					<li>
+						<span class="dt-label dt-label_bold">Unsplash</span> <a target="_blank" href="https://unsplash.com/">https://unsplash.com/</a>
+					</li>
+					<li>
+						<span class="dt-label dt-label_bold">Graphicburger</span> <a target="_blank" href="http://graphicburger.com/">http://graphicburger.com/</a>
+					</li>
+				</ul>
+			</article>		
+		</div>
+	</div>
+<script src="assets/rainbow-custom.min.js"></script> 
+</body>
+</html>

@@ -1,893 +1,1081 @@
-<!DOCTYPE html>
-<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-
-   <!--- 基本页面需求
-   ================================================== -->
-   <meta charset="utf-8">
+	
+	<!-- Basic -->
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>山地奥斯卡537 - 求知若饥，虚心若愚。</title>
-	<meta name="description" content="Welcome to my website. I'm a developer in 537 Studio that we want to change the world. You can view my website to get more infomations.">
-	<meta name="keywords" content="537,Sean537,山地奥斯卡537,山地奥斯卡,sean537,537Studio,537工作室,FTS,dev,change the world,Steve Jobs">
-   <meta name="author" content="Sean537">
-
-   <!-- 移动特定元
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- CSS
-    ================================================== -->
-   <link rel="stylesheet" href="css/default.css">
-	<link rel="stylesheet" href="css/layout.css">
-   <link rel="stylesheet" href="css/media-queries.css">
-   <link rel="stylesheet" href="css/magnific-popup.css">
-
-   <!-- Script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-
-   <!-- 图标
-	================================================== -->
-	<link rel="icon" href="537logo.ico" type="image/x-icon" />
-
+	<meta name="description" content="山地奥斯卡537的个人主页。" />
+	<meta name="keywords" content="537, 山地奥斯卡537, Sean537, 537工作室" />
+	<meta name="author" content="Sean537" />
+	
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	
+	<!-- Load Fonts -->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/materialize.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" />
+	<link rel="stylesheet" href="css/animate.css" />
+	<link rel="stylesheet" href="css/ionicons.css" />
+	
+	<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="images/favicons/favicon.ico">
+	
 </head>
-<script type="text/javascript">
-   //获取用户语言的顺序是
-   //1.获取本地缓存里的内容
-   //2.用户浏览器的语言设置
-   //如果上面2个都没有获取到，就直接使用'en'作为用户选择的语言
-   var language =
-     localStorage.getItem("locale") ||
-     window.navigator.language.toLowerCase() ||
-     "en";
-   //把用户的语言写入缓存，供下次获取使用
-   localStorage.setItem("locale", language);
-   //判断用户的语言，跳转到不同的地方
-   if (language.indexOf("zh-") !== -1) {
-     //什么都不做，直接加载本文件
-   } else {
-     //其它的都使用英文
-     window.location = "./index-en.html";
-   }
- </script>
- 
+
 <body>
-
-   <!-- 标头
-   ================================================== -->
-   <header id="home">
-
-      <nav id="nav-wrap">
-
-         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show Navigation</a>
-	      <a class="mobile-btn" href="#" title="Hide navigation">Hide Navigation</a>
-
-         <ul id="nav" class="nav">
-            <li class="current"><a class="smoothscroll" href="#home">首页</a></li>
-            <li><a class="smoothscroll" href="#about">关于</a></li>
-	         <li><a class="smoothscroll" href="#testimonials">名言</a></li>
-            <li><a class="smoothscroll" href="#resume">信息</a></li>
-            <li><a class="smoothscroll" href="#portfolio">作品</a></li>
-            <li><a class="smoothscroll" href="#contact">联系</a></li>
-         </ul> <!-- 结束 #nav -->
-
-      </nav> <!-- 结束 #nav-wrap -->
-
-      <div class="row banner">
-         <div class="banner-text">
-            <h1 class="responsive-headline">山地奥斯卡537</h1>
-            <hr />
-            <h3>
-               因为只有那些<span>疯狂</span>到认为他们可以<span>改变世界</span>的人，才能真正地改变世界。
-            </h3>
-            
-            <!--
-            <ul class="social">
-               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-               <li><a href="#"><i class="fa fa-skype"></i></a></li>
-            </ul>
-            -->
-
-         </div>
-      </div>
-
-      <p class="scrolldown">
-         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
-      </p>
-
-   </header> <!-- 标头结束 -->
-
-
-   <!-- 关于部分
-   ================================================== -->
-   <section id="about">
-
-      <div class="row">
-
-         <div class="three columns">
-
-            <img class="profile-pic"  src="537logo.png" alt="" />
-
-         </div>
-
-         <div class="nine columns main-col">
-
-            <h2>关于我</h2>
-
-            <p>
-               <b>我在 <a href=“https://www.537studio.com” target=“_blank”>537 工作室</a></b>，
-               一个由想要<b>改变世界</b>的学生开发团队。<br>
-
-               我是537工作室的<b>首席执行官</b>和<b>联合创始人</b>之一。<br>
-               
-               我会 C++、Python、Swift、HTML、CSS 等编程语言，并使用它们开发许多激动人心的项目。<br>
-
-               史蒂夫·乔布斯有一句话，“<b>求知若饥，虚心若愚</b>”。这句话一直影响着我。
-            </p>
-
-            <div class="row">
-
-               <div class="columns contact-details">
-
-                  <h2>联系方式</h2>
-                  <p class="address">
-						   <span><b>山地奥斯卡537</b></span><br>
-                     <span><b>年龄:</b> 13</span><br>
-                     <span><b>地址:</b> Hangzhou, Zhejiang Province, People's Republic of China</span><br>
-						   <span><b>电子邮箱:</b> <a href="mailto:wushaoquan666@outlook.com">wushaoquan666@outlook.com</a></span><br>
-                     <span><b>哔哩哔哩: </b><a href="https://space.bilibili.com/3493272892738031" target="_blank">@山地奥斯卡537</a></span><br>
-                     <span><b>CSDN: </b><a href="https://blog.csdn.net/wushaoquan537" target="_blank">@山地奥斯卡537</a></span><br>
-                     <span><b>知乎: </b><a href="https://www.zhihu.com/people/537-98-1" target="_blank">@山地奥斯卡537</a></span><br>
-					   </p>
-
-               </div>
-
-               <div class="columns download">
-                  <p>
-                     <a href="https://www.zhihu.com/people/537-98-1" class="button" target="_blank"><i class="fa fa-bookmark"></i>阅读我的博客</a>
-                     <a href="https://space.bilibili.com/3493272892738031" class="button" target="_blank"><i class="fa fa-camera"></i>观看我的视频</a>
-                     <a href="mailto:wushaoquan666@outlook.com" class="button"><i class="fa fa-mail-forward"></i>向我发送电子邮件</a>
-                     <a href="https://www.537studio.com" class="button" target="_blank"><i class="fa fa-arrow-right"></i>访问537工作室官方网站</a>
-                  </p>
-               </div>
-
-            </div> <!-- 结束 row -->
-
-         </div> <!-- 结束 .main-col -->
-
-      </div>
-
-   </section> <!-- 关于部分结束-->
-
-   <!-- 推荐部分
-   ================================================== -->
-   <section id="testimonials">
-
-      <div class="text-container">
-
-         <div class="row">
-
-            <div class="two columns header-col">
-
-               <h1><span>一些名言</span></h1>
-
-            </div>
-
-            <div class="ten columns flex-container">
-
-               <div class="flexslider">
-
-                  <ul class="slides">
-                     <!--
-                     <li>
-                        <blockquote>
-                           <p>
-                              Your work is going to fill a large part of your life, and the only way to be truly satisfied is
-                              to do what you believe is great work. <br>
-                              And the only way to do great work is to love what you do.<br>
-                              If you haven't found it yet, keep looking. Don't settle.
-                           </p>
-                           <cite>Steve Jobs</cite>
-                        </blockquote>
-                     </li>
-                     -->
-                     <li>
-                        <blockquote>
-                           <p>
-                              求知若饥，虚心若愚。
-                           </p>
-                           <cite>史蒂夫·乔布斯</cite>
-                        </blockquote>
-                     </li> <!-- slide ends -->
-
-                     <li>
-                        <blockquote>
-                           <p>
-                              我为我们没有做的事情感到自豪，就像我们所做的一样。
-                           </p>
-                           <cite>史蒂夫·乔布斯</cite>
-                        </blockquote>
-                     </li> <!-- slide ends -->
-
-                     <li>
-                        <blockquote>
-                           <p>
-                              好的艺术家抄袭，伟大的艺术家偷窃。
-                           </p>
-                           <cite>史蒂夫·乔布斯</cite>
-                        </blockquote>
-                     </li> <!-- slide ends -->
-
-                     <li>
-                        <blockquote>
-                           <p>
-                              这不仅仅是它的外观和感觉。<br>
-                              设计就是它的运作方式。
-                           </p>
-                           <cite>史蒂夫·乔布斯</cite>
-                        </blockquote>
-                     </li> <!-- slide ends -->
-
-                  </ul>
-
-               </div> <!-- div.flexslider ends -->
-
-            </div> <!-- div.flex-container ends -->
-
-         </div> <!-- row ends -->
-
-       </div>  <!-- text-container ends -->
-
-   </section> <!-- Testimonials Section End-->
-
-
-
-
-   <!-- 继续部分
-   ================================================== -->
-   <section id="resume">
-
-      <!-- 工作
-      ----------------------------------------------- -->
-      <div class="row work">
-
-         <div class="three columns header-col">
-            <h1><span>工作</span></h1>
-         </div>
-
-         <div class="nine columns main-col">
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>537工作室</h3>
-                  <p class="info">CEO <span>&bull;</span> <em class="date">2023年5月11日 - 今</em></p>
-
-                  <p>
-                     我是537工作室的联合创始人之一，也是其首席执行官。
-                     我们的理念是“求知若饥，虚心若愚。”。
-                     我带领团队了解了 Apple 的历史和史蒂夫乔布斯的故事。
-                     我们有一个共同的梦想，即开发出色的工具来改变世界。
-                     我们将继续进步。
-                  </p>
-
-               </div>
-
-            </div> <!-- item end -->
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>东港市云港网络科技工作室</h3>
-                  <p class="info">程序开发者 <span>&bull;</span> <em class="date">2024年3月23日 - 2024年8月4日</em></p>
-
-                  <p>
-                     这是我的朋友 <a href=“https://www.sunzishaokao.com” target=“_blank”>@孙子烧烤</a> 的工作室
-                     从事网站运营和软件开发行业。我受邀加入。<br>
-                     但最后，因为他的精神疾病和坏心情，我被踢了（
-                  </p>
-
-               </div>
-
-            </div> <!-- item end -->
-
-         </div> <!-- main-col end -->
-
-      </div> <!-- End Work -->
-
-      <!-- 教育
-      ----------------------------------------------- -->
-      <div class="row education">
-
-         <div class="three columns header-col">
-            <h1><span>教育</span></h1>
-         </div>
-
-         <div class="nine columns main-col">
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>杭州市采荷中学</h3>
-                  <p class="info"><em class="date">2023年9月 - 今</em></p>
-
-                  <p>
-                     
-                  </p>
-
-               </div>
-
-            </div> <!-- item end -->
-
-            <div class="row item">
-
-               <div class="twelve columns">
-
-                  <h3>杭州市采荷第一小学</h3>
-                  <p class="info"><em class="date">2017年9月 - 2023年7月</em></p>
-
-                  <p>
-                  
-                  </p>
-
-               </div>
-
-            </div> <!-- item end -->
-
-         </div> <!-- main-col end -->
-
-      </div> <!-- End Education -->
-
-      <!-- Skills
-      ----------------------------------------------- -->
-      <div class="row skill">
-
-         <div class="three columns header-col">
-            <h1><span>技能</span></h1>
-         </div>
-
-         <div class="nine columns main-col">
-
-            <p>
-               我掌握了许多科技方面的技能，请看——（不止）
-            </p>
-
-				<div class="bars">
-
-				   <ul class="skills">
-					   <li><span class="bar-expand C-plus-plus"></span><em>C++</em></li>
-                  <li><span class="bar-expand Python"></span><em>Python</em></li>
-						<li><span class="bar-expand Swift"></span><em>Swift</em></li>
-						<li><span class="bar-expand HTML"></span><em>HTML</em></li>
-						<li><span class="bar-expand CSS"></span><em>CSS</em></li>
-                  <li><span class="bar-expand Movie-Making"></span><em>视频剪辑</em></li>
-                  <li><span class="bar-expand Linux"></span><em>Linux</em></li>
+	
+	<!-- Page -->
+	<div class="page" id="home-section">
+
+		<!-- Preloader -->
+		<div class="preloader">
+			<div class="centrize full-width">
+				<div class="vertical-center">
+					<div class="preloader-wrapper spinner big active">
+						<div class="spinner-layer spinner-blue">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+						<div class="spinner-layer spinner-red">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+						<div class="spinner-layer spinner-green">
+							<div class="circle-clipper left">
+								<div class="circle"></div>
+							</div>
+							<div class="gap-patch">
+								<div class="circle"></div>
+							</div>
+							<div class="circle-clipper right">
+								<div class="circle"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header -->
+		<header>
+
+			<!-- SideNav -->
+			<ul class="side-nav fixed" id="nav-mobile">
+				<li class="curent">
+					<div class="userView">
+	  					<div class="background">
+	  						<img src="images/slide-bg.jpg" alt="" />
+	  					</div>
+	  					<img class="avatar circle" src="images/man.png" alt="" />
+	  					<div class="white-text name">山地奥斯卡537</div>
+	  					<div class="white-text email"><a href="mailto:wushaoquan666@outlook.com">wushaoquan666@outlook.com</a></div>
+	  					<div class="social">
+							<a href="https://www.facebook.com" target="blank"><i class="ion ion-social-facebook"></i></a>
+							<a href="https://www.dribbble.com" target="blank"><i class="ion ion-social-dribbble"></i></a>
+							<a href="https://www.twitter.com" target="blank"><i class="ion ion-social-twitter"></i></a>
+							<a href="https://plus.google.com" target="blank"><i class="ion ion-social-googleplus"></i></a>
+						</div>
+					</div>
+				</li>
+				<li class="active">
+					<a href="#started-section" class="waves-effect waves-light">
+						<i class="material-icons">home</i>首页
+					</a>
+				</li>
+				<li>
+					<a href="#about-section" class="waves-effect waves-light">
+						<i class="material-icons">person_pin</i>关于
+					</a>
+				</li>
+				<li>
+					<a href="#experience-section" class="waves-effect waves-light">
+						<i class="material-icons">assignment</i>工作和教育经历
+					</a>
+				</li>
+				<li>
+					<a href="#hobbies-section" class="waves-effect waves-light">
+						<i class="material-icons">settings</i>爱好
+					</a>
+				</li>
+				<li>
+					<a href="#works-section" class=" waves-effect waves-light">
+						<i class="material-icons">work</i>项目
+					</a>
+				</li>
+				<!--
+				<li>
+					<a href="#pricing-section" class="waves-effect waves-light">
+						<i class="material-icons">view_carousel</i>这里我也不知道放什么
+					</a>
+				</li>
+				-->
+				<li>
+					<a href="#blog-section" class="waves-effect waves-light">
+						<i class="material-icons">library_books</i>博客
+					</a>
+				</li>
+				<li>
+					<a href="#contact-section" class="waves-effect waves-light">
+						<i class="material-icons">phone</i>联系
+					</a>
+				</li>
+			</ul>
+
+			<!-- Top menu -->
+			<nav class="top-menu">
+				<div class="nav-wrapper">
+					<ul>
+						<li>
+							<a href="#" data-activates="nav-mobile" class="menu-btn"><i class="material-icons">menu</i></a>
+						</li>
+						<!--<li class="right">
+							<a href="#"><i class="material-icons">arrow_back</i></a>
+						</li>-->
 					</ul>
-
-				</div><!-- end skill-bars -->
-
-			</div> <!-- main-col end -->
-
-      </div> <!-- End skills -->
-
-   </section> <!-- Resume Section End-->
-
-
-   <!-- Portfolio Section
-   ================================================== -->
-   <section id="portfolio">
-
-      <div class="row">
-
-         <div class="twelve columns collapsed">
-
-            <h1>看看我的一些作品。</h1>
-
-            <!-- portfolio-wrapper -->
-            <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
-
-          	   <div class="columns portfolio-item">
-                  <div class="item-wrap">
-
-                     <a href="#modal-01" title="">
-                        <img alt="" src="images/portfolio/coffee.jpg">
-                        <div class="overlay">
-                           <div class="portfolio-item-meta">
-          					      <h5>Coffee</h5>
-                              <p>Illustrration</p>
-          					   </div>
-                        </div>
-                        <div class="link-icon"><i class="icon-plus"></i></div>
-                     </a>
-
-                  </div>
-          		</div> <!-- item end -->
-
-               <div class="columns portfolio-item">
-                  <div class="item-wrap">
-
-                     <a href="#modal-02" title="">
-                        <img alt="" src="images/portfolio/console.jpg">
-                        <div class="overlay">
-                           <div class="portfolio-item-meta">
-          					      <h5>Console</h5>
-                              <p>Web Development</p>
-          					   </div>
-                        </div>
-                        <div class="link-icon"><i class="icon-plus"></i></div>
-                     </a>
-
-                  </div>
-          		</div> <!-- item end -->
-
-               <div class="columns portfolio-item">
-                  <div class="item-wrap">
-
-                     <a href="#modal-03" title="">
-                        <img alt="" src="images/portfolio/judah.jpg">
-                        <div class="overlay">
-                           <div class="portfolio-item-meta">
-          					      <h5>Judah</h5>
-                              <p>Webdesign</p>
-          					   </div>
-                        </div>
-                        <div class="link-icon"><i class="icon-plus"></i></div>
-                     </a>
-
-                  </div>
-          		</div> <!-- item end -->
-
-               <div class="columns portfolio-item">
-                  <div class="item-wrap">
-
-                     <a href="#modal-04" title="">
-                        <img alt="" src="images/portfolio/into-the-light.jpg">
-                        <div class="overlay">
-                           <div class="portfolio-item-meta">
-          					      <h5>Into The Light</h5>
-                              <p>Photography</p>
-          					   </div>
-                        </div>
-                        <div class="link-icon"><i class="icon-plus"></i></div>
-                     </a>
-
-                  </div>
-          		</div> <!-- item end -->
-
-               <div class="columns portfolio-item">
-                  <div class="item-wrap">
-
-                     <a href="#modal-05" title="">
-                        <img alt="" src="images/portfolio/farmerboy.jpg">
-                        <div class="overlay">
-                           <div class="portfolio-item-meta">
-          					      <h5>Farmer Boy</h5>
-                              <p>Branding</p>
-          					   </div>
-                        </div>
-                        <div class="link-icon"><i class="icon-plus"></i></div>
-                     </a>
-
-                  </div>
-          		</div> <!-- item end -->
-
-               <div class="columns portfolio-item">
-                  <div class="item-wrap">
-
-                     <a href="#modal-06" title="">
-                        <img alt="" src="images/portfolio/girl.jpg">
-                        <div class="overlay">
-                           <div class="portfolio-item-meta">
-          					      <h5>Girl</h5>
-                              <p>Photography</p>
-          					   </div>
-                        </div>
-                        <div class="link-icon"><i class="icon-plus"></i></div>
-                     </a>
-
-                  </div>
-          		</div> <!-- item end -->
-
-               <div class="columns portfolio-item">
-                  <div class="item-wrap">
-
-                     <a href="#modal-07" title="">
-                        <img alt="" src="images/portfolio/origami.jpg">
-                        <div class="overlay">
-                           <div class="portfolio-item-meta">
-          					      <h5>Origami</h5>
-                              <p>Illustrration</p>
-          					   </div>
-                        </div>
-                        <div class="link-icon"><i class="icon-plus"></i></div>
-                     </a>
-
-                  </div>
-          		</div> <!-- item end -->
-
-               <div class="columns portfolio-item">
-                  <div class="item-wrap">
-
-                     <a href="#modal-08" title="">
-                        <img alt="" src="images/portfolio/retrocam.jpg">
-                        <div class="overlay">
-                           <div class="portfolio-item-meta">
-          					      <h5>Retrocam</h5>
-                              <p>Web Development</p>
-          					   </div>
-                        </div>
-                        <div class="link-icon"><i class="icon-plus"></i></div>
-                     </a>
-
-                  </div>
-          		</div>  <!-- item end -->
-
-            </div> <!-- portfolio-wrapper end -->
-
-         </div> <!-- twelve columns end -->
-
-
-         <!-- Modal Popup
-	      --------------------------------------------------------------- -->
-
-         <div id="modal-01" class="popup-modal mfp-hide">
-
-		      <img class="scale-with-grid" src="images/portfolio/modals/m-coffee.jpg" alt="" />
-
-		      <div class="description-box">
-			      <h4>Coffee Cup</h4>
-			      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Branding, Webdesign</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net" target="_blank">Details</a>
-		         <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-01 End -->
-
-         <div id="modal-02" class="popup-modal mfp-hide">
-
-		      <img class="scale-with-grid" src="images/portfolio/modals/m-console.jpg" alt="" />
-
-		      <div class="description-box">
-			      <h4>Console</h4>
-			      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Branding, Web Development</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net" target="_blank">Details</a>
-		         <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-02 End -->
-
-         <div id="modal-03" class="popup-modal mfp-hide">
-
-		      <img class="scale-with-grid" src="images/portfolio/modals/m-judah.jpg" alt="" />
-
-		      <div class="description-box">
-			      <h4>Judah</h4>
-			      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Branding</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net" target="_blank">Details</a>
-		         <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-03 End -->
-
-         <div id="modal-04" class="popup-modal mfp-hide">
-
-		      <img class="scale-with-grid" src="images/portfolio/modals/m-intothelight.jpg" alt="" />
-
-		      <div class="description-box">
-			      <h4>Into the Light</h4>
-			      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Photography</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net" target="_blank">Details</a>
-		         <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-04 End -->
-
-         <div id="modal-05" class="popup-modal mfp-hide">
-
-		      <img class="scale-with-grid" src="images/portfolio/modals/m-farmerboy.jpg" alt="" />
-
-		      <div class="description-box">
-			      <h4>Farmer Boy</h4>
-			      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Branding, Webdesign</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net" target="_blank">Details</a>
-		         <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-05 End -->
-
-         <div id="modal-06" class="popup-modal mfp-hide">
-
-		      <img class="scale-with-grid" src="images/portfolio/modals/m-girl.jpg" alt="" />
-
-		      <div class="description-box">
-			      <h4>Girl</h4>
-			      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Photography</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net" target="_blank">Details</a>
-		         <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-06 End -->
-
-         <div id="modal-07" class="popup-modal mfp-hide">
-
-		      <img class="scale-with-grid" src="images/portfolio/modals/m-origami.jpg" alt="" />
-
-		      <div class="description-box">
-			      <h4>Origami</h4>
-			      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Branding, Illustration</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net" target="_blank">Details</a>
-		         <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-07 End -->
-
-         <div id="modal-08" class="popup-modal mfp-hide">
-
-		      <img class="scale-with-grid" src="images/portfolio/modals/m-retrocam.jpg" alt="" />
-
-		      <div class="description-box">
-			      <h4>Retrocam</h4>
-			      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Webdesign, Photography</span>
-		      </div>
-
-            <div class="link-box">
-               <a href="http://www.behance.net" target="_blank">Details</a>
-		         <a class="popup-modal-dismiss">Close</a>
-            </div>
-
-	      </div><!-- modal-01 End -->
-
-
-      </div> <!-- row End -->
-
-   </section> <!-- Portfolio Section End-->
-
-
-   <!-- Call-To-Action Section
-   ================================================== -->
-   <section id="call-to-action">
-
-      <div class="row">
-
-         <div class="two columns header-col">
-
-            <h1><span>此区域尚未完工</span></h1>
-
-         </div>
-
-         <div class="seven columns">
-
-            <h2><span class="lead">敬请期待</span></h2>
-            <p>
-               <span class="lead">
-                  大概还需一段时间。
-               </span>
-            </p>
-
-         </div>
-
-         <div class="three columns action">
-
-
-
-         </div>
-
-      </div>
-
-   </section> <!-- Call-To-Action Section End-->
-
-
-   
-   <!-- Contact Section
-   ================================================== -->
-   <section id="contact">
-
-         <div class="row section-head">
-
-            <div class="two columns header-col">
-
-               <h1><span>联系我</span></h1>
-
-            </div>
-
-            <div class="ten columns">
-
-                  <p class="lead">
-                     如果您也是<b>开发人员</b>，
-                     <b>设计师或</b>我们有<b>相同的梦想</b>。
-                     您可以在此表格中输入您的联系方式。
-                     然后我们可以谈谈<b>技术</b>等。
-                     它可以提高我们的开发或设计能力。<br>
-                     期待看到您的留言！
-                  </p>
-
-            </div>
-
-         </div>
-
-         <div class="row">
-
-            <div class="eight columns">
-
-               <!-- form -->
-               <form action="mailto:wushaoquan666@outlook.com?Subject=Contact Form" method="post">
-					<fieldset>
-
-                  <div>
-						   <label for="contactName">姓名 <span class="required">*</span></label>
-						   <input type="text" value="" size="35" id="contactName" name="contactName">
-                  </div>
-                  
-                  <div>
-						   <label for="contactEmail">电子邮箱 <span class="required">*</span></label>
-						   <input type="text" value="" size="35" id="contactEmail" name="contactEmail">
-                  </div>
-
-                  <div>
-						   <label for="contactSubject">主题</label>
-						   <input type="text" value="" size="35" id="contactSubject" name="contactSubject">
-                  </div>
-
-                  <div>
-                     <label for="contactMessage">内容 <span class="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
-                  </div>
-
-                  <div>
-                     <button class="submit">发送</button>
-                     <span id="image-loader">
-                        <img alt="" src="images/loader.gif">
-                     </span>
-                  </div>
-
-					</fieldset>
-				   </form> <!-- Form End -->
-
-               <!-- contact-warning -->
-               <div id="message-warning">发生错误！</div>
-               <!-- contact-success -->
-				   <div id="message-success">
-                  <i class="fa fa-check"></i>您的信息已发送，谢谢！<br>
-				   </div>
-
-            </div>
-
-
-            <aside class="four columns footer-widgets">
-
-               <div class="widget widget_contact">
-
-					   <h4>项目</h4>
-					   <p class="address">
-						   <b>537秒表</b>: 少即是多<br>
-                     <b>537工具箱</b>: 创意无限<br>
-						   <b>537文本编辑器</b>: 非同凡“想”<br>
-                     <b>Clear Talk</b><br>
-                     <b>CrossX</b><br>
-						   <b>537U盘管理器</b><br>
-                     <b>537代码工厂</b><br>
-                     <b>537Lite X</b><br>
-                     <b>537Lite XI</b><br>
-                     <b>计算搬桶学号</b>
-					   </p>
-
-				   </div>
-
-               <div class="widget widget_tweets">
-
-                  <h4 class="widget-title">最新资讯</h4>
-
-                  <ul id="twitter">
-                     <li>
-                        <span>
-                           <b>537秒表1.3发布</b><br>
-                           它具有更多有用的功能并解决了许多问题。<br>
-                           欲了解更多信息，请访问
-                           <a href=“https://gitee.com/FTS-537Studio/537Clock/releases/tag/v1.3” target=“_blank”>gitee.com/FTS-537Studio/537Clock/releases/tag/v1.3</a>
-                        </span>
-                        <b><a href="#">2个月前</a></b>
-                     </li>
-                     <li>
-                        <span>
-                           <b>CrossX启动</b><br>
-                           CrossX 是一个跨平台的动态链接库，支持多语言和多线程通信。
-                           欲了解更多信息，请访问
-                           <a href=“https://gitee.com/FTS-537Studio/crossx” target=“_blank”>gitee.com/FTS-537Studio/crossx</a>
-                        </span>
-                        <b><a href="#">3个月前</a></b>
-                     </li>
-                  </ul>
-
-		         </div>
-
-            </aside>
-
-      </div>
-
-   </section> <!-- Contact Section End-->
-
-
-   <!-- footer
-   ================================================== -->
-   <footer>
-
-      <div class="row">
-
-         <div class="twelve columns">
-            <!--
-            <ul class="social-links">
-               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-               <li><a href="#"><i class="fa fa-skype"></i></a></li>
-            </ul>
-            -->
-            <ul class="copyright">
-               <li>Copyright &copy; Sean537. 2023-2024. All rights reserved.</li>
-               <li>Powered by <a href="mailto:wushaoquan666@outlook.com" title="Styleshout" target="_blank">Sean537</a></li>   
-            </ul>
-
-         </div>
-
-         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
-
-      </div>
-
-   </footer> <!-- Footer End-->
-
-   <!-- Java Script
-   ================================================== -->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-
-   <script src="js/jquery.flexslider.js"></script>
-   <script src="js/waypoints.js"></script>
-   <script src="js/jquery.fittext.js"></script>
-   <script src="js/magnific-popup.js"></script>
-   <script src="js/init.js"></script>
-
+				</div>
+			</nav>
+
+		</header>
+
+		<main>
+
+			<!-- Container -->
+			<div class="container scrollspy" id="started-section">
+
+				<!-- Section About -->
+				<div class="section started">
+
+					<!-- Profile -->
+					<div class="card profile">
+						<div class="card-image" style="background-image: url(images/537Island.png);"></div>
+						<div class="card-content">
+							<div class="row">
+								<div class="col s12 m5 l6">
+									<figure class="card-profile-image">
+										<img class="circle z-depth-1 responsive-img" src="images/avatar.png" alt="" />
+									</figure>
+									<div class="card-profile-desc">
+										<h4 class="card-title grey-text text-darken-4">山地奥斯卡537</h4>
+										<p class="medium-small grey-text">求知若饥，虚心若愚。</p>
+									</div>
+								</div>
+								<div class="col s4 m3 l2 center-align">
+									<h4 class="card-title grey-text text-darken-4">0%</h4>
+									<p class="medium-small grey-text">作业完成度</p>
+								</div>
+								<div class="col s4 m2 l2 center-align">
+									<h4 class="card-title grey-text text-darken-4">8</h4>
+									<p class="medium-small grey-text">开发年数</p>
+								</div>
+								<div class="col s4 m2 l2 center-align">
+									<h4 class="card-title grey-text text-darken-4">菜</h4>
+									<p class="medium-small grey-text">编程水平</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Stats -->
+					<div class="stats">
+						<div class="row">
+							<div class="col s12 m6 l3">
+								<div class="card green darken-2">
+									<div class="card-content white-text center-align">
+										<p class="card-title"><i class="material-icons">recent_actors</i> 初二</p>
+										<p>目前学业</p>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m6 l3">
+								<div class="card cyan darken-2">
+									<div class="card-content white-text center-align">
+										<p class="card-title"><i class="material-icons">done_all</i> 死掉的更多</p>
+										<p>完成的项目</p>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m6 l3">
+								<div class="card red darken-2">
+									<div class="card-content white-text center-align">
+										<p class="card-title"><i class="material-icons">code</i> 未知</p>
+										<p>代码行数</p>
+									</div>
+								</div>
+							</div>
+							<div class="col s12 m6 l3">
+								<div class="card amber darken-2">
+									<div class="card-content white-text center-align">
+										<p class="card-title"><i class="material-icons">supervisor_account</i> 900+</p>
+										<p>粉丝数</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Section About -->
+				<div class="section about scrollspy" id="about-section">
+
+					<!-- Title -->
+					<div class="row">
+						<div class="col s12 m12 l12">
+							<h5 class="grey-text text-darken-2 left-align">关于我</h5>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m12 l12">
+							<div class="card-panel">
+								<div class="text-box">
+									<p>
+										废物一个。
+									</p>
+									<p>
+										啥也不会（
+									</p>
+								</div>
+								<div class="bts">
+									<a href="https://www.537studio.com" class="btn waves-effect waves-light" target="_blank">访问537工作室官网</a>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-info z-depth-1">
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m5 l5 grey-text darken-1">
+											<i class="material-icons">perm_identity</i> 年龄：
+										</div>
+										<div class="col s6 m7 l7 grey-text text-darken-4 right-align">14</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m5 l5 grey-text darken-1">
+											<i class="material-icons">work</i> 工作：
+										</div>
+										<div class="col s6 m7 l7 grey-text text-darken-4 right-align">学生开发者</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m5 l5 grey-text darken-1">
+											<i class="material-icons">location_on</i> 国籍：
+										</div>
+										<div class="col s6 m7 l7 grey-text text-darken-4 right-align">中国</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m5 l5 grey-text darken-1">
+											<i class="material-icons">business</i> 所在地：
+										</div>
+										<div class="col s6 m7 l7 grey-text text-darken-4 right-align">浙江杭州</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-info z-depth-1">
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s8 m5 l5 grey-text darken-1">
+											<i class="material-icons">invert_colors</i> 咖啡杯数：
+										</div>
+										<div class="col s4 m7 l7 grey-text text-darken-4 right-align">0</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s8 m5 l5 grey-text darken-1">
+											<i class="material-icons">language</i> 去过的国家：
+										</div>
+										<div class="col s4 m7 l7 grey-text text-darken-4 right-align">2</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s8 m5 l5 grey-text darken-1">
+											<i class="material-icons">stars</i> 奖项数：
+										</div>
+										<div class="col s4 m7 l7 grey-text text-darken-4 right-align">16</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s8 m5 l5 grey-text darken-1">
+											<i class="material-icons">album</i> 听过的音乐数：
+										</div>
+										<div class="col s4 m7 l7 grey-text text-darken-4 right-align">3200+</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-skills z-depth-1">
+								<li class="collection-item avatar">
+									<i class="material-icons circle green darken-2">person</i>
+									<div class="title">专业技能</div>
+									<p>装逼专用</p>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">命令行</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress green lighten-5">
+												<div class="determinate green darken-2" style="width: 70%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">C++</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress green lighten-5">
+												<div class="determinate green darken-2" style="width: 80%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">Python</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress green lighten-5">
+												<div class="determinate green darken-2" style="width: 30%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">Markdown</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress green lighten-5">
+												<div class="determinate green darken-2" style="width: 90%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">静态网站开发</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress green lighten-5">
+												<div class="determinate green darken-2" style="width: 50%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">Qt</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress green lighten-5">
+												<div class="determinate green darken-2" style="width: 65%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">剪辑</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress green lighten-5">
+												<div class="determinate green darken-2" style="width: 70%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">摄影</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress green lighten-5">
+												<div class="determinate green darken-2" style="width: 80%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-skills z-depth-1">
+								<li class="collection-item avatar">
+									<i class="material-icons circle red darken-2">forum</i>
+									<div class="title">基本技能</div>
+									<p>为了生存，淦！</p>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">讲废话</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress red lighten-5">
+												<div class="determinate red darken-2" style="width: 80%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">发呆</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress red lighten-5">
+												<div class="determinate red darken-2" style="width: 100%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">茶颜观色</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress red lighten-5">
+												<div class="determinate red darken-2" style="width: 70%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">听音乐</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress red lighten-5">
+												<div class="determinate red darken-2" style="width: 75%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">写作</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress red lighten-5">
+												<div class="determinate red darken-2" style="width: 50%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">熬夜</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress red lighten-5">
+												<div class="determinate red darken-2" style="width: 80%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">看视频</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress red lighten-5">
+												<div class="determinate red darken-2" style="width: 70%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s6 m4 l4">
+											<div class="title">潜水</div>
+										</div>
+										<div class="col s6 m8 l8">
+											<div class="progress red lighten-5">
+												<div class="determinate red darken-2" style="width: 90%"></div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- Section Resume -->
+				<div class="section experience scrollspy" id="experience-section">
+
+					<!-- Title -->
+					<div class="row">
+						<div class="col s12 m12 l12">
+							<h5 class="grey-text text-darken-2 left-align">工作和教育经历</h5>
+						</div>
+					</div>
+
+					<!-- Resume Items -->
+					<div class="row">
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-resume z-depth-1">
+								<li class="collection-item avatar">
+									<i class="material-icons circle green darken-2">assignment</i>
+									<span class="ultra-small red-text darken-2 right">2023.5.11迄今</span>
+									<div class="title">537工作室</div>
+									<span class="tag red darken-2">CEO</span>
+								</li>
+								<li class="collection-item">
+									<p>
+										某不知名像素工作室。
+									</p>
+								</li>
+							</ul>
+						</div>
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-resume z-depth-1">
+								<li class="collection-item avatar">
+									<i class="material-icons circle red darken-2">school</i>
+									<span class="ultra-small red-text darken-2 right">2023.8迄今</span>
+									<div class="title">杭州市采荷中学</div>
+									<span class="tag red darken-2">初中</span>
+								</li>
+								<li class="collection-item">
+									<p>
+										我爱采中（颤音
+									</p>
+								</li>
+							</ul>
+						</div>
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-resume z-depth-1">
+								<li class="collection-item avatar">
+									<i class="material-icons circle green darken-2">assignment</i>
+									<span class="ultra-small red-text darken-2 right">2024.3.23 - 2024.8.4</span>
+									<div class="title">东港市云港网络科技工作室</div>
+									<span class="tag red darken-2">普通开发者</span>
+								</li>
+								<li class="collection-item">
+									<p>
+										啥也没干，然后被踢了。
+									</p>
+								</li>
+							</ul>
+						</div>
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-resume z-depth-1">
+								<li class="collection-item avatar">
+									<i class="material-icons circle red darken-2">school</i>
+									<span class="ultra-small red-text darken-2 right">2017.9 - 2023.7</span>
+									<div class="title">杭州市采荷第一小学</div>
+									<span class="tag red darken-2">小学</span>
+								</li>
+								<li class="collection-item">
+									<p>
+										永远怀念。
+									</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>	
+
+				<!-- Service -->
+				<div class="section service scrollspy" id="hobbies-section">
+					
+					<div class="row">
+						<div class="col s12 m12 l12">
+							<h5 class="left-align">兴趣爱好</h5>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m12 l6">
+							<div class="card horizontal">
+								<div class="card-image green darken-2">
+									<i class="material-icons circle darken-2">dashboard</i>
+								</div>
+								<div class="card-stacked">
+									<div class="card-content">
+										<div class="title">UI设计</div>
+									</div>
+									<div class="card-action">
+										<p>但是不懂设计（</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m12 l6">
+							<div class="card horizontal">
+								<div class="card-image cyan darken-2">
+									<i class="material-icons circle darken-2">web</i>
+								</div>
+								<div class="card-stacked">
+									<div class="card-content">
+										<div class="title">桌面软件编写</div>
+									</div>
+									<div class="card-action">
+										<p>但是技术很烂</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12 m12 l6">
+							<div class="card horizontal">
+								<div class="card-image red darken-2">
+									<i class="material-icons circle darken-2">android</i>
+								</div>
+								<div class="card-stacked">
+									<div class="card-content">
+										<div class="title">安卓开发</div>
+									</div>
+									<div class="card-action">
+										<p>APK被系统嫌弃:)</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m12 l6">
+							<div class="card horizontal">
+								<div class="card-image amber darken-2">
+									<i class="material-icons circle darken-2">smartphone</i>
+								</div>
+								<div class="card-stacked">
+									<div class="card-content">
+										<div class="title">电路设计</div>
+									</div>
+									<div class="card-action">
+										<p>上次刚爆了一颗电容，烟老大了</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s12 m12 l6">
+							<div class="card horizontal">
+								<div class="card-image blue darken-2">
+									<i class="material-icons circle darken-2">create</i>
+								</div>
+								<div class="card-stacked">
+									<div class="card-content">
+										<div class="title">写作</div>
+									</div>
+									<div class="card-action">
+										<p>由AI技术驱动</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m12 l6">
+							<div class="card horizontal">
+								<div class="card-image purple darken-2">
+									<i class="material-icons circle darken-2">photo_camera</i>
+								</div>
+								<div class="card-stacked">
+									<div class="card-content">
+										<div class="title">摄影</div>
+									</div>
+									<div class="card-action">
+										<p>糊</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Portfolio -->
+				<div class="section works scrollspy" id="works-section">
+
+					<!-- Title -->
+					<div class="row">
+						<div class="col s12 m12 l12">
+							<h5 class="grey-text text-darken-2 left-align">项目</h5>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m12 l12">
+							<ul class="tabs filter z-depth-1">
+								<li class="tab"><a class="active" data-filter=".all">所有</a></li>
+								<li class="tab"><a data-filter=".apps">软件</a></li>
+								<li class="tab"><a data-filter=".libraries">库</a></li>
+								<li class="tab"><a data-filter=".os">操作系统</a></li>
+								<li class="tab"><a data-filter=".others">其它</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m6 l4">
+							<div class="card work-item apps all">
+								<div class="card-image waves-effect waves-block waves-light">
+									<a href="#popup-1" class="activator"><img src="images/works/work1.jpg" alt="" /></a>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title grey-text text-darken-4">
+										<a href="#popup-1" class="activator">
+											<span>537文本编辑器</span>
+											<i class="material-icons right">more_vert</i>
+										</a>
+									</h3>
+									<span class="category blue-text text-darken-2">桌面软件</span>
+								</div>
+								<div id="popup-1" class="popup-box mfp-fade mfp-hide">
+									<div class="content">
+										<div class="image">
+											<img src="images/works/work1.jpg" alt="">
+										</div>
+										<div class="desc">
+											<div class="category">桌面软件</div>
+											<h4>537文本编辑器</h4>
+											<p>
+												537文本编辑器秉持着“非同凡‘想’”的理念，立志打造出一个优雅好用的文字创作伙伴。</br>
+												但是目前还不支持 UTF-8 （悲
+											</p>
+											<a href="https://github.com/537Studio/537TextEditor" class="btn waves-effect waves-light" target="_blank">GitHub</a>
+											<a href="https://gitee.com/FTS-537Studio/537TextEditor" class="btn waves-effect waves-light" target="_blank">Gitee</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m6 l4">
+							<div class="card work-item libraries all">
+								<div class="card-image waves-effect waves-block waves-light">
+									<a href="#popup-2" class="activator"><img src="images/works/work3.jpg" alt="" /></a>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title grey-text text-darken-4">
+										<a href="#popup-2" class="activator">
+											<span>TC</span>
+											<i class="material-icons right">more_vert</i>
+										</a>
+									</h3>
+									<span class="category blue-text text-darken-2">库</span>
+								</div>
+								<div id="popup-2" class="popup-box mfp-fade mfp-hide">
+									<div class="content">
+										<div class="image">
+											<img src="images/works/work3.jpg" alt="">
+										</div>
+										<div class="desc">
+											<div class="category">库</div>
+											<h4>TC</h4>
+											<p>
+												一个跨平台轻量级命令行输出库，支持文本带颜色输出、等待时间输出。
+											</p>
+											<!--<a href="#" class="btn waves-effect waves-light" target="_blank">GitHub</a>-->
+											<a href="https://gitee.com/sean537/TC" class="btn waves-effect waves-light" target="_blank">Gitee</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m6 l4">
+							<div class="card work-item os all">
+								<div class="card-image waves-effect waves-block waves-light">
+									<a href="#popup-3" class="activator"><img src="images/works/work4.jpg" alt="" /></a>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title grey-text text-darken-4">
+										<a href="#popup-3" class="activator">
+											<span>Aqua Linux</span>
+											<i class="material-icons right">more_vert</i>
+										</a>
+									</h3>
+									<span class="category blue-text text-darken-2">操作系统</span>
+								</div>
+								<div id="popup-3" class="popup-box mfp-fade mfp-hide">
+									<div class="content">
+										<div class="image">
+											<img src="images/works/work4.jpg" alt="">
+										</div>
+										<div class="desc">
+											<div class="category">操作系统</div>
+											<h4>Aqua Linux</h4>
+											<p>
+												Aqua（水），寓意着这是将一个具有优美桌面环境和优秀用户体验的 Linux 操作系统发行版，基于 Debian GNU/Linux。它将位于科技与人文的十字路口。</br>
+												如果您对这个项目感兴趣，或是对这方面比较了解，都欢迎加入开发组！<br>
+												我们遵循自由开发原则，以“创意无限”（Creative Infinite.）为宗旨，与各位感兴趣的开发者共同完成这个项目。即使您对 Linux 系统不够了解，也可以加入，学习进步。任何事都有开端，就走出这第一步吧！<br>
+												QQ群：456951494<br>
+												电邮：<a href="mailto:hello@537studio.com">hello@537studio.com</a>
+											</p>
+											<!--<a href="#" class="btn waves-effect waves-light">View Project</a>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m6 l4">
+							<div class="card work-item others all">
+								<div class="card-image waves-effect waves-block waves-light">
+									<a href="#popup-4" class="activator"><img src="images/works/work5.jpg" alt="" /></a>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title grey-text text-darken-4">
+										<a href="#popup-4" class="activator">
+											<span>FTSE 2024</span>
+											<i class="material-icons right">more_vert</i>
+										</a>
+									</h3>
+									<span class="category blue-text text-darken-2">发布会</span>
+								</div>
+								<div id="popup-4" class="popup-box mfp-fade mfp-hide">
+									<div class="content">
+										<div class="image">
+											<img src="images/works/work5.jpg" alt="">
+										</div>
+										<div class="desc">
+											<div class="category">发布会</div>
+											<h4>FTSE 2024</h4>
+											<p>
+												敬请期待。
+											</p>
+											<!--<a href="#" class="btn waves-effect waves-light">View Project</a>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<!-- Blog -->
+				<div class="section blog scrollspy" id="blog-section">
+
+					<!-- Title -->
+					<div class="row">
+						<div class="col s12 m12 l12">
+							<h5 class="grey-text text-darken-2 left-align">博客</h5>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col s12 m12 l4">
+							<div class="card">
+								<div class="card-image">
+									<img src="images/blog/blog1.jpg" alt="" />
+									<a href="./blogs/1" class="btn-floating btn-large halfway-fab waves-effect waves-light"><i class="material-icons">more_vert</i></a>
+								</div>
+								<div class="card-content">
+									<span class="card-title">博客1</span>
+									<p>
+										我是简介。
+									</p>
+								</div>
+								<div class="card-action">
+									<div class="badges">
+										<span class="new badge red" data-badge-caption="">标签1</span>
+										<span class="new badge red" data-badge-caption="">标签2</span>
+									</div>
+									<div class="date">2025年5月17日</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m12 l4">
+							<div class="card">
+								<div class="card-image">
+									<img src="images/blog/blog2.jpg" alt="" />
+									<a href="./blogs/1" class="btn-floating btn-large halfway-fab waves-effect waves-light"><i class="material-icons">more_vert</i></a>
+								</div>
+								<div class="card-content">
+									<span class="card-title">博客1</span>
+									<p>
+										我也是简介哦！
+									</p>
+								</div>
+								<div class="card-action">
+									<div class="badges">
+										<span class="new badge red" data-badge-caption="">标签1</span>
+										<span class="new badge red" data-badge-caption="">标签2</span>
+									</div>
+									<div class="date">2025年5月17日</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m12 l4">
+							<div class="card">
+								<div class="card-image">
+									<img src="images/blog/blog1.jpg" alt="" />
+									<a href="./blogs/1" class="btn-floating btn-large halfway-fab waves-effect waves-light"><i class="material-icons">more_vert</i></a>
+								</div>
+								<div class="card-content">
+									<span class="card-title">博客1</span>
+									<p>
+										巧了我也是~
+									</p>
+								</div>
+								<div class="card-action">
+									<div class="badges">
+										<span class="new badge red" data-badge-caption="">标签1</span>
+										<span class="new badge red" data-badge-caption="">标签2</span>
+									</div>
+									<div class="date">2025年5月17日</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="center-align">
+						<a href="./blogs" class="btn waves-effect waves-light">所有文章</a>
+					</div>
+				</div>
+
+				<!-- Section Contacts -->
+				<div class="section contacts scrollspy last" id="contact-section">
+
+					<!-- Title -->
+					<div class="row">
+						<div class="col s12 m12 l12">
+							<h5 class="grey-text text-darken-2 left-align">联系我</h5>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s12 m12 l6">
+							<ul class="collection collection-info z-depth-1">
+								<!--
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s5 grey-text darken-1"><i class="material-icons">business</i> Address:</div>
+										<div class="col s7 grey-text text-darken-4 right-align">
+											我的地址
+										</div>
+									</div>
+								</li>
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s5 grey-text darken-1"><i class="material-icons">local_phone</i> Phone:</div>
+										<div class="col s7 grey-text text-darken-4 right-align">
+											<a href="tel:12562548456">我的电话</a>
+										</div>
+									</div>
+								</li>
+								-->
+								<li class="collection-item">
+									<div class="row">
+										<div class="col s5 grey-text darken-1"><i class="material-icons">email</i> 电子邮件：</div>
+										<div class="col s7 grey-text text-darken-4 right-align">
+											<a href="mailto:wushaoquan666@outlook.com">wushaoquan666@outlook.com</a>
+										</div>
+									</div>
+								</li>
+								<!--
+								<li class="collection-item">
+									<div class="row">
+										<div class="map" id="map"></div>
+									</div>
+								</li>
+								-->
+							</ul>
+						</div>
+						<div class="col s12 m12 l6">
+							<div class="card-panel">
+								<div class="contact-form">
+									<form id="cform" method="post">
+										<h5>发信息（测试）</h5>
+										<div class="row">
+											<div class="input-field col s12">
+												<input type="text" name="name" id="name_field" />
+												<label for="name_field">你的姓名</label>
+											</div>
+											<div class="input-field col s12">
+												<input type="text" name="email" id="email_field" />
+												<label for="email_field">你的电邮地址</label>
+											</div>
+											<div class="input-field col s12">
+												<input type="text" name="subject" id="subject_field" />
+												<label for="subject_field">主题</label>
+											</div>
+											<div class="input-field col s12">
+												<textarea name="message" id="message_field" class="materialize-textarea"></textarea>
+												<label for="message_field">信息</label>
+											</div>
+										</div>
+										<a class="btn waves-effect waves-light" onclick="$('#cform').submit(); return false;">发送</a>
+									</form>
+									<div class="alert-success">
+										<p>Thanks, your message is sent successfully. We will contact you shortly!</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<!-- Footer -->
+			<footer>
+				<div class="copy">版权所有 © 2023-2025 山地奥斯卡537 所有权利保留</div>
+			</footer>
+
+		</main>
+
+	</div>
+	
+	<!-- jQuery Scripts -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/materialize.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/magnific-popup.js"></script>
+
+	<!-- Google map api -->
+	<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
+	
+	<!-- Main Scripts -->
+	<script src="js/main.js"></script>
+	
 </body>
-
 </html>
