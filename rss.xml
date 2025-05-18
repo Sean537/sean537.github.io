@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>山地奥斯卡537 - 求知若饥，虚心若愚。</title>
+    <link>https://sean537.github.io/</link>
+    <description>Sean537的个人主页暨博客，包括许多干货文章等。</description>
+    <lastBuildDate>2025-05-18T22:00:00Z</lastBuildDate>
+    <item>
+      <title>Hello, world! 我的第一篇博客</title>
+      <link>https://sean537.github.io/blogs/1/</link>
+      <pubDate>2025-05-17T23:49:00Z</pubDate>
+      <description>我的第一篇博客，主要是测试内容。</description>
+    </item>
+    <!-- 更多文章 -->
+  </channel>
+</rss>
