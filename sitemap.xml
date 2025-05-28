@@ -13,12 +13,22 @@
   </url>
 
   <url>
+    <loc>https://sean537.github.io/blogs/2</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
     <loc>https://sean537.github.io/blogs</loc>
     <priority>1.00</priority>
   </url>
 
   <url>
     <loc>https://sean537.github.io/blogs/1/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://sean537.github.io/blogs/2/</loc>
     <priority>1.00</priority>
   </url>
 
