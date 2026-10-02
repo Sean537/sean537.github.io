@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
-  <channel>
-    <title>山地奥斯卡537 - 求知若饥，虚心若愚。</title>
-    <link>https://sean537.github.io/</link>
-    <description>Sean537的个人主页暨博客，包括许多干货文章等。</description>
-    <lastBuildDate>2025-05-28T23:00:00Z</lastBuildDate>
-    <item>
-      <title>乙巳四月十九淬刃未展翼赋</title>
-      <link>https://sean537.github.io/blogs/2/</link>
-      <pubDate>2025-05-27T23:00:00Z</pubDate>
-      <description>共青团员落选……有感而作。</description>
-    </item>
-    <item>
-      <title>Hello, world! 我的第一篇博客</title>
-      <link>https://sean537.github.io/blogs/1/</link>
-      <pubDate>2025-05-17T23:49:00Z</pubDate>
-      <description>我的第一篇博客，主要是测试内容。</description>
-    </item>
-    <!-- 更多文章 -->
-  </channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>山地奥斯卡537 - 求知若饥，虚心若愚。</title>
+		<link>https://www.ithink537.top/</link>
+		<atom:link href="https://www.ithink537.top/rss.xml" rel="self" type="application/rss+xml" />
+		<description>山地奥斯卡537（Sean537）的个人主页与博客：项目记录、辞赋随笔与沿途思考。</description>
+		<language>zh-CN</language>
+		<lastBuildDate>2025-05-28T23:00:00Z</lastBuildDate>
+		<item>
+			<title>乙巳四月十九淬刃未展翼赋</title>
+			<link>https://www.ithink537.top/blogs/2/</link>
+			<guid isPermaLink="true">https://www.ithink537.top/blogs/2/</guid>
+			<pubDate>Tue, 27 May 2025 23:00:00 +0800</pubDate>
+			<description>以古典辞赋写一段热情、挫折与自我勉励。霜刃未磨，仍愿守住心里的锋芒。</description>
+		</item>
+		<item>
+			<title>Hello, world! 我的第一篇博客</title>
+			<link>https://www.ithink537.top/blogs/1/</link>
+			<guid isPermaLink="true">https://www.ithink537.top/blogs/1/</guid>
+			<pubDate>Sat, 17 May 2025 23:49:00 +0800</pubDate>
+			<description>这是博客的起点。记录搭建个人博客的尝试，也期待在这里持续分享学习与创作。</description>
+		</item>
+		<!-- 新增文章时，请同步在此添加一条 <item> -->
+	</channel>
 </rss>

@@ -1,297 +1,116 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	
-	<!-- Basic -->
 	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	<title>乙巳四月十九淬刃未展翼赋 - 山地奥斯卡537的博客</title>
-	<meta name="description" content="山地奥斯卡537的个人博客1。" />
-	<meta name="keywords" content="537, 山地奥斯卡537, Sean537, 537工作室, 文章, 博客" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+	<meta name="description" content="山地奥斯卡537的博客文章。" />
 	<meta name="author" content="Sean537" />
-	
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	
-	<!-- Load Fonts -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
-	<!-- CSS -->
-	<link rel="stylesheet" href="../../css/materialize.css" />
-	<link rel="stylesheet" href="../../css/layout.css" />
-	<link rel="stylesheet" href="../../css/magnific-popup.css" />
-	<link rel="stylesheet" href="../../css/animate.css" />
-	<link rel="stylesheet" href="../../css/ionicons.css" />
-	
-	<!--[if lt IE 9]>
-	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-	
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="../../images/favicons/favicon.ico">
-	
+	<title>文章 - 山地奥斯卡537的博客</title>
+
+	<script>
+		(function () {
+			try {
+				var t = localStorage.getItem('sean537-theme');
+				if (t !== 'light' && t !== 'dark') {
+					t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				}
+				document.documentElement.setAttribute('data-theme', t);
+			} catch (e) { }
+		}());
+	</script>
+
+	<link rel="stylesheet" href="../../css/main.css" />
+	<link rel="shortcut icon" href="../../images/favicons/favicon.ico" />
 </head>
 
 <body>
-	
-	<!-- Page -->
-	<div class="page">
 
-		<!-- Preloader -->
-		<div class="preloader">
-			<div class="centrize full-width">
-				<div class="vertical-center">
-					<div class="preloader-wrapper spinner big active">
-						<div class="spinner-layer spinner-blue">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
-							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
-							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
-							</div>
-						</div>
-						<div class="spinner-layer spinner-red">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
-							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
-							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
-							</div>
-						</div>
-						<div class="spinner-layer spinner-green">
-							<div class="circle-clipper left">
-								<div class="circle"></div>
-							</div>
-							<div class="gap-patch">
-								<div class="circle"></div>
-							</div>
-							<div class="circle-clipper right">
-								<div class="circle"></div>
-							</div>
-						</div>
-					</div>
-				</div>
+	<header class="site-nav is-scrolled" data-nav>
+		<div class="nav-inner">
+			<a class="nav-brand" href="../../" aria-label="返回首页">
+				<span class="brand-mark" aria-hidden="true"><img src="../../537logo.png" alt="" width="36" height="36" /></span>
+				<span>山地奥斯卡537</span>
+			</a>
+			<nav class="nav-links" aria-label="主导航">
+				<a href="../../">首页</a>
+				<a href="../../#about">关于</a>
+				<a href="../../#projects">项目</a>
+				<a href="../" class="is-active">博客</a>
+				<a href="../../#contact">联系</a>
+			</nav>
+			<div class="nav-actions">
+				<a class="icon-btn nav-github-link" href="https://github.com/Sean537" target="_blank" rel="noopener noreferrer" aria-label="GitHub @Sean537">
+					<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+				</a>
+				<button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="切换深色模式">
+					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
+					<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+				</button>
+				<button class="icon-btn nav-burger" type="button" data-menu-toggle aria-expanded="false" aria-label="打开菜单">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+				</button>
 			</div>
 		</div>
+		<nav class="nav-menu" data-menu aria-label="移动端导航">
+			<a href="../../"><span class="pixel">01</span>首页</a>
+			<a href="../../#about"><span class="pixel">02</span>关于</a>
+			<a href="../../#projects"><span class="pixel">03</span>项目</a>
+			<a href="../"><span class="pixel">04</span>博客</a>
+			<a href="../../#contact"><span class="pixel">05</span>联系</a>
+			<p class="menu-footer">求知若饥，虚心若愚。</p>
+		</nav>
+	</header>
 
-		<!-- Header -->
-		<header>
-
-			<!-- SideNav -->
-			<ul class="side-nav fixed" id="nav-mobile">
-				<li class="curent">
-					<div class="userView">
-	  					<div class="background">
-	  						<img src="https://cdn.imgos.cn/vip/2025/05/27/6835cc708a6be.jpg" alt="" />
-	  					</div>
-	  					<img class="avatar circle" src="https://cdn.imgos.cn/vip/2025/05/27/6835cc6e1b3aa.png" alt="" />
-	  					<div class="white-text name">山地奥斯卡537</div>
-	  					<div class="white-text email"><a href="mailto:wushaoquan666@outlook.com">wushaoquan666@outlook.com</a></div>
-	  					<div class="social">
-							<a href="https://www.facebook.com" target="blank"><i class="ion ion-social-facebook"></i></a>
-							<a href="https://www.dribbble.com" target="blank"><i class="ion ion-social-dribbble"></i></a>
-							<a href="https://www.twitter.com" target="blank"><i class="ion ion-social-twitter"></i></a>
-							<a href="https://plus.google.com" target="blank"><i class="ion ion-social-googleplus"></i></a>
-						</div>
-					</div>
-				</li>
-				<li class="active">
-					<a href="../../#started-section" class="waves-effect waves-light">
-						<i class="material-icons">home</i>首页
-					</a>
-				</li>
-				<li>
-					<a href="../../#about-section" class="waves-effect waves-light">
-						<i class="material-icons">person_pin</i>关于
-					</a>
-				</li>
-				<li>
-					<a href="../../#experience-section" class="waves-effect waves-light">
-						<i class="material-icons">assignment</i>工作和教育经历
-					</a>
-				</li>
-				<li>
-					<a href="../../#hobbies-section" class="waves-effect waves-light">
-						<i class="material-icons">settings</i>爱好
-					</a>
-				</li>
-				<li>
-					<a href="../../#works-section" class=" waves-effect waves-light">
-						<i class="material-icons">work</i>项目
-					</a>
-				</li>
-				<!--
-				<li>
-					<a href="#pricing-section" class="waves-effect waves-light">
-						<i class="material-icons">view_carousel</i>这里我也不知道放什么
-					</a>
-				</li>
-				-->
-				<li>
-					<a href="../" class="waves-effect waves-light">
-						<i class="material-icons">library_books</i>博客
-					</a>
-				</li>
-				<li>
-					<a href="../../#contact-section" class="waves-effect waves-light">
-						<i class="material-icons">phone</i>联系
-					</a>
-				</li>
-			</ul>
-
-			<!-- Top menu -->
-			<nav class="top-menu">
-				<div class="nav-wrapper">
-					<ul>
-						<li>
-							<a href="#" data-activates="nav-mobile" class="menu-btn"><i class="material-icons">menu</i></a>
-						</li>
-						<!--<li class="right">
-							<a href="#"><i class="material-icons">arrow_back</i></a>
-						</li>-->
-					</ul>
-				</div>
+	<main>
+		<div class="container article-wrap">
+			<nav class="article-crumb" aria-label="面包屑导航">
+				<a href="../../">首页</a><span class="sep">/</span>
+				<a href="../">博客</a><span class="sep">/</span>
+				<span>文章正文</span>
 			</nav>
 
-		</header>
-
-		<main>
-
-			<!-- Container -->
-			<div class="container" id="started-section">
-
-				<!-- Section About -->
-				<div class="section started">
-					<!-- Profile -->
-					<div class="card profile inner">
-						<div class="card-content">
-							<div class="row">
-								<div class="col s12 m5 l6">
-									<figure class="card-profile-image">
-										<img class="circle z-depth-1 responsive-img" src="https://cdn.imgos.cn/vip/2025/05/27/6835cc6e1b3aa.png" alt="avatar.png" />
-									</figure>
-									<div class="card-profile-desc">
-										<h4 class="card-title grey-text text-darken-4">山地奥斯卡537</h4>
-										<p class="medium-small grey-text">求知若饥，虚心若愚。</p>
-									</div>
-								</div>
-								<div class="col s4 m3 l2 center-align">
-									<h4 class="card-title grey-text text-darken-4">0%</h4>
-									<p class="medium-small grey-text">作业完成度</p>
-								</div>
-								<div class="col s4 m2 l2 center-align">
-									<h4 class="card-title grey-text text-darken-4">8</h4>
-									<p class="medium-small grey-text">开发年数</p>
-								</div>
-								<div class="col s4 m2 l2 center-align">
-									<h4 class="card-title grey-text text-darken-4">菜</h4>
-									<p class="medium-small grey-text">编程水平</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Blog -->
-				<div class="section blog-single">
-					<div class="card-panel">
-						<div class="text-box">
-							<h1>乙巳四月十九淬刃未展翼赋</h1>						
-							<div class="blog-detail">发布于 <span>2025年5月27日</span></div>
-							<div class="blog-content">
-								<p>
-									霜刃未磨匣已藏，镰锤刺眼愧行囊。</br>
-									热情碧血燃星火，寒枝冰心何由彻？</br>
-									万叠征衣凝夜紫，一襟风骨立苍茫。</br>
-									此身若许红旗卷，不共青山论短长！
-								</p>
-								<blockquote>
-									呜呼哀哉——这就是“怀才不遇”的感受吗qwq</br>
-									创作于 <span>2025年5月16日</span>
-								</blockquote>
-								<div class="post-lightbox row">
-									<a href="https://cdn.imgos.cn/vip/2025/05/27/6835d1ccc7518.png" class="col s12 m5 l4 lightbox-image">
-										<img src="https://cdn.imgos.cn/vip/2025/05/27/6835d1ccc7518.png" alt="Chinese_Communist_Youth_League.png" title="中国共产主义青年团" />
-									</a>
-								</div>
-							</div>
-
-							<div class="col-md-12">
-								<h3 class="subtitle">贡献者</h3>
-								<ul class="post-comment">
-									<li>
-										<img src="https://cdn.imgos.cn/vip/2025/05/27/6835cc6e1b3aa.png" alt="avatar.png" title="avatar.png" />
-										<div class="comment-info">
-											<div class="name">
-												<h3>山地奥斯卡537</h3>
-												<span>2025年5月27日23时00分</span>
-												<!--<a href="#"> Reply </a>-->
-											</div>
-											<p>创作了这篇文章。</p>
-										</div>
-									</li>
-									
-								</ul>
-							</div>
-							
-							<div class="contact-form">
-								<form id="blog-form" method="post">
-									<h5>发表回复（暂不可用）</h5>
-									<div class="row">
-										<div class="input-field col s12 m12 l6">
-											<input type="text" name="name" id="name_field" />
-											<label for="name_field">你的姓名</label>
-										</div>
-										<div class="input-field col s12 m12 l6">
-											<input type="text" name="email" id="email_field" />
-											<label for="email_field">你的电邮地址</label>
-										</div>
-										<div class="input-field col s12 m12 l12">
-											<textarea name="message" id="message_field" class="materialize-textarea"></textarea>
-											<label for="message_field">天青色等烟雨，评论区在等你~（B站抄的awa</label>
-										</div>
-									</div>
-									<a class="btn waves-effect waves-light" onclick="$('#blog-form').submit(); return false;">发布</a>
-								</form>
-							</div>
-							<div class="alert-success">
-								<p>Thanks, your message is sent successfully. We will contact you shortly!</p>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				
+			<div data-article-view="2" aria-live="polite" aria-busy="true">
+				<p class="article-feed-status">正在载入文章…</p>
 			</div>
 
-			<!-- Footer -->
-			<footer>
-				<div class="copy">版权所有 © 2023-2026 山地奥斯卡537 所有权利保留</div>
-			</footer>
+			<nav class="article-pager" data-article-pager data-article-base="../" aria-label="上下篇导航"></nav>
+		</div>
+	</main>
 
-		</main>
+	<footer class="site-footer">
+		<div class="container footer-inner">
+			<div class="footer-brand">
+				<a class="nav-brand" href="../../"><span class="brand-mark" aria-hidden="true"><img src="../../537logo.png" alt="" width="36" height="36" /></span><span>山地奥斯卡537</span></a>
+				<p>求知若饥，虚心若愚。<br />Stay hungry, stay foolish.</p>
+			</div>
+			<div class="footer-col">
+				<h4>导航</h4>
+				<ul>
+					<li><a href="../../">首页</a></li>
+					<li><a href="../../#about">关于我</a></li>
+					<li><a href="../../#projects">项目</a></li>
+					<li><a href="../../rss.xml">RSS 订阅</a></li>
+				</ul>
+			</div>
+			<div class="footer-col">
+				<h4>关注</h4>
+				<ul>
+					<li><a href="https://github.com/Sean537" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+					<li><a href="https://space.bilibili.com/3493272892738031" target="_blank" rel="noopener noreferrer">Bilibili</a></li>
+					<li><a href="https://gitee.com/sean537" target="_blank" rel="noopener noreferrer">Gitee</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container footer-bottom">
+			<span>版权所有 © 2023-2026 山地奥斯卡537</span>
+			<span class="pixel" aria-hidden="true">537 STUDIO</span>
+		</div>
+	</footer>
 
-	</div>
-	
-	<!-- jQuery Scripts -->
-	<script src="../../js/jquery.min.js"></script>
-	<script src="../../js/materialize.js"></script>
-	<script src="../../js/jquery.validate.js"></script>
-	<script src="../../js/magnific-popup.js"></script>
-
-	<!-- Google map api -->
-	<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
-	
-	<!-- Main Scripts -->
+	<script src="../../js/theme.js"></script>
 	<script src="../../js/main.js"></script>
-	
+	<script src="../../js/articles.js"></script>
+	<script src="../../js/image-preview.js"></script>
 </body>
 </html>

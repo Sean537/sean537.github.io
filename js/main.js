@@ -1,205 +1,174 @@
-/**
- * 更多高端模板：http://www.bootstrapmb.com
-*	mateCard (HTML)
-*	Copyright © mateCard by beshleyua. All Rights Reserved.
-**/
-
-$(function () {
+/* 站点交互：导航、移动端菜单、滚动进场动画、项目筛选、区块高亮。无依赖。 */
+(function () {
 	'use strict';
-	
-	var width = $(window).width();
-	var height = $(window).height();
-	
 
-	/*** 
-	**** Preloader
-	***/
-	$(window).on('load', function() {
-		$(".preloader .spinner").fadeOut(function(){
-			$('.preloader').fadeOut();
-			$('body').addClass('ready');
+	var nav = document.querySelector('[data-nav]');
+	var burger = document.querySelector('[data-menu-toggle]');
+	var menu = document.querySelector('[data-menu]');
+	var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	/* ---- 导航滚动状态 ---- */
+	function updateNavState() {
+		if (nav) {
+			nav.classList.toggle('is-scrolled', window.scrollY > 12);
+		}
+	}
+	window.addEventListener('scroll', updateNavState, { passive: true });
+	updateNavState();
+
+	/* ---- 移动端菜单 ---- */
+	function setMenu(open) {
+		if (!burger || !menu || !nav) {
+			return;
+		}
+		burger.setAttribute('aria-expanded', String(open));
+		menu.classList.toggle('is-open', open);
+		nav.classList.toggle('is-open', open);
+		document.body.style.overflow = open ? 'hidden' : '';
+	}
+	if (burger && menu) {
+		burger.addEventListener('click', function () {
+			setMenu(burger.getAttribute('aria-expanded') !== 'true');
 		});
-	});
-
-
-	/*** 
-	**** Portfolio Filter
-	***/
-	$('.filter').on('click', 'a', function(){
-		var filter = $(this).attr('data-filter');
-
-		$('.work-item').hide();
-		$(filter).fadeIn();
-		
-		return false;
-	});
-
-
-	/***
-	**** Initialize collapse button
-	***/
-	$('.menu-btn').sideNav();
-	if(width < 1080){
-		$('.side-nav').css({'transform':'translateX(-100%)'});
+		menu.addEventListener('click', function (event) {
+			if (event.target.closest('a')) {
+				setMenu(false);
+			}
+		});
+		document.addEventListener('keydown', function (event) {
+			if (event.key === 'Escape') {
+				setMenu(false);
+			}
+		});
 	}
 
+	/* ---- 滚动进场动画 ---- */
+	var revealItems = document.querySelectorAll('.reveal');
+	if (reduceMotion || !('IntersectionObserver' in window)) {
+		revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+	} else {
+		var revealObserver = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('is-visible');
+					revealObserver.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+		revealItems.forEach(function (item) { revealObserver.observe(item); });
+	}
 
-	/*** 
-	**** SideNav Menu Scroll
-	***/
-	if($('#home-section').length) {
-		$(window).on('scroll', function(){
-			var scrollPos = $(window).scrollTop();
-			$('.side-nav li > a').each(function () {
-				var currLink = $(this);
-				var refElement = $(currLink.attr("href"));
-				if (refElement.offset().top - 30 <= scrollPos) {
-					$('.side-nav li').removeClass("active");
-					currLink.closest('li').addClass("active");
+	/* ---- 统计数字滚动 ---- */
+	var counters = document.querySelectorAll('[data-count]');
+	if (counters.length) {
+		function runCounter(element) {
+			var target = parseInt(element.getAttribute('data-count'), 10);
+			var suffix = element.textContent.replace(/[0-9]/g, '');
+			if (reduceMotion || isNaN(target)) {
+				return;
+			}
+			var duration = 1200;
+			var start = null;
+			function frame(timestamp) {
+				if (start === null) {
+					start = timestamp;
+				}
+				var progress = Math.min((timestamp - start) / duration, 1);
+				var eased = 1 - Math.pow(1 - progress, 3);
+				element.textContent = Math.round(target * eased) + suffix;
+				if (progress < 1) {
+					window.requestAnimationFrame(frame);
+				}
+			}
+			window.requestAnimationFrame(frame);
+		}
+
+		if ('IntersectionObserver' in window) {
+			var countObserver = new IntersectionObserver(function (entries) {
+				entries.forEach(function (entry) {
+					if (entry.isIntersecting) {
+						runCounter(entry.target);
+						countObserver.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.6 });
+			counters.forEach(function (item) { countObserver.observe(item); });
+		}
+	}
+
+	/* ---- 当前区块高亮（主页锚点导航） ---- */
+	var sectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+	if (sectionLinks.length && 'IntersectionObserver' in window) {
+		var linkMap = {};
+		sectionLinks.forEach(function (link) {
+			linkMap[link.getAttribute('href').slice(1)] = link;
+		});
+		var sectionObserver = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				var link = linkMap[entry.target.id];
+				if (!link) {
+					return;
+				}
+				if (entry.isIntersecting) {
+					sectionLinks.forEach(function (item) { item.classList.remove('is-active'); });
+					link.classList.add('is-active');
+				}
+			});
+		}, { rootMargin: '-38% 0px -55% 0px' });
+		Object.keys(linkMap).forEach(function (id) {
+			var section = document.getElementById(id);
+			if (section) {
+				sectionObserver.observe(section);
+			}
+		});
+	}
+
+	/* ---- 项目筛选 ---- */
+	var filterBar = document.querySelector('[data-filter-bar]');
+	if (filterBar) {
+		var cards = document.querySelectorAll('[data-work-cat]');
+		filterBar.addEventListener('click', function (event) {
+			var button = event.target.closest('button[data-filter]');
+			if (!button) {
+				return;
+			}
+			filterBar.querySelectorAll('button').forEach(function (item) {
+				item.classList.toggle('is-active', item === button);
+			});
+			var filter = button.getAttribute('data-filter');
+			cards.forEach(function (card) {
+				var show = filter === 'all' || card.getAttribute('data-work-cat') === filter;
+				card.classList.toggle('is-hidden', !show);
+				if (show && !reduceMotion) {
+					card.style.animation = 'none';
+					void card.offsetWidth; /* 重启动画 */
+					card.style.animation = 'rise-in .5s var(--ease) backwards';
 				}
 			});
 		});
 	}
 
-	$('.scrollspy').scrollSpy({
-		scrollOffset: 0
-	});
-	
-
-	/*** 
-	**** Validate contact form
-	***/
-	$("#cform").validate({
-		rules: {
-			name: {
-				required: true
-			},
-			message: {
-				required: true
-			},
-			subject: {
-				required: true
-			},
-			email: {
-				required: true,
-				email: true
+	/* ---- Hero 像素视差（仅桌面端、非减弱动画） ---- */
+	var heroPixels = document.querySelector('.hero-pixels');
+	if (heroPixels && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+		var hero = document.querySelector('.hero');
+		var ticking = false;
+		hero.addEventListener('mousemove', function (event) {
+			if (ticking) {
+				return;
 			}
-		},
-		highlight: function(element) {
-			$(element).addClass('invalid');
-			$(element).removeClass('valid');
-		},
-		unhighlight: function(element) {
-			$(element).removeClass('invalid');
-			$(element).addClass('valid');
-		},
-		success: "valid",
-		submitHandler: function() {
-			$.ajax({
-				url: 'mailer/feedback.php',
-				type: 'post',
-				dataType: 'json',
-				data: 'name='+ $("#cform").find('input[name="name"]').val() + '&email='+ $("#cform").find('input[name="email"]').val() + '&subject='+ $("#cform").find('input[name="subject"]').val() + '&message=' + $("#cform").find('textarea[name="message"]').val(),
-				beforeSend: function() {
-				
-				},
-				complete: function() {
-				
-				},
-				success: function(data) {
-					$('#cform').fadeOut();
-					$('.alert-success').delay(1000).fadeIn();
-				}
+			ticking = true;
+			window.requestAnimationFrame(function () {
+				var rect = hero.getBoundingClientRect();
+				var x = (event.clientX - rect.left) / rect.width - 0.5;
+				var y = (event.clientY - rect.top) / rect.height - 0.5;
+				heroPixels.querySelectorAll('.px').forEach(function (px, index) {
+					var depth = (index % 3 + 1) * 7;
+					px.style.marginLeft = (-x * depth) + 'px';
+					px.style.marginTop = (-y * depth) + 'px';
+				});
+				ticking = false;
 			});
-		}
-	});
-
-
-	/*** 
-	**** Validate comments form
-	***/
-	$("#blog-form").validate({
-		rules: {
-			name: {
-				required: true
-			},
-			message: {
-				required: true
-			},
-			email: {
-				required: true,
-				email: true
-			}
-		},
-		highlight: function(element) {
-			$(element).addClass('invalid');
-			$(element).removeClass('valid');
-		},
-		unhighlight: function(element) {
-			$(element).removeClass('invalid');
-			$(element).addClass('valid');
-		},
-		success: "valid",
-		submitHandler: function() {
-			$('#blog-form').fadeOut();
-			$('.alert-success').delay(1000).fadeIn();
-		}
-	});
-	
-
-	/*** 
-	**** Portfolio magnific popup
-	***/
-	$('.card.work-item .activator').magnificPopup({
-		type: 'inline',
-		overflowY: 'auto',
-		closeBtnInside: true,
-		mainClass: 'mfp-fade'
-	});
-
-	/*** 
-	**** Gallery
-	***/
-	$('.post-lightbox').magnificPopup({
-		delegate: 'a',
-		type: 'image',
-		tLoading: 'Loading image #%curr%...',
-		mainClass: 'mfp-img-mobile',
-		gallery: {
-			enabled: true,
-			navigateByImgClick: true,
-			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-		},
-		image: {
-			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-		}
-	});
-
-});
-
-
-/*** 
-**** Google Map Options
-***/
-function initMap() {
-	var myLatlng = new google.maps.LatLng(40.773328,-73.960088); // <- Your latitude and longitude
-
-	var mapOptions = {
-		zoom: 14,
-		center: myLatlng,
-		mapTypeControl: false,
-		disableDefaultUI: true,
-		zoomControl: true,
-		scrollwheel: false
+		});
 	}
-	
-	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	var marker = new google.maps.Marker({
-		position: myLatlng,
-		map: map,
-		title: 'We are here!'
-	});
-}
-if($('#map').length) {
-	google.maps.event.addDomListener(window, 'load', initMap);
-}
+}());

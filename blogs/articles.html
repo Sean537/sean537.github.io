@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="robots" content="noindex" />
+	<title>文章模板数据</title>
+</head>
+<body>
+	<!--
+		======================================================================
+		文章数据源 · blogs/articles.html
+		======================================================================
+		本文件是全站博客的唯一数据源，博客列表页、主页预览与文章正文
+		都从这里读取（由 js/articles.js 解析）。
+
+		【新增一篇文章】
+		1. 复制下面任意一段 <template> 整段（从 <template 到 </template>）；
+		2. 把 data-article-id 改成一个新的、不重复的数字（例如 3）；
+		3. 修改 data-title / data-date(YYYY-MM-DD) / data-excerpt / data-tags；
+		4. 在 blogs/ 目录下新建一个同名的文件夹，例如 blogs/3/，
+		   把 blogs/1/index.html 复制过去，仅修改 data-article-view="3"；
+		5. 图片建议放进 blogs/3/images/，正文中用相对路径引用。
+
+		【可用样式】
+		- 正文：<p> 段落、<h2>/<h3> 标题、<ul>/<ol> 列表、
+		  <blockquote> 引用（内含 <cite> 出处）、<pre><code> 代码块、
+		  <a href="#"> 链接、<hr> 分隔线
+		- 图片：<figure class="article-figure"><img src="…" alt="…"></figure>
+		  居中小图加 class="article-figure-small"
+		======================================================================
+	-->
+
+	<template data-article-id="1" data-title="Hello, world! 我的第一篇博客" data-date="2025-05-17" data-excerpt="这是博客的起点。记录搭建个人博客的尝试，也期待在这里持续分享学习与创作。" data-tags="随笔,建站">
+		<article class="article-entry">
+			<header class="article-header">
+				<p class="article-eyebrow">JOURNAL / 001</p>
+				<h1>Hello, world! 我的第一篇博客</h1>
+				<div class="article-meta">
+					<time datetime="2025-05-17">2025年5月17日</time>
+					<span>山地奥斯卡537</span>
+				</div>
+			</header>
+			<div class="article-body">
+				<figure class="article-figure">
+					<img src="/blogs/1/images/blog1.jpg" alt="个人博客文章配图" loading="lazy" />
+				</figure>
+				<p>这是一篇博客测试。</p>
+				<p>我未来打算在这个网站上发布一些干货文章，敬请期待。</p>
+				<blockquote>每个长期项目，都从一个简单的 Hello, world! 开始。</blockquote>
+				<p>下面是无序列表测试：</p>
+				<ul>
+					<li>第一句。</li>
+					<li>第二句。</li>
+					<li>第三句，酷吧。</li>
+				</ul>
+				<p>除此之外，也可以在文章里放置图片、链接和其他内容。</p>
+			</div>
+			<footer class="article-author">
+				<img src="/images/avatar.png" alt="山地奥斯卡537头像" loading="lazy" width="52" height="52" />
+				<div><strong>山地奥斯卡537</strong><span>本文作者</span></div>
+			</footer>
+			<section class="article-comments" aria-label="文章评论">
+				<h2>讨论</h2>
+				<p>使用 GitHub 账号发表评论，评论将公开显示。</p>
+				<div data-utterances></div>
+				<p class="comments-fallback">
+					<span>评论区加载较慢或无法显示？</span>
+					<a href="https://github.com/Sean537/sean537.github.io/issues" target="_blank" rel="noopener noreferrer">前往 GitHub 留言
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+					</a>
+				</p>
+			</section>
+		</article>
+	</template>
+
+	<template data-article-id="2" data-title="乙巳四月十九淬刃未展翼赋" data-date="2025-05-27" data-excerpt="以古典辞赋写一段热情、挫折与自我勉励。霜刃未磨，仍愿守住心里的锋芒。" data-tags="辞赋,随笔">
+		<article class="article-entry">
+			<header class="article-header">
+				<p class="article-eyebrow">JOURNAL / 002</p>
+				<h1>乙巳四月十九淬刃未展翼赋</h1>
+				<div class="article-meta">
+					<time datetime="2025-05-27">2025年5月27日</time>
+					<span>山地奥斯卡537</span>
+				</div>
+			</header>
+			<div class="article-body">
+				<p>霜刃未磨匣已藏，镰锤刺眼愧行囊。</p>
+				<p>热情碧血燃星火，寒枝冰心何由彻？</p>
+				<p>万叠征衣凝夜紫，一襟风骨立苍茫。</p>
+				<p>此身若许红旗卷，不共青山论短长！</p>
+				<blockquote>
+					<p>呜呼哀哉，这就是“怀才不遇”的感受吗？</p>
+					<cite>创作于 2025年5月16日</cite>
+				</blockquote>
+				<figure class="article-figure article-figure-small">
+					<img src="/blogs/2/images/Chinese_Communist_Youth_League.png" alt="中国共产主义青年团主题配图" loading="lazy" />
+				</figure>
+				<figure class="article-figure">
+					<img src="/blogs/2/images/blog2.jpg" alt="文章配图" loading="lazy" />
+				</figure>
+			</div>
+			<footer class="article-author">
+				<img src="/images/avatar.png" alt="山地奥斯卡537头像" loading="lazy" width="52" height="52" />
+				<div><strong>山地奥斯卡537</strong><span>本文作者</span></div>
+			</footer>
+			<section class="article-comments" aria-label="文章评论">
+				<h2>讨论</h2>
+				<p>使用 GitHub 账号发表评论，评论将公开显示。</p>
+				<div data-utterances></div>
+				<p class="comments-fallback">
+					<span>评论区加载较慢或无法显示？</span>
+					<a href="https://github.com/Sean537/sean537.github.io/issues" target="_blank" rel="noopener noreferrer">前往 GitHub 留言
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+					</a>
+				</p>
+			</section>
+		</article>
+	</template>
+
+	<!--
+		【新文章模板 · 使用时去掉尖括号注释并修改内容】
+		<template data-article-id="3" data-title="这里填写标题" data-date="2026-01-01" data-excerpt="这里填写摘要，会显示在文章列表与首页预览中。" data-tags="分类1,分类2">
+			<article class="article-entry">
+				<header class="article-header">
+					<p class="article-eyebrow">JOURNAL / 003</p>
+					<h1>这里填写标题</h1>
+					<div class="article-meta">
+						<time datetime="2026-01-01">2026年1月1日</time>
+						<span>山地奥斯卡537</span>
+					</div>
+				</header>
+				<div class="article-body">
+					<p>正文从这里开始。</p>
+				</div>
+				<footer class="article-author">
+					<img src="/images/avatar.png" alt="山地奥斯卡537头像" loading="lazy" width="52" height="52" />
+					<div><strong>山地奥斯卡537</strong><span>本文作者</span></div>
+				</footer>
+				<section class="article-comments" aria-label="文章评论">
+					<h2>讨论</h2>
+					<p>使用 GitHub 账号发表评论，评论将公开显示。</p>
+					<div data-utterances></div>
+				</section>
+			</article>
+		</template>
+	-->
+</body>
+</html>
