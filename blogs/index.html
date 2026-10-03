@@ -14,11 +14,14 @@
 	<script>
 		(function () {
 			try {
-				var t = localStorage.getItem('sean537-theme');
-				if (t !== 'light' && t !== 'dark') {
-					t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-				}
-				document.documentElement.setAttribute('data-theme', t);
+				var mode = localStorage.getItem('sean537-theme');
+				if (mode !== 'light' && mode !== 'dark') mode = 'system';
+				var resolved = mode === 'system'
+					? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+					: mode;
+				var root = document.documentElement;
+				root.setAttribute('data-theme', resolved);
+				root.setAttribute('data-theme-mode', mode);
 			} catch (e) { }
 		}());
 	</script>
@@ -39,6 +42,7 @@
 			<nav class="nav-links" aria-label="主导航">
 				<a href="../">首页</a>
 				<a href="../#about">关于</a>
+                <a href="../#experience">经历</a>
 				<a href="../#projects">项目</a>
 				<a href="./" class="is-active">博客</a>
 				<a href="../#contact">联系</a>
@@ -50,6 +54,7 @@
 				<button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="切换深色模式">
 					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
 					<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+				<svg class="icon-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4Z" fill="currentColor" stroke="none"/></svg>
 				</button>
 				<button class="icon-btn nav-burger" type="button" data-menu-toggle aria-expanded="false" aria-label="打开菜单">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -57,11 +62,13 @@
 			</div>
 		</div>
 		<nav class="nav-menu" data-menu aria-label="移动端导航">
-			<a href="../"><span class="pixel">01</span>首页</a>
+			<a href="../#home"><span class="pixel">01</span>首页</a>
 			<a href="../#about"><span class="pixel">02</span>关于</a>
-			<a href="../#projects"><span class="pixel">03</span>项目</a>
-			<a href="./"><span class="pixel">04</span>博客</a>
-			<a href="../#contact"><span class="pixel">05</span>联系</a>
+			<a href="../#experience"><span class="pixel">03</span>经历</a>
+			<a href="../#projects"><span class="pixel">04</span>项目</a>
+			<a href="./"><span class="pixel">05</span>博客</a>
+			<a href="../#contact"><span class="pixel">06</span>联系</a>
+			<a href="../#friends"><span class="pixel">07</span>友情链接</a>
 			<p class="menu-footer">求知若饥，虚心若愚。</p>
 		</nav>
 	</header>
@@ -72,24 +79,33 @@
 			<div class="container">
 				<div class="section-head reveal">
 					<p class="section-kicker">Journal / 博客</p>
-					<h1>写下来，<br /><span class="accent">再走远一点。</span></h1>
+					<h1>写下来，JOURNAL /<span class="accent">再走远一点。</span></h1>
 					<p class="section-desc">项目、灵感与沿途的思考。这里不赶更新，只认真记录。</p>
+                    <!--
 					<div class="blog-count">
 						<strong class="pixel" data-article-count>--</strong>
 						<span>篇文章</span>
 					</div>
+                    -->
 				</div>
 			</div>
 		</section>
 
 		<section class="section" style="padding-top:24px">
 			<div class="container">
+				<article class="blog-intro" data-article-intro data-article-base="./" aria-live="polite" aria-busy="true" hidden></article>
+
 				<div class="blog-tools reveal">
-					<label class="search-box" for="article-search">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-						<input id="article-search" type="search" data-article-search placeholder="搜索标题、摘要或标签" autocomplete="off" />
-					</label>
-					<span class="mono" style="color:var(--text-3); font-size:13px">最新记录 ↓</span>
+					<div class="blog-tools-head">
+						<h2 class="section-title">全部文章<span class="pixel-tag">ARCHIVE</span></h2>
+					</div>
+					<div class="blog-tools-bar">
+						<label class="search-box" for="article-search">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+							<input id="article-search" type="search" data-article-search placeholder="搜索标题、摘要或标签" autocomplete="off" />
+						</label>
+						<span class="mono" style="color:var(--text-3); font-size:13px">最新记录 ↓</span>
+					</div>
 				</div>
 
 				<div class="article-feed" data-article-list data-article-base="./" aria-live="polite" aria-busy="true">
@@ -108,12 +124,13 @@
 				<a class="nav-brand" href="../"><span class="brand-mark" aria-hidden="true"><img src="../537logo.png" alt="" width="36" height="36" /></span><span>山地奥斯卡537</span></a>
 				<p>求知若饥，虚心若愚。<br />Stay hungry, stay foolish.</p>
 			</div>
-			<div class="footer-col">
+            <div class="footer-col">
 				<h4>导航</h4>
 				<ul>
 					<li><a href="../">首页</a></li>
 					<li><a href="../#about">关于我</a></li>
 					<li><a href="../#projects">项目</a></li>
+                    <li><a href="../#friends">友情链接</a></li>
 					<li><a href="../rss.xml">RSS 订阅</a></li>
 				</ul>
 			</div>
@@ -123,6 +140,7 @@
 					<li><a href="https://github.com/Sean537" target="_blank" rel="noopener noreferrer">GitHub</a></li>
 					<li><a href="https://space.bilibili.com/3493272892738031" target="_blank" rel="noopener noreferrer">Bilibili</a></li>
 					<li><a href="https://gitee.com/sean537" target="_blank" rel="noopener noreferrer">Gitee</a></li>
+					<li><a href="https://www.zhihu.com/people/537-98-1" target="_blank" rel="noopener noreferrer">知乎</a></li>
 				</ul>
 			</div>
 		</div>

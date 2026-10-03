@@ -11,11 +11,14 @@
 	<script>
 		(function () {
 			try {
-				var t = localStorage.getItem('sean537-theme');
-				if (t !== 'light' && t !== 'dark') {
-					t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-				}
-				document.documentElement.setAttribute('data-theme', t);
+				var mode = localStorage.getItem('sean537-theme');
+				if (mode !== 'light' && mode !== 'dark') mode = 'system';
+				var resolved = mode === 'system'
+					? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+					: mode;
+				var root = document.documentElement;
+				root.setAttribute('data-theme', resolved);
+				root.setAttribute('data-theme-mode', mode);
 			} catch (e) { }
 		}());
 	</script>
@@ -35,6 +38,7 @@
 			<nav class="nav-links" aria-label="主导航">
 				<a href="../../">首页</a>
 				<a href="../../#about">关于</a>
+                <a href="../../#experience">经历</a>
 				<a href="../../#projects">项目</a>
 				<a href="../" class="is-active">博客</a>
 				<a href="../../#contact">联系</a>
@@ -46,6 +50,7 @@
 				<button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="切换深色模式">
 					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
 					<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+				<svg class="icon-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4Z" fill="currentColor" stroke="none"/></svg>
 				</button>
 				<button class="icon-btn nav-burger" type="button" data-menu-toggle aria-expanded="false" aria-label="打开菜单">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -53,11 +58,13 @@
 			</div>
 		</div>
 		<nav class="nav-menu" data-menu aria-label="移动端导航">
-			<a href="../../"><span class="pixel">01</span>首页</a>
+			<a href="../../#home"><span class="pixel">01</span>首页</a>
 			<a href="../../#about"><span class="pixel">02</span>关于</a>
-			<a href="../../#projects"><span class="pixel">03</span>项目</a>
-			<a href="../"><span class="pixel">04</span>博客</a>
-			<a href="../../#contact"><span class="pixel">05</span>联系</a>
+			<a href="../../#experience"><span class="pixel">03</span>经历</a>
+			<a href="../../#projects"><span class="pixel">04</span>项目</a>
+			<a href="../"><span class="pixel">05</span>博客</a>
+			<a href="../../#contact"><span class="pixel">06</span>联系</a>
+			<a href="../../#friends"><span class="pixel">07</span>友情链接</a>
 			<p class="menu-footer">求知若饥，虚心若愚。</p>
 		</nav>
 	</header>
@@ -70,11 +77,16 @@
 				<span>文章正文</span>
 			</nav>
 
-			<div data-article-view="1" aria-live="polite" aria-busy="true">
-				<p class="article-feed-status">正在载入文章…</p>
+			<div class="article-layout">
+				<aside class="article-toc" data-article-toc hidden aria-label="文章目录"></aside>
+				<div class="article-main">
+					<div data-article-view="1" aria-live="polite" aria-busy="true">
+						<p class="article-feed-status">正在载入文章…</p>
+					</div>
+					<p class="pager-note" data-pager-note hidden></p>
+					<nav class="article-pager" data-article-pager data-article-base="../" aria-label="上下篇导航" hidden></nav>
+				</div>
 			</div>
-
-			<nav class="article-pager" data-article-pager data-article-base="../" aria-label="上下篇导航"></nav>
 		</div>
 	</main>
 
@@ -110,6 +122,10 @@
 
 	<script src="../../js/theme.js"></script>
 	<script src="../../js/main.js"></script>
+	<script src="../../js/code-highlight.js"></script>
+		<script src="../../js/share.js"></script>
+	<script src="../../js/comments-config.js"></script>
+	<script src="../../js/comments.js"></script>
 	<script src="../../js/articles.js"></script>
 	<script src="../../js/image-preview.js"></script>
 </body>

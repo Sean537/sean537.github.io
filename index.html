@@ -18,11 +18,14 @@
 	<script>
 		(function () {
 			try {
-				var t = localStorage.getItem('sean537-theme');
-				if (t !== 'light' && t !== 'dark') {
-					t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-				}
-				document.documentElement.setAttribute('data-theme', t);
+				var mode = localStorage.getItem('sean537-theme');
+				if (mode !== 'light' && mode !== 'dark') mode = 'system';
+				var resolved = mode === 'system'
+					? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+					: mode;
+				var root = document.documentElement;
+				root.setAttribute('data-theme', resolved);
+				root.setAttribute('data-theme-mode', mode);
 			} catch (e) { }
 		}());
 	</script>
@@ -48,7 +51,7 @@
 				<a href="#about">关于</a>
 				<a href="#experience">经历</a>
 				<a href="#projects">项目</a>
-				<a href="blogs/">博客</a>
+				<a href="./blogs/">博客</a>
 				<a href="#contact">联系</a>
 			</nav>
 			<div class="nav-actions">
@@ -58,9 +61,11 @@
 				<button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="切换深色模式">
 					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"/></svg>
 					<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+				<svg class="icon-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4Z" fill="currentColor" stroke="none"/></svg>
 				</button>
 				<button class="icon-btn nav-burger" type="button" data-menu-toggle aria-expanded="false" aria-label="打开菜单">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+					<svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+					<svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
 				</button>
 			</div>
 		</div>
@@ -71,6 +76,7 @@
 			<a href="#projects"><span class="pixel">04</span>项目</a>
 			<a href="blogs/"><span class="pixel">05</span>博客</a>
 			<a href="#contact"><span class="pixel">06</span>联系</a>
+			<a href="#friends"><span class="pixel">07</span>友情链接</a>
 			<p class="menu-footer">求知若饥，虚心若愚。</p>
 		</nav>
 	</header>
@@ -89,7 +95,7 @@
 			<div class="container hero-inner">
 				<div>
 					<p class="hero-kicker"><span class="dot" aria-hidden="true"></span>SEAN537 · HANGZHOU, CHINA</p>
-					<h1 class="hero-title">求知若饥，<br /><span class="accent">虚心若愚。</span></h1>
+					<h1 class="hero-title">求知若饥，<span class="accent">虚心若愚。</span></h1>
 					<p class="hero-sub">
 						你好，我是 <strong>山地奥斯卡537</strong>（Sean537），就读于杭州高级中学的学生开发者，
 						<strong>537工作室</strong> 创始人。专注前后端开发、网络安全、命令行工具与服务器运维，
@@ -106,7 +112,7 @@
 					<div class="hero-badges">
 						<span class="hero-badge">学生开发者</span>
 						<span class="hero-badge">537工作室 CEO</span>
-						<span class="hero-badge">MC 服务器服主</span>
+						<span class="hero-badge">MC 三国时代腐竹</span>
 					</div>
 				</div>
 				<div class="hero-visual">
@@ -120,13 +126,13 @@
 		</section>
 
 		<!-- 统计 -->
-		<section class="section" style="padding-top:0" aria-label="数据统计">
+		<section class="section" aria-label="数据统计">
 			<div class="container">
 				<div class="stats">
-					<div class="stat card reveal"><span class="stat-value" data-count="8">8</span><span class="stat-label">年开发经验</span></div>
+					<div class="stat card reveal"><span class="stat-value" data-count="9">9</span><span class="stat-label">年开发经验</span></div>
 					<div class="stat card reveal" style="--d:.08s"><span class="stat-value" data-count="13">13</span><span class="stat-label">GitHub 仓库</span></div>
 					<div class="stat card reveal" style="--d:.16s"><span class="stat-value" data-count="58">58</span><span class="stat-label">TC 项目 Stars</span></div>
-					<div class="stat card reveal" style="--d:.24s"><span class="stat-value" data-count="900">900+</span><span class="stat-label">全平台粉丝</span></div>
+					<div class="stat card reveal" style="--d:.24s"><span class="stat-value" data-count="1000">1000+</span><span class="stat-label">全平台粉丝</span></div>
 				</div>
 			</div>
 		</section>
@@ -142,15 +148,15 @@
 			<div class="about-grid">
 				<div class="card about-intro reveal">
 					<p>
-						你好，我是<strong>山地奥斯卡537</strong>（Sean537），一名来自<strong>浙江杭州</strong>的学生开发者，
-						目前在<strong>杭州高级中学</strong>读高一。网名里的「537」是我自己的代号，
-						也是我成立 <strong>537 工作室</strong>时沿用的名字。
+						你好，我是 <strong>山地奥斯卡537</strong>（Sean537），一名来自 <strong>浙江杭州</strong> 的学生开发者，
+						目前在 <strong>浙江省杭州高级中学</strong> 读高一。网名里的「537」是我自己的代号，
+						也是我成立 <strong>537 工作室</strong> 时沿用的名字。
 					</p>
 					<p>
-						我的日常大致由三部分组成：<strong>写代码</strong>、<strong>折腾硬件</strong>和<strong>折腾文字</strong>。
+						我的日常大致由三部分组成： <strong>写代码</strong> 、 <strong>折腾硬件</strong> 和 <strong>折腾文字</strong> 。
 						技术上我偏好 C/C++ 与前端技术，同时在自学网络安全、Linux 运维与 Qt；
-						手上的主要项目包括跨平台终端控制库 <strong>TC</strong>、几款 Windows 桌面小工具，
-						以及我运营的 Minecraft 服务器 <strong>MC 三国时代</strong>。
+						手上的主要项目包括跨平台终端控制库 <strong>TC</strong> 、几款 Windows 桌面小工具，
+						以及我运营的 Minecraft 服务器 <strong>MC 三国时代</strong> 。
 					</p>
 					<p>
 						我并不是天赋型选手，写过的很多代码都被我自己嫌弃过。但我享受把一个想法从零做成能跑起来的东西的过程——
@@ -162,12 +168,15 @@
 						也喜欢在 Minecraft 里盖房子、折腾服务器玩法。总的来说，我是个好奇心很重、愿意慢慢磨的人。
 					</p>
 					<p>
-						如果要用一句话概括我的态度，那就是——<strong>求知若饥，虚心若愚。</strong>
+						如果要用一句话概括我的态度，那就是—— <strong>求知若饥，虚心若愚。</strong> 
 						Stay hungry, stay foolish.
+					</p>
+					<p>
+						欢迎加入我的<strong><a href="https://qm.qq.com/q/VXF54Lg2YY"> iThink 交流群</a></strong>。
 					</p>
 					<div class="about-actions">
 						<a class="btn" href="https://github.com/Sean537" target="_blank" rel="noopener noreferrer">GitHub 主页</a>
-						<a class="btn btn-ghost" href="https://www.537studio.com" target="_blank" rel="noopener noreferrer">537工作室</a>
+						<a class="btn btn-ghost" href="https://qm.qq.com/q/VXF54Lg2YY" target="_blank" rel="noopener noreferrer">iThink 交流群</a>
 						<a class="btn btn-ghost" href="https://www.ithink537.top/MC_TKE_Page" target="_blank" rel="noopener noreferrer">MC 三国时代</a>
 					</div>
 				</div>
@@ -182,12 +191,12 @@
 						<div class="card skill-card reveal" style="--d:.18s">
 							<h3>技能树</h3>
 							<p class="sub">不断学习中的技术栈</p>
-							<div class="skill"><div class="skill-head"><span class="name">C / C++</span><span class="pct">85%</span></div><div class="skill-bar"><i style="--w:85%"></i></div></div>
+							<div class="skill"><div class="skill-head"><span class="name">C / C++</span><span class="pct">65%</span></div><div class="skill-bar"><i style="--w:65%"></i></div></div>
 							<div class="skill"><div class="skill-head"><span class="name">HTML / CSS / JS</span><span class="pct">75%</span></div><div class="skill-bar"><i style="--w:75%"></i></div></div>
 							<div class="skill"><div class="skill-head"><span class="name">命令行 / 服务器运维</span><span class="pct">70%</span></div><div class="skill-bar"><i style="--w:70%"></i></div></div>
 							<div class="skill"><div class="skill-head"><span class="name">Python</span><span class="pct">60%</span></div><div class="skill-bar"><i style="--w:60%"></i></div></div>
-							<div class="skill"><div class="skill-head"><span class="name">Qt</span><span class="pct">65%</span></div><div class="skill-bar"><i style="--w:65%"></i></div></div>
-							<div class="skill"><div class="skill-head"><span class="name">视频剪辑 / 摄影</span><span class="pct">75%</span></div><div class="skill-bar"><i style="--w:75%"></i></div></div>
+							<div class="skill"><div class="skill-head"><span class="name">Qt</span><span class="pct">35%</span></div><div class="skill-bar"><i style="--w:35%"></i></div></div>
+							<div class="skill"><div class="skill-head"><span class="name">视频剪辑 / 摄影</span><span class="pct">55%</span></div><div class="skill-bar"><i style="--w:55%"></i></div></div>
 							<div class="tool-tags">
 								<span>VS Code</span><span>Visual Studio</span><span>Vim</span><span>Git</span>
 								<span>Photoshop</span><span>Premiere</span><span>After Effects</span>
@@ -208,18 +217,6 @@
 					<p class="section-desc">从采荷一小到杭高，从第一行代码到 537 工作室。</p>
 				</div>
 				<div class="timeline">
-					<div class="timeline-item reveal">
-						<p class="timeline-date">2026.9 — 至今</p>
-						<div class="card timeline-body">
-							<div class="timeline-head">
-								<img class="timeline-logo" src="images/HangzhouHighSchool.jpg" alt="杭州高级中学校徽" loading="lazy" width="220" height="220" />
-								<div>
-									<h3>杭州高级中学 <span class="tag">高中</span></h3>
-									<p>新的起点，继续在学业与代码之间寻找平衡。</p>
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="timeline-item reveal" style="--d:.08s">
 						<p class="timeline-date">2023.5 — 至今</p>
 						<div class="card timeline-body">
@@ -228,6 +225,18 @@
 								<div>
 									<h3>537工作室 <span class="tag">CEO</span></h3>
 									<p>某不知名像素工作室，做软件、写代码、搞创作。由我发起并维护，官网 537studio.com。</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="timeline-item reveal">
+						<p class="timeline-date">2026.7 — 至今</p>
+						<div class="card timeline-body">
+							<div class="timeline-head">
+								<img class="timeline-logo" src="images/HangzhouHighSchool.jpg" alt="杭州高级中学校徽" loading="lazy" width="220" height="220" />
+								<div>
+									<h3>浙江省杭州高级中学 <span class="tag">高中</span></h3>
+									<p>新的起点，继续在学业与代码之间寻找平衡。</p>
 								</div>
 							</div>
 						</div>
@@ -320,10 +329,10 @@
 				</div>
 				<div class="works-grid">
 					<article class="card work-card reveal" data-work-cat="libraries">
-						<div class="work-media"><span class="work-pixel" aria-hidden="true">TC</span></div>
+						<div class="work-media"><span class="work-pixel" aria-hidden="true">TC.hpp</span></div>
 						<div class="work-body">
 							<span class="work-cat">库 / C++17</span>
-							<h3><a href="https://github.com/Sean537/TC" target="_blank" rel="noopener noreferrer">TC 终端控制库</a></h3>
+							<h3><a href="https://github.com/Sean537/TC" target="_blank" rel="noopener noreferrer">TC.hpp 终端控制库</a></h3>
 							<p>现代 C++17 跨平台终端控制库：纯头文件、零依赖，提供彩色输出、进度条、延时、终端控制与系统信息接口。GitHub 58+ Stars。</p>
 							<div class="work-links">
 								<a href="https://github.com/Sean537/TC" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
@@ -332,9 +341,9 @@
 						</div>
 					</article>
 					<article class="card work-card reveal" style="--d:.07s" data-work-cat="apps">
-						<div class="work-media"><span class="work-pixel" aria-hidden="true">TE</span></div>
+						<div class="work-media"><span class="work-pixel" aria-hidden="true">Text<br>Editor</span></div>
 						<div class="work-body">
-							<span class="work-cat">软件 / C++ · Win32</span>
+							<span class="work-cat">软件 / C++ - Win32</span>
 							<h3><a href="https://github.com/537Studio/537TextEditor" target="_blank" rel="noopener noreferrer">537文本编辑器</a></h3>
 							<p>537工作室首款 GUI 应用，以 C++ 与 Win32 构建。仓库公开早期 2.2（32 位）源代码，适合了解传统 Windows 桌面开发。</p>
 							<div class="work-links">
@@ -346,8 +355,8 @@
 					<article class="card work-card reveal" style="--d:.14s" data-work-cat="apps">
 						<div class="work-media"><img class="contain" src="images/works/537Clock_Introduction.PNG" alt="537Clock 控制台秒表界面" loading="lazy" width="669" height="720" /></div>
 						<div class="work-body">
-							<span class="work-cat">软件 / C++11 · Windows</span>
-							<h3><a href="https://github.com/Sean537/537Clock" target="_blank" rel="noopener noreferrer">537Clock</a></h3>
+							<span class="work-cat">软件 / C++11 - Windows</span>
+							<h3><a href="https://github.com/Sean537/537Clock" target="_blank" rel="noopener noreferrer">537秒表</a></h3>
 							<p>Windows 控制台秒表：显示日期、时间与 Unix 时间戳，支持计时清零、暂停面板和颜色调整，秉持「少即是多」的交互理念。</p>
 							<div class="work-links">
 								<a href="https://github.com/Sean537/537Clock" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
@@ -357,8 +366,8 @@
 					<article class="card work-card reveal" style="--d:.21s" data-work-cat="apps">
 						<div class="work-media"><img class="contain" src="images/works/537ToolboxLogo.png" alt="537Toolbox 项目徽标" loading="lazy" width="640" height="640" /></div>
 						<div class="work-body">
-							<span class="work-cat">软件 / Python · Windows</span>
-							<h3><a href="https://github.com/Sean537/537Toolbox" target="_blank" rel="noopener noreferrer">537Toolbox</a></h3>
+							<span class="work-cat">软件 / Python - Windows</span>
+							<h3><a href="https://github.com/Sean537/537Toolbox" target="_blank" rel="noopener noreferrer">537工具箱</a></h3>
 							<p>面向 Windows 7 及以上系统的小工具集，包含音频与工具模块，持续开发中。</p>
 							<div class="work-links">
 								<a href="https://github.com/Sean537/537Toolbox" target="_blank" rel="noopener noreferrer">GitHub<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
@@ -366,11 +375,14 @@
 						</div>
 					</article>
 					<article class="card work-card reveal" style="--d:.28s" data-work-cat="os">
-						<div class="work-media"><span class="work-pixel" aria-hidden="true">AQ</span></div>
+						<div class="work-media"><span class="work-pixel" aria-hidden="true">Aqua</span></div>
 						<div class="work-body">
 							<span class="work-cat">操作系统 / Debian</span>
 							<h3>Aqua Linux</h3>
 							<p>基于 Debian GNU/Linux 的桌面发行版构想，关注桌面体验与易用性。以开放协作方式推进，欢迎感兴趣的开发者参与。</p>
+							<div class="work-links">
+								<a href="https://qm.qq.com/q/Ozzpw6qH6g" target="_blank" rel="noopener noreferrer">加QQ群<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+							</div>
 						</div>
 					</article>
 					<article class="card work-card reveal" style="--d:.35s" data-work-cat="others">
@@ -447,6 +459,38 @@
 				</div>
 			</div>
 		</section>
+		<!-- 友情链接 -->
+		<section class="section" id="friends">
+			<div class="container">
+				<div class="section-head reveal">
+					<p class="section-kicker">Friends / 友情链接</p>
+					<h2 class="section-title">串门<span class="pixel-tag">LINKS</span></h2>
+					<p class="section-desc">常逛的地方与朋友们。</p>
+				</div>
+				<!--
+					新增友链：复制一个 <a class="friend-card"> 块即可，
+					首字母建议用 .pixel 保持像素风；新窗口打开请保留 rel="noopener noreferrer"。
+				-->
+				<div class="friend-grid reveal">
+					<a class="friend-card" href="https://rgzz666.top" target="_blank" rel="noopener noreferrer">
+						<span class="avatar" aria-hidden="true"><img src="./images/friends/rgzz666.jpg" alt="" width="46" height="46" loading="lazy" decoding="async" /></span>
+						<span class="body">
+							<span class="name">语痴博客</span>
+							<span class="desc">rgzz666的个人博客。</span>
+						</span>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+					</a>
+					<a class="friend-card" href="https://yz-mm.top" target="_blank" rel="noopener noreferrer">
+						<span class="avatar" aria-hidden="true"><img src="./images/friends/yzmm.jpg" alt="" width="46" height="46" loading="lazy" decoding="async" /></span>
+						<span class="body">
+							<span class="name">一只铭铭的个人主页</span>
+							<span class="desc">这个人很懒，什么都没留下~</span>
+						</span>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+					</a>
+				</div>
+			</div>
+		</section>
 	</main>
 
 	<!-- 页脚 -->
@@ -462,6 +506,7 @@
 					<li><a href="#about">关于我</a></li>
 					<li><a href="#projects">项目</a></li>
 					<li><a href="blogs/">博客</a></li>
+					<li><a href="#friends">友情链接</a></li>
 					<li><a href="rss.xml">RSS 订阅</a></li>
 				</ul>
 			</div>
@@ -471,6 +516,7 @@
 					<li><a href="https://github.com/Sean537" target="_blank" rel="noopener noreferrer">GitHub</a></li>
 					<li><a href="https://space.bilibili.com/3493272892738031" target="_blank" rel="noopener noreferrer">Bilibili</a></li>
 					<li><a href="https://gitee.com/sean537" target="_blank" rel="noopener noreferrer">Gitee</a></li>
+					<li><a href="https://www.zhihu.com/people/537-98-1" target="_blank" rel="noopener noreferrer">知乎</a></li>
 				</ul>
 			</div>
 		</div>

@@ -22,6 +22,7 @@
 			return;
 		}
 		burger.setAttribute('aria-expanded', String(open));
+		burger.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
 		menu.classList.toggle('is-open', open);
 		nav.classList.toggle('is-open', open);
 		document.body.style.overflow = open ? 'hidden' : '';

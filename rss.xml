@@ -6,7 +6,28 @@
 		<atom:link href="https://www.ithink537.top/rss.xml" rel="self" type="application/rss+xml" />
 		<description>山地奥斯卡537（Sean537）的个人主页与博客：项目记录、辞赋随笔与沿途思考。</description>
 		<language>zh-CN</language>
-		<lastBuildDate>2025-05-28T23:00:00Z</lastBuildDate>
+		<lastBuildDate>2026-02-13T15:00:00Z</lastBuildDate>
+		<item>
+			<title>【5分钟学一个新技能】Git：改变世界的协作革命</title>
+			<link>https://www.ithink537.top/blogs/5/</link>
+			<guid isPermaLink="true">https://www.ithink537.top/blogs/5/</guid>
+			<pubDate>Fri, 13 Feb 2026 23:00:00 +0800</pubDate>
+			<description>从版本管理的由来到分支、冲突与协作实战，五分钟建立对 Git 的完整认知。</description>
+		</item>
+		<item>
+			<title>来看看C++程序员的终端开发解决方案~</title>
+			<link>https://www.ithink537.top/blogs/4/</link>
+			<guid isPermaLink="true">https://www.ithink537.top/blogs/4/</guid>
+			<pubDate>Thu, 31 Jul 2025 23:00:00 +0800</pubDate>
+			<description>TC.hpp：跨平台、零依赖、纯头文件的 C++17 终端控制库，彩色输出、进度条、系统信息一站式。</description>
+		</item>
+		<item>
+			<title>C++入门——你的第一个Windows控制台应用程序</title>
+			<link>https://www.ithink537.top/blogs/3/</link>
+			<guid isPermaLink="true">https://www.ithink537.top/blogs/3/</guid>
+			<pubDate>Sat, 21 Jun 2025 23:00:00 +0800</pubDate>
+			<description>从头文件、主函数到输入输出，用 Dev-C++ 写出第一个 Windows 控制台程序。</description>
+		</item>
 		<item>
 			<title>乙巳四月十九淬刃未展翼赋</title>
 			<link>https://www.ithink537.top/blogs/2/</link>
