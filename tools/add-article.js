@@ -185,7 +185,7 @@ const template = [
 	body,
 	'\t\t\t</div>',
 	'\t\t\t<footer class="article-author">',
-	'\t\t\t\t<img src="/images/avatar.png" alt="山地奥斯卡537头像" loading="lazy" width="52" height="52" />',
+	'\t\t\t\t<img src="https://cdn.imgos.cn/vip/2025/05/27/6835cc6e1b3aa.png" alt="山地奥斯卡537头像" loading="lazy" width="52" height="52" />',
 	'\t\t\t\t<div><strong>山地奥斯卡537</strong><span>本文作者</span></div>',
 	'\t\t\t</footer>',
 	'\t\t\t<!-- 原始出处（data-source 为 http(s) 链接时才显示） -->',
