@@ -8,21 +8,28 @@
  *     "C++,入门,Windows" "从头文件到主函数，写下第一个 Windows 控制台程序。" \
  *     "blogs/3/C++入门——你的第一个Windows控制台应用程序.md" --column=cpp
  *
- * 选项：
+ /* 选项：
  *   --column=<key>   归入 js/articles.js 中定义的专栏（可选）
  *   --source=<url>   原始出处链接，例如首发在博客园（可选，文章页会显示「本文首发于 …」）
  *   --only-templates 只重建 blogs/articles.html 里的模板，不动文章页
+ *   --no-feeds       跳过 rss.xml / sitemap.xml 同步
  *
- * 工具会做三件事：
+ * 另有两个独立模式（不需要其它参数）：
+ *   node tools/add-article.js --sync-feeds   只按 blogs/articles.html 重建 rss.xml + sitemap.xml
+ *   node tools/add-article.js --list-columns  列出可用专栏
+ *
+ * 工具会做四件事：
  *   1. 复制 blogs/2/index.html 生成 blogs/<id>/index.html（改写 data-article-view）
  *   2. 把转换后的正文插入 blogs/articles.html 的模板区
- *   3. 提示你手动同步 rss.xml 与 sitemap.xml
+ *   3. 按模板区重建 rss.xml（新增 <item>，含全文与分类）和 sitemap.xml（新增 <url> 与 lastmod）
+ *   4. 打印生成结果与订阅地址
  */
 'use strict';
 
 const fs = require('fs');
 const path = require('path');
 const { convert } = require('./md2html.js');
+const { syncFeeds, buildColumnMap, SITE } = require('./feeds.js');
 
 const ROOT = path.resolve(__dirname, '..');
 
@@ -37,28 +44,27 @@ function writeText(file, text) {
 const args = process.argv.slice(2);
 
 /* 选项：--column=key 归入专栏，--source=url 标注首发出处，
-   --only-templates 只重建模板，--list-columns 列出可用专栏 */
+   --only-templates 只重建模板，--no-feeds 跳过订阅文件，--list-columns 列出可用专栏 */
 const flags = args.filter(a => a.startsWith('--'));
 const onlyTemplates = args.includes('--only-templates');
+const skipFeeds = args.includes('--no-feeds');
 const option = name => {
 	const hit = flags.find(a => a.startsWith('--' + name + '='));
 	return hit ? hit.slice(name.length + 3) : '';
 };
 
 /* 专栏定义在 js/articles.js 的 COLUMNS 中，这里直接读取以校验 key */
-const columns = (() => {
-	try {
-		const source = readText(path.join(ROOT, 'js', 'articles.js'));
-		const block = source.match(/var COLUMNS = \{([\s\S]*?)\n\t\};/);
-		if (!block) {
-			return [];
-		}
-		return Array.from(block[1].matchAll(/^\t\t'?([\w-]+)'?:\s*\{\s*title:\s*'([^']*)'/gm))
-			.map(m => ({ key: m[1], title: m[2] }));
-	} catch (error) {
-		return [];
-	}
-})();
+const columnMap = buildColumnMap(ROOT);
+const columns = Array.from(columnMap, ([key, title]) => ({ key, title }));
+
+/* 独立模式：只重建 rss.xml 与 sitemap.xml */
+if (args.includes('--sync-feeds')) {
+	const result = syncFeeds(ROOT, { verbose: true });
+	result.articles.forEach(article => {
+		console.log('  ' + article.date + '  ' + article.url + '  ' + article.title);
+	});
+	process.exit(0);
+}
 
 if (args.includes('--list-columns')) {
 	if (!columns.length) {
@@ -78,7 +84,7 @@ const sourceUrl = option('source').trim();
 const pinned = args.includes('--pinned');
 
 if (!id || !title || !date || !tags || !excerpt || !mdFile) {
-	console.error('用法: node tools/add-article.js <id> <标题> <YYYY-MM-DD> <标签> <摘要> <md 文件> [<专栏key>] [--column=key] [--source=url] [--only-templates]');
+	console.error('用法: node tools/add-article.js <id> <标题> <YYYY-MM-DD> <标签> <摘要> <md 文件> [<专栏key>] [--column=key] [--source=url] [--only-templates] [--no-feeds]');
 	console.error('可用专栏：' + (columns.length ? columns.map(c => c.key).join(' / ') : '（未解析到定义）') + '，用 --list-columns 查看详情');
 	process.exit(1);
 }
@@ -234,4 +240,13 @@ if (column) {
 	console.log('专栏归属    : 无（作为随笔发布，不显示翻页区）');
 }
 console.log('置顶        : ' + (pinned ? '是（博客首页「置顶文章」会收录）' : '否'));
-console.log('别忘了同步  : rss.xml 与 sitemap.xml 各加一条记录');
+
+/* ---------- 4. RSS / sitemap ---------- */
+
+if (skipFeeds) {
+	console.log('订阅文件    : 已按 --no-feeds 跳过，稍后可执行 node tools/add-article.js --sync-feeds');
+} else {
+	syncFeeds(ROOT, { verbose: true });
+	console.log('新文章已收录: rss.xml（<item> 含全文与分类）、sitemap.xml（<url> 含 lastmod）');
+	console.log('订阅地址    : ' + SITE + '/rss.xml');
+}

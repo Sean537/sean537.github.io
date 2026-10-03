@@ -64,7 +64,8 @@ php -S localhost:8000
 │   └── image-preview.js  # 图片灯箱预览
 ├── tools/
 │   ├── md2html.js        # Markdown → 文章正文 HTML 转换器（零依赖）
-│   └── add-article.js    # 新增文章一键工具（生成文章页 + 插入模板）
+│   ├── feeds.js          # 从 articles.html 生成 rss.xml + sitemap.xml（零依赖）
+│   └── add-article.js    # 新增文章一键工具（生成文章页 + 插入模板 + 同步订阅）
 ├── blogs/
 │   ├── index.html        # 博客列表页（含博客概览、专栏与文章索引）
 │   ├── articles.html     # 文章数据源（唯一入口，含新增文章说明）
@@ -76,7 +77,7 @@ php -S localhost:8000
 ├── images/               # 头像、项目图、服务器截图
 ├── fonts/Minecraft.woff  # Minecraft 像素字体（已子集化，仅含 ASCII）
 ├── software/             # 历史版本安装包
-├── rss.xml / sitemap.xml
+├── rss.xml / sitemap.xml # 由 tools/feeds.js 生成，请勿手工编辑
 └── CNAME                 # 自定义域名
 ```
 
@@ -110,11 +111,12 @@ node tools/add-article.js 3 "C++入门——你的第一个Windows控制台应�
 | `<md 文件>` | Markdown 源文 | 建议就放在 `blogs/<id>/` 里一起留档 |
 | `<专栏 key>` | 所属专栏（可选） | 留空即作为随笔发布；可写位置参数或 `--column=`，写错会报错 |
 
-命令会做三件事：
+命令会做四件事：
 
 1. 复制 `blogs/2/index.html` 生成 `blogs/<id>/index.html`（改写 `data-article-view`、`title`、`description`）；
 2. 调用 `tools/md2html.js` 把 Markdown 转成正文 HTML，插入 `blogs/articles.html` 的模板区；
-3. 提示你手动同步 `rss.xml` 与 `sitemap.xml`。
+3. 按模板区重建 `rss.xml`（新增一条 `<item>`，含分类、摘要与**全文** `content:encoded`）；
+4. 按模板区重建 `sitemap.xml`（新增一条 `<url>`，并刷新所有 `<lastmod>`）。
 
 其它用法：
 
@@ -128,6 +130,9 @@ node tools/md2html.js "blogs/5/xxx.md" > preview.html
 
 # 转换规则改动后，只重建模板、不动已生成的文章页（会替换同编号旧模板）
 node tools/add-article.js 3 "标题" 2025-06-21 "标签" "摘要" "blogs/3/xxx.md" cpp --only-templates
+
+# 手工改过 blogs/articles.html 的正文后，重新生成订阅文件（等价于 node tools/feeds.js）
+node tools/add-article.js --sync-feeds
 ```
 
 可选参数：
@@ -139,6 +144,8 @@ node tools/add-article.js 3 "标题" 2025-06-21 "标签" "摘要" "blogs/3/xxx.m
 | `--pinned` | 在模板上写 `data-pinned="1"`，该文会进入博客首页的「置顶文章」 |
 | `--source=<url>` | 原始出处链接（例如首发在博客园），文章页作者卡片下方显示「本文首发于 …」；必须是 `http(s)` 完整链接 |
 | `--only-templates` | 只重建 blogs/articles.html 里的模板，不生成文章页 |
+| `--no-feeds` | 跳过 rss.xml / sitemap.xml 同步（事后用 `--sync-feeds` 补） |
+| `--sync-feeds` | 独立模式：只按 blogs/articles.html 重建 rss.xml 与 sitemap.xml |
 | `--list-columns` | 列出当前所有可用专栏的 key 与标题 |
 
 > 专栏 key 写错时工具会直接报错并列出可用值 —— 因为写错的文章不会进入任何专栏，
@@ -172,7 +179,7 @@ node tools/add-article.js 3 "标题" 2025-06-21 "标签" "摘要" "blogs/3/xxx.m
 3. 需要归入专栏时再加 `data-column="<专栏 key>"`（可选，key 见文件顶部的专栏定义）；
 4. 新建 `blogs/3/index.html`（复制 `blogs/1/index.html` 即可），把 `data-article-view` 改为 `3`，并引入 `js/code-highlight.js`、`js/share.js`；
 5. 图片放入 `blogs/3/images/`，正文中以 `/blogs/3/images/…` 引用；
-6. 顺手在 `rss.xml` 与 `sitemap.xml` 中各加一条记录。
+6. 执行 `node tools/feeds.js`（或 `node tools/add-article.js --sync-feeds`）重新生成 `rss.xml` 与 `sitemap.xml`。
 
 模板属性一览：
 
@@ -210,8 +217,24 @@ node tools/add-article.js 3 "标题" 2025-06-21 "标签" "摘要" "blogs/3/xxx.m
 | 复制本文链接 | `js/share.js` | 文首（日期/作者同一行右侧）一个文字链接，文末一个带分享图标的按钮（位于作者信息之前、相对正文左右居中），点击均复制线上地址并就地提示「链接已复制」 |
 | 博客概览 | `blogs/articles.html` 的 `data-article-intro` 模板 | 渲染文章数 / 专栏数 / 正文总字数（中日韩按字、其余按单词计）、专栏卡片与置顶文章 |
 | 置顶文章 | `blogs/articles.html` + `js/articles.js` | 模板上 `data-pinned="1"` 的文章，最多 3 篇，按日期从新到旧；一篇未置顶时整段隐藏 |
+| RSS 订阅 | `rss.xml` + `tools/feeds.js` | 全文输出（`content:encoded`），每条带作者、分类（标签 + 所属专栏）与摘要；各页面 `<head>` 里有 `rel="alternate"` 自动发现，浏览器可直接订阅 |
+| 站点地图 | `sitemap.xml` + `tools/feeds.js` | 首页 / 博客页 / 每篇文章各一条 `<url>`，均带 `<lastmod>`（文章取自身日期，首页取最新文章日期） |
 
 文章数据源只写在 `blogs/articles.html` 一处：新增文章时正文用 `tools/add-article.js` 生成模板，专栏归属用 `data-column` 补一个属性即可，其余页面（首页预览、博客列表、文章页目录与翻页）都会自动跟上。
+
+### RSS 与站点地图怎么维护
+
+两个文件都由 `tools/feeds.js` 从 `blogs/articles.html` 生成，**不要手工编辑**（文件头有注释提醒）：
+
+```bash
+node tools/feeds.js                     # 单独重建两个文件
+node tools/add-article.js --sync-feeds  # 同上（add-article 的独立模式）
+node tools/add-article.js 6 "标题" 2026-03-01 "标签" "摘要" "blogs/6/x.md" --column=cpp
+#                                    ↑ 新增文章时自动调用，无需额外操作
+node tools/add-article.js 6 ... --no-feeds   # 这次先不生成订阅文件
+```
+
+手工改过 `blogs/articles.html` 的正文（而不是只加文章）之后，跑一次 `--sync-feeds` 即可让订阅里的全文跟着更新。频道固定信息（站点名、邮箱、Logo）写在 `tools/feeds.js` 顶部常量里。
 
 ### 为什么没有浏览量
 

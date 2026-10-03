@@ -1,47 +1,694 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<!-- 本文件由 tools/feeds.js 从 blogs/articles.html 自动生成，请勿手工编辑 -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 	<channel>
 		<title>山地奥斯卡537 - 求知若饥，虚心若愚。</title>
 		<link>https://www.ithink537.top/</link>
 		<atom:link href="https://www.ithink537.top/rss.xml" rel="self" type="application/rss+xml" />
-		<description>山地奥斯卡537（Sean537）的个人主页与博客：项目记录、辞赋随笔与沿途思考。</description>
+		<description><![CDATA[山地奥斯卡537（Sean537）的个人主页与博客：项目记录、辞赋随笔与沿途思考。]]></description>
 		<language>zh-CN</language>
-		<lastBuildDate>2026-02-13T15:00:00Z</lastBuildDate>
+		<managingEditor>wushaoquan666@outlook.com (山地奥斯卡537)</managingEditor>
+		<webMaster>wushaoquan666@outlook.com (山地奥斯卡537)</webMaster>
+		<copyright>© 2023-2026 山地奥斯卡537</copyright>
+		<lastBuildDate>Fri, 13 Feb 2026 23:00:00 +0800</lastBuildDate>
+		<generator>tools/feeds.js</generator>
+		<docs>https://www.rssboard.org/rss-specification</docs>
+		<ttl>1440</ttl>
+		<image>
+			<url>https://www.ithink537.top/537logo.png</url>
+			<title>山地奥斯卡537</title>
+			<link>https://www.ithink537.top/</link>
+		</image>
+		<category>专栏 · 工具与协作</category>
+		<category>专栏 · C++ 编程实践</category>
+		<category>随笔</category>
 		<item>
 			<title>【5分钟学一个新技能】Git：改变世界的协作革命</title>
 			<link>https://www.ithink537.top/blogs/5/</link>
 			<guid isPermaLink="true">https://www.ithink537.top/blogs/5/</guid>
+			<author>wushaoquan666@outlook.com (山地奥斯卡537)</author>
+			<dc:creator>山地奥斯卡537</dc:creator>
 			<pubDate>Fri, 13 Feb 2026 23:00:00 +0800</pubDate>
-			<description>从版本管理的由来到分支、冲突与协作实战，五分钟建立对 Git 的完整认知。</description>
+			<category>Git</category>
+			<category>协作</category>
+			<category>效率工具</category>
+			<category>专栏 · 工具与协作</category>
+			<description><![CDATA[从版本管理的由来到分支、冲突与协作实战，五分钟建立对 Git 的完整认知。]]></description>
+			<content:encoded><![CDATA[<p>刚学编程那阵子，我最怕两件事：一是代码写不出来，二是代码写出来却弄丢了。</p>
+				<p>辛辛苦苦改了一晚上代码，原本能跑，更新后如果出了问题就难以回滚亦或是修复，只能盯着空白发呆；</p>
+				<p>和别人一起开发项目，QQ互传压缩包，有时也不知道对方改了哪里，遇到报错更是头晕，只能对七八个版本傻眼——到底哪个能用？</p>
+				<p>调侃之余，有群友说：“你们该用版本管理。”</p>
+				<p>那是我第一次听说这个词。</p>
+				<h3>什么是版本管理？</h3>
+				<p>简单说，版本管理就是给你的代码“拍照片”。</p>
+				<p>想象一下你写文档。写完一稿，存成“报告v1.docx”。改了点，存成“报告v2.docx”。又改了点，存成“报告最终版.docx”。再改，变成“报告真的最终版.docx”。</p>
+				<p>这就是最原始的版本管理——<strong>手动命名，手动备份</strong>。问题很明显：版本多了就乱，想找回某个中间版本得一个个打开看。</p>
+				<p>专业的版本管理系统，就是帮你自动化这个过程的工具。它会：</p>
+				<ol><li>记录每次改动的内容</li><li>记录谁在什么时候改的</li><li>记录为什么要改</li><li>让你随时回到任意历史版本</li></ol>
+				<p>在Git出现前，已经有CVS、Subversion这样的版本控制工具。但它们都有个共同问题：必须连接中央服务器。这就像在图书馆借书——书只有一本，你得登记谁借走了，别人得等着。</p>
+				<h3>Linus的“十日革命”</h3>
+				<p>2005年，Linux内核开发团队就面临这样的困境。他们用的BitKeeper突然要收费，而现有的开源工具又满足不了需求。</p>
+				<p>Linux之父Linus Torvalds后来在采访中说：“当时的情况是，要么我们继续用不合适的工具，要么我自己造一个合适的。”他选择了后者。</p>
+				<p>4月3日，Linus开始写Git。他在设计文档里写了三个目标：</p>
+				<ol><li>速度要比其他工具快十倍</li><li>完全分布式，不需要中央服务器</li><li>能处理像Linux内核这样的大项目</li></ol>
+				<p>十天后，Git第一个版本发布。4月16日，Linus用Git管理Linux内核源码。4月20日，他宣布Git已经能自我托管——用Git来管理Git自己的代码。</p>
+				<p>早期的Git很难用。命令复杂，概念抽象。有开发者抱怨：“这玩意儿比Linux内核还难懂。”Linus的回复很直接：“不爽不要用。”</p>
+				<p>但Git有两个设计太超前了：</p>
+				<p>第一，分布式架构。每个人的电脑上都有完整的仓库历史，不需要联网也能提交代码。这就像每个人都有一本完整的图书馆目录，不需要去总馆查资料。</p>
+				<p>第二，分支管理。分支是同时控制不同版本代码的绝佳工具。例如，你希望在稳定版代码的基础上加点新功能，就可以基于主分支创建新分支，在新分支上随意更改，这让“尝试性开发”成为可能——想到什么点子，开个分支试试，不行就删掉。</p>
+				<h3>GitHub：让Git飞入寻常百姓家</h3>
+				<p>Git很强，但直到2008年，它主要还是极客在用。直到三个年轻人创立了GitHub。</p>
+				<p>GitHub做了件简单但革命性的事：给Git套了个网页界面。</p>
+				<p>突然之间，事情变得直观了。代码仓库变成网页，提交历史变成时间轴，分支合并变成可视化操作。更重要的是，他们创造了<strong>Pull Request（PR，拉取请求）</strong>。这是GitHub最伟大的创新。你不再需要邮件发送补丁，而是：</p>
+				<ol><li>Fork（复制）别人的仓库</li><li>在自己的副本上修改</li><li>发起Pull Request，请求原作者合并你的修改</li><li>在PR中进行代码审查、讨论</li></ol>
+				<p>这种模式极大地降低了开源贡献的门槛。2015年，微软将.NET框架开源并放到GitHub上时，社区震惊了。这个曾经视开源为敌的公司，现在主动拥抱开源。</p>
+				<p>我清楚地记得第一次在GitHub上提交PR的场景。那是个朋友的开源小项目，我发现文档内容有误。点了“Fork”按钮，把项目复制到我的账户。修改，提交，然后发起PR。项目维护者看到了，点了个“Merge”。两分钟后，我的修改成了项目的一部分。</p>
+				<p>那种感觉很难形容——好像突然之间，我也能为那些遥不可及的大项目做贡献了。</p>
+				<p>GitHub火了。到2012年，它已经有超过200万个仓库。Ruby on Rails、jQuery、Node.js这些知名项目都搬了上去。微软也把.NET框架开源放到了GitHub，这在以前是不可想象的。</p>
+				<p>GitHub的成功引来了竞争者。2011年，GitLab诞生。它的卖点是“可以自己部署”。企业可以把GitLab装在自己的服务器上，代码不出内网。除了代码托管，它还集成了：</p>
+				<ul><li><strong>CI/CD流水线</strong>：自动测试、构建、部署</li><li><strong>问题追踪</strong>：bug报告、功能请求</li><li><strong>Wiki</strong>：项目文档</li><li><strong>代码质量分析</strong>：自动化代码检查</li></ul>
+				<p>中国这边，2013年出现了Gitee（码云）。起初很多人觉得“是山寨GitHub”，但后来发现了它的价值：国内访问快，符合中国法规，还有中文界面。</p>
+				<h3>不只是代码</h3>
+				<p>Git的影响远远超出了编程世界。</p>
+				<ul><li><strong>学术研究</strong>：学者用Git管理论文草稿，每次修改都有记录</li><li><strong>法律文件</strong>：律师事务所用类似Git的系统管理合同版本</li><li><strong>图书出版</strong>：出版社用Git协调作者、编辑、校对的工作</li><li><strong>政府文档</strong>：有些政府部门用Git追踪政策文件的修订</li></ul>
+				<h3>实际怎么用？</h3>
+				<h4>第一步：初始化与配置</h4>
+				<p>先安装Git，安装步骤略。</p>
+				<hr />
+				<p>开始前，先告诉Git你是谁：</p>
+				<pre data-lang="bash"><code class="language-bash">git config --global user.name ”你的名字“
+git config --global user.email ”你的邮箱“</code></pre>
+				<p>这很重要，因为Git的所有提交都会记录作者信息。</p>
+				<hr />
+				<p>创建一个新仓库：</p>
+				<pre data-lang="bash"><code class="language-bash">mkdir my-project # 新建一个名为“my-project”的文件夹
+cd my-project # 进入该文件夹
+git init # Git仓库初始化</code></pre>
+				<p>执行<code>git init</code>后，当前目录会出现一个隐藏的.git文件夹。这就是Git的“大脑”，里面存储着所有的版本信息、配置和索引。</p>
+				<p>或者，你也可以直接下载云端仓库：</p>
+				<pre data-lang="bash"><code class="language-bash">git clone https://github.com/username/repo.git # 此处链接为你仓库的实际在线链接，clone就是“克隆”的意思，会把仓库下载到当前目录下
+cd repo # 进入仓库文件夹，文件夹名称为仓库名</code></pre>
+				<hr />
+				<p>查看仓库状态：</p>
+				<pre data-lang="bash"><code class="language-bash">git status</code></pre>
+				<p>这是你最常用的命令之一。它会告诉你：</p>
+				<ul><li>哪些文件被修改了但还没暂存（红色）</li><li>哪些文件已经暂存等待提交（绿色）</li><li>是否有未跟踪的新文件</li></ul>
+				<hr />
+				<h4>第二步：基础工作流</h4>
+				<p>假设你写了一个简单的Python脚本：</p>
+				<pre data-lang="python"><code class="language-python"># hello.py
+print(”Hello, World!“)</code></pre>
+				<p>把文件添加到暂存区：</p>
+				<pre data-lang="bash"><code class="language-bash">git add hello.py # add后为你的实际文件名</code></pre>
+				<p>或者添加所有修改：</p>
+				<pre data-lang="bash"><code class="language-bash">git add . # .表示所有文件</code></pre>
+				<p>暂存区（Staging Area）是Git的精妙设计。它就像购物车——你可以把多个改动放进去，最后一次性结账。这让你可以精心组织每次提交的内容。</p>
+				<hr />
+				<p>正式提交：</p>
+				<pre data-lang="bash"><code class="language-bash">git commit -m ”添加hello.py脚本“</code></pre>
+				<p>每次提交都应该有一个清晰的描述。好的提交信息应该像新闻标题：简明扼要地说明做了什么。比如：</p>
+				<ul><li>❌ 错误：”修复bug“、”更新代码“</li><li>✅ 正确：”修复用户登录时的空指针异常“、”添加用户头像上传功能“</li></ul>
+				<blockquote><p>目前业界公认度最高的提交信息标准是 <strong>Conventional Commits（约定式提交）</strong>。它最初源于 Angular 团队的规范，现在已成为许多开源项目（如 Vue、React、Babel 等）和大型团队的通用标准。</p>
+				<h4>1. 核心格式</h4>
+				<p>遵循<code>&lt;type&gt;(&lt;scope&gt;): &lt;description&gt;</code>的结构，例如：</p>
+				<ul><li><code>feat(auth): add OAuth2 login flow</code></li><li><code>fix(ui): correct button alignment on dashboard</code></li></ul>
+				<h4>2. 关键规则</h4>
+				<ul><li><strong>类型 (Type)</strong>：必须使用特定关键词，如 feat（新功能）、fix（修复）、docs（文档）、style（格式）、refactor（重构）、test（测试）、chore（构建/工具）等。</li><li><strong>时态</strong>：使用<strong>现在时</strong>（如 ”add“ 而非 ”added“），且首字母<strong>不大写</strong>。</li><li><strong>长度</strong>：标题行建议不超过 50 字符，正文行建议不超过 72 字符。</li><li><strong>空行</strong>：标题与正文之间必须有一个空行。</li></ul>
+				<h4>3. 为什么用这个标准？</h4>
+				<ul><li><strong>自动化工具</strong>：能自动生成 CHANGELOG（更新日志）。</li><li><strong>语义化版本</strong>：能根据 feat 和 fix 自动决定版本号升级（如 1.0.0 → 1.1.0）。</li><li><strong>可读性</strong>：让代码历史像一本清晰的说明书，便于团队协作。</li></ul></blockquote>
+				<hr />
+				<p>查看提交历史：</p>
+				<pre data-lang="bash"><code class="language-bash">git log</code></pre>
+				<p>默认显示完整的提交信息。如果想要简洁视图：</p>
+				<pre data-lang="bash"><code class="language-bash">git log --oneline --graph --all</code></pre>
+				<p>这会显示一个可视化的分支图，特别适合查看复杂的分支结构。</p>
+				<hr />
+				<h4>第三步：撤销与回滚</h4>
+				<p>写代码难免犯错，Git提供了多种“后悔药”。</p>
+				<p><strong>场景1：还没暂存就发现写错了</strong></p>
+				<pre data-lang="bash"><code class="language-bash"># 放弃某个文件的修改
+git checkout -- hello.py
+
+# 放弃所有修改（危险！请确认你真的不需要这些修改）
+git checkout -- .</code></pre>
+				<p><strong>场景2：已经暂存但想撤销</strong></p>
+				<pre data-lang="bash"><code class="language-bash"># 把文件从暂存区移出，但保留修改
+git reset HEAD hello.py
+
+# 然后可以用checkout放弃修改
+git checkout -- hello.py</code></pre>
+				<p><strong>场景3：已经提交但想撤销</strong></p>
+				<pre data-lang="bash"><code class="language-bash"># 查看提交历史，找到要回退的版本
+git log --oneline
+
+# 假设我们看到：
+# a1b2c3d 添加新功能
+# e4f5g6h 修复bug
+# i7j8k9l 初始提交
+
+# 回到修复bug的那个版本
+git reset --hard e4f5g6h</code></pre>
+				<p>--hard参数会彻底丢弃之后的提交，慎用！如果你只是想撤销某个提交但保留更改：</p>
+				<pre data-lang="bash"><code class="language-bash">git revert e4f5g6h</code></pre>
+				<p>这会创建一个新的提交来撤销指定提交的修改，更安全。</p>
+				<hr />
+				<h4>第四步：分支管理</h4>
+				<p>分支是Git最强大的功能之一。它让你可以：</p>
+				<ul><li>同时开发多个功能</li><li>安全地实验新想法</li><li>隔离bug修复和功能开发</li></ul>
+				<hr />
+				<p>创建并切换到新分支：</p>
+				<pre data-lang="bash"><code class="language-bash">git checkout -b new-feature</code></pre>
+				<p>这等价于：</p>
+				<pre data-lang="bash"><code class="language-bash">git branch new-feature    # 创建分支
+git checkout new-feature  # 切换分支</code></pre>
+				<hr />
+				<p>在新分支上开发完成后，切换回主分支并合并：</p>
+				<pre data-lang="bash"><code class="language-bash">git checkout main
+git merge new-feature</code></pre>
+				<p>如果合并顺利，Git会执行“快进合并”（Fast-forward）。如果有冲突，Git会提示你解决。</p>
+				<hr />
+				<p>删除已合并的分支：</p>
+				<pre data-lang="bash"><code class="language-bash">git branch -d new-feature</code></pre>
+				<hr />
+				<p>强制删除未合并的分支：</p>
+				<pre data-lang="bash"><code class="language-bash">git branch -D experimental</code></pre>
+				<hr />
+				<p>查看所有分支：</p>
+				<pre data-lang="bash"><code class="language-bash">git branch     # 本地分支
+git branch -r  # 远程分支
+git branch -a  # 所有分支</code></pre>
+				<hr />
+				<h4>第五步：远程协作</h4>
+				<p>本地Git再强大，也需要与团队协作。这就是远程仓库的用武之地。</p>
+				<hr />
+				<p>添加远程仓库：</p>
+				<pre data-lang="bash"><code class="language-bash">git remote add origin https://github.com/username/repo.git</code></pre>
+				<p>origin是远程仓库的默认别名，你可以用其他名字。</p>
+				<hr />
+				<p>查看远程仓库：</p>
+				<pre data-lang="bash"><code class="language-bash">git remote -v</code></pre>
+				<hr />
+				<p>推送本地提交到远程：</p>
+				<pre data-lang="bash"><code class="language-bash">git push origin main</code></pre>
+				<p>第一次推送时可能需要指定上游分支：</p>
+				<pre data-lang="bash"><code class="language-bash">git push -u origin main</code></pre>
+				<p>-u参数设置上游关联，之后可以直接用git push</p>
+				<hr />
+				<p>拉取远程更新：</p>
+				<pre data-lang="bash"><code class="language-bash">git pull origin main</code></pre>
+				<p>这等价于：</p>
+				<pre data-lang="bash"><code class="language-bash">git fetch origin   # 下载远程更新
+git merge origin/main  # 合并到当前分支</code></pre>
+				<p>有时候你只想查看远程有什么更新，而不想立即合并：</p>
+				<pre data-lang="bash"><code class="language-bash">git fetch origin
+git log origin/main --oneline  # 查看远程分支的提交</code></pre>
+				<hr />
+				<h4>第六步：处理冲突</h4>
+				<p>冲突是团队协作的必经之路。当两个人修改了同一文件的同一区域时，Git无法自动合并，需要人工解决。</p>
+				<p>发生冲突时，Git会在文件中标记冲突：</p>
+				<pre data-lang="python"><code class="language-python">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+print(”Hello from Alice!“)
+=======
+print(”Hello from Bob!“)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-branch</code></pre>
+				<p>你需要：</p>
+				<ol><li>编辑文件，选择保留哪部分（或都保留）</li><li>删除冲突标记（<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>、<code>=======</code>、<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>）</li><li>添加解决后的文件：git add filename</li><li>完成合并：git commit</li></ol>
+				<p>查看合并状态：</p>
+				<pre data-lang="bash"><code class="language-bash">git merge --abort  # 取消合并，回到合并前状态
+git status         # 查看当前冲突文件</code></pre>
+				<hr />
+				<h4>第七步：高级技巧</h4>
+				<h5>储藏更改（Stashing）：</h5>
+				<p>当你需要切换分支但当前工作还没完成时：</p>
+				<pre data-lang="bash"><code class="language-bash">git stash          # 储藏当前修改
+git stash list     # 查看储藏列表
+git stash pop      # 应用最新的储藏并删除
+git stash apply    # 应用储藏但不删除</code></pre>
+				<h5>查看差异：</h5>
+				<pre data-lang="bash"><code class="language-bash">git diff                    # 工作区与暂存区的差异
+git diff --staged          # 暂存区与最新提交的差异
+git diff commit1 commit2   # 两个提交之间的差异</code></pre>
+				<h5>重写历史（谨慎使用！）：</h5>
+				<h6>修改最后一次提交：</h6>
+				<pre data-lang="bash"><code class="language-bash">git commit --amend</code></pre>
+				<h6>交互式变基（修改多个提交）：</h6>
+				<pre data-lang="bash"><code class="language-bash">git rebase -i HEAD~3  # 修改最近3个提交</code></pre>
+				<h5>子模块（Submodules）：</h5>
+				<p>用于在项目中包含其他Git仓库：</p>
+				<pre data-lang="bash"><code class="language-bash">git submodule add https://github.com/other/repo.git
+git submodule update --init --recursive</code></pre>
+				<h4>实际工作流示例</h4>
+				<p>让我分享一个真实的工作流。假设我们要开发一个新功能：</p>
+				<ol><li><strong>从最新代码开始</strong></li></ol>
+				<pre data-lang="bash"><code class="language-bash">git checkout main
+git pull origin main</code></pre>
+				<ol start="2"><li><strong>创建功能分支</strong></li></ol>
+				<pre data-lang="bash"><code class="language-bash">git checkout -b feature/user-profile   </code></pre>
+				<ol start="3"><li><strong>开发、测试、提交</strong></li></ol>
+				<pre data-lang="bash"><code class="language-bash"># 多次小提交，而不是一次大提交
+git add user/profile.py
+git commit -m ”添加用户基本信息模型“
+
+git add user/views.py
+git commit -m ”实现个人资料页面“
+
+git add tests/test_profile.py
+git commit -m ”添加个人资料功能测试“   </code></pre>
+				<ol start="4"><li><strong>推送到远程</strong></li></ol>
+				<pre data-lang="bash"><code class="language-bash">git push -u origin feature/user-profile    </code></pre>
+				<ol start="5"><li><p><strong>创建Pull Request</strong></p>
+				<ul><li>在GitHub/GitLab上发起PR</li><li>同事审查代码，提出建议</li><li>根据反馈修改，再次推送</li><li>通过CI/CD流水线的自动化测试</li><li>合并到主分支</li></ul></li><li><strong>清理分支</strong></li></ol>
+				<pre data-lang="bash"><code class="language-bash">git checkout main
+git pull origin main
+git branch -d feature/user-profile </code></pre>
+				<h3>改变了什么？</h3>
+				<p>Git和它的衍生平台改变了三件事：</p>
+				<p>第一，降低了协作门槛。以前贡献开源项目要发邮件、下源码包、打补丁。现在点个Fork，改完提交PR就行。这让开源从“精英游戏”变成了“全民运动”。</p>
+				<p>第二，让工作流标准化。无论你在哪个公司，用的都是相似的Git工作流。新人入职，半天就能上手代码管理流程。</p>
+				<p>第三，创造了新的职业。DevOps工程师、平台开发，这些岗位很大程度上是因为Git生态出现的。</p>
+				<p>但最深层的改变，是思维方式的转变。</p>
+				<p>我现在写代码时的心态完全不同了。知道有Git托底，就敢尝试激进的重构。知道分支是安全的，就敢同时开展多个实验性功能。知道每次提交都有记录，写commit message时会更认真。</p>
+				<h3>尾声</h3>
+				<p>有时候我会想，如果2005年Linus没被逼到必须自己写工具，今天的世界会怎样？</p>
+				<p>可能我们还在用QQ传代码压缩包。可能开源不会这么繁荣。可能远程协作还是噩梦。</p>
+				<p>但历史没有如果。一个脾气暴躁的程序员，花了十天时间解决自己的问题，顺便解决了全世界程序员的问题。</p>
+				<p>这就是技术的魅力——最好的工具往往诞生于具体的困境，却解决了普遍的需求。</p>
+				<p>现在每次我开始新项目，都会习惯性地<code>git init</code>。这个简单的动作，连接着从个人备份到全球协作的整个历史。</p>
+				<p>而每次<code>git commit</code>时，我知道自己不仅是在保存代码。我是在参与一场持续了将近二十年的革命——一场让创造变得更有序、更协作、更持久的革命。</p>]]></content:encoded>
 		</item>
 		<item>
 			<title>来看看C++程序员的终端开发解决方案~</title>
 			<link>https://www.ithink537.top/blogs/4/</link>
 			<guid isPermaLink="true">https://www.ithink537.top/blogs/4/</guid>
+			<author>wushaoquan666@outlook.com (山地奥斯卡537)</author>
+			<dc:creator>山地奥斯卡537</dc:creator>
 			<pubDate>Thu, 31 Jul 2025 23:00:00 +0800</pubDate>
-			<description>TC.hpp：跨平台、零依赖、纯头文件的 C++17 终端控制库，彩色输出、进度条、系统信息一站式。</description>
+			<category>C++</category>
+			<category>终端</category>
+			<category>开发工具</category>
+			<category>TC</category>
+			<category>专栏 · C++ 编程实践</category>
+			<description><![CDATA[TC.hpp：跨平台、零依赖、纯头文件的 C++17 终端控制库，彩色输出、进度条、系统信息一站式。]]></description>
+			<content:encoded><![CDATA[<blockquote><p>前几天熬夜写库，追求极简语法、快速上手、丰富功能、跨平台支持，下面，请看~</p>
+				<p><a href="https://gitee.com/sean537/TC" target="_blank" rel="noopener noreferrer">https://gitee.com/sean537/TC</a> <a href="https://github.com/Sean537/TC" target="_blank" rel="noopener noreferrer">https://github.com/Sean537/TC</a></p></blockquote>
+				<h2>TC.hpp - ✨ 跨平台终端控制头文件库</h2>
+				<blockquote><p>🚀 一个现代化的 C++17 终端控制库，旨在用最简单的语法解决开发过程中会遇到的各种问题。目前功能包括终端彩色输出、延时、进度条、基础控制、系统信息检测、获取时间等，跨平台、零依赖、纯头文件！</p></blockquote>
+				<hr />
+				<h3>✨ 主要特性</h3>
+				<ul><li>🖥️ 跨平台：Windows/类Unix终端自动适配</li><li>🎨 丰富色彩：支持前景色、背景色、RGB、字体样式</li><li>💡 现代C++17，纯头文件，零依赖</li><li>⏱️ 延时与打字机特效</li><li>📊 进度条、链式API、终端尺寸/光标控制</li><li>🧩 代码风格简洁，易于集成</li></ul>
+				<hr />
+				<h3>🚀 快速上手</h3>
+				<h4>1. 引入头文件</h4>
+				<pre data-lang="cpp"><code class="language-cpp">#include &quot;tc.hpp&quot;</code></pre>
+				<h4>2. 主要用法示例</h4>
+				<pre data-lang="cpp"><code class="language-cpp">#include &quot;tc.hpp&quot;
+
+int main() {
+    // 🌈 颜色与样式
+    tc::tout &lt;&lt; TCOLOR_GREEN &lt;&lt; &quot;Hello world!&quot; &lt;&lt; TCOLOR_RESET &lt;&lt; std::endl;
+    tc::tout &lt;&lt; TFONT_BOLD &lt;&lt; &quot;粗体文本&quot; &lt;&lt; TFONT_RESET &lt;&lt; std::endl;
+    tc::tout &lt;&lt; TCOLOR_RGB(255,0,0) &lt;&lt; &quot;RGB红&quot; &lt;&lt; TCOLOR_RESET &lt;&lt; std::endl;
+    std::cout &lt;&lt; tc::red(&quot;红色文本&quot;) &lt;&lt; std::endl;
+
+    // ⏱️ 延时输出
+    tc::tout &lt;&lt; &quot;Wait...&quot; &lt;&lt; std::endl;
+    tc::tsleep(1000);
+    tc::tout &lt;&lt; &quot;Done!&quot; &lt;&lt; std::endl;
+
+    // 🖨️ Python风格打印
+    tc::print(&quot;Hello &quot;, &quot;world!\n&quot;);
+    tc::println(&quot;年龄: &quot;, 25, &quot;, 分数: &quot;, 95.5);
+    tc::println(TCOLOR_RED, &quot;红色文本&quot;);
+    tc::println(TCOLOR_GREEN, BCOLOR_YELLOW, &quot;绿色文字，黄色背景&quot;);
+    tc::println(TCOLOR_BLUE, BCOLOR_WHITE, TFONT_BOLD, &quot;蓝色粗体，白色背景&quot;);
+
+    // 🖋️ Printer链式API
+    tc::printer()
+        .clear()    // 清屏
+        .moveCursor(10,5)
+        .print(&quot;移动光标到(10,5)&quot;)
+        .hideCursor()   // 隐藏光标
+        .moveCursor(tc::Printer::Direction::Down, 2) // 相对移动（向下2行）
+        .println(&quot;在(10,7)&quot;)
+        .println() // 换行
+        .showCursor();  // 显示光标
+
+    // 📏 终端尺寸
+    auto size = tc::printer().getSize();
+    tc::println(&quot;终端大小: &quot;, size.first, &quot;x&quot;, size.second);
+
+    // ⏳ 进度条
+    tc::ProgressBar bar(30, &quot;█&quot;, &quot;░&quot;, TCOLOR_GREEN);
+    for (int i = 0; i &lt;= 100; ++i) {
+        bar.show(i / 100.0, &quot;处理中...&quot;);
+        tc::wait(0.02);
+    }
+    bar.finish();
+
+    // 🖥️ 执行系统命令
+    tc::systemConsole(&quot;echo TC systemConsole test&quot;);
+
+    // 🕒 获取系统时间
+    int year = tc::getSystemTime(SYS_YEAR);
+    int month = tc::getSystemTime(SYS_MONTH);
+    int day = tc::getSystemTime(SYS_DAY);
+    int hour = tc::getSystemTime(SYS_HOUR);
+    int minute = tc::getSystemTime(SYS_MINUTE);
+    int second = tc::getSystemTime(SYS_SECOND);
+    int timestamp = tc::getSystemTime(); // 默认Unix时间戳
+    tc::println(&quot;当前时间: &quot;, year, &quot;-&quot;, month, &quot;-&quot;, day, &quot; &quot;, hour, &quot;:&quot;, minute, &quot;:&quot;, second, &quot; (Unix: &quot;, timestamp, &quot;)&quot;);
+
+    // 🛡️ 检查系统环境
+    int os = tc::systemCheck();
+    const char* osName = tc::getOSName(os);
+    std::string osVersionInfo = tc::getOSVersionInfo();
+
+    tc::println(&quot;当前系统: &quot;, osName);
+    tc::println(&quot;系统版本: &quot;, osVersionInfo);
+
+    return 0;
+}</code></pre>
+				<hr />
+				<h3>🧩 主要API与宏</h3>
+				<h4>🎨 颜色与样式</h4>
+				<h5>全局颜色宏（直接用）</h5>
+				<pre data-lang="cpp"><code class="language-cpp">// 前景色
+TCOLOR_RED, TCOLOR_GREEN, TCOLOR_YELLOW, TCOLOR_BLUE, TCOLOR_MAGENTA, TCOLOR_CYAN, TCOLOR_WHITE, TCOLOR_RESET
+// 背景色
+BCOLOR_RED, BCOLOR_GREEN, BCOLOR_YELLOW, BCOLOR_BLUE, BCOLOR_MAGENTA, BCOLOR_CYAN, BCOLOR_WHITE, BCOLOR_DEFAULT
+// 字体样式
+TFONT_BOLD, TFONT_FAINT, TFONT_ITALIC, TFONT_UNDERLINE, TFONT_BLINK_SLOW, TFONT_BLINK_FAST, TFONT_REVERSE, TFONT_CONCEAL, TFONT_CROSSED, TFONT_DEFAULT, TFONT_FRAKTUR, TFONT_DOUBLE_UNDERLINE, TFONT_NORMAL, TFONT_NOT_ITALIC, TFONT_NO_UNDERLINE, TFONT_NO_BLINK, TFONT_NO_REVERSE, TFONT_REVEAL, TFONT_NOT_CROSSED, TFONT_THICK, TFONT_RESET
+// RGB
+TCOLOR_RGB(r, g, b)</code></pre>
+				<h5>颜色控制类（ColorController）</h5>
+				<pre data-lang="cpp"><code class="language-cpp">// 设置颜色
+tc::ColorController::setColor(tc::ColorController::Color::RED);
+std::cout &lt;&lt; &quot;红色文本&quot; &lt;&lt; std::endl;
+
+// 设置RGB颜色
+tc::ColorController::setRGBColor(255, 128, 0);
+std::cout &lt;&lt; &quot;橙色文本&quot; &lt;&lt; std::endl;
+
+// 设置粗体
+tc::ColorController::setBold(true);
+std::cout &lt;&lt; &quot;粗体文本&quot; &lt;&lt; std::endl;
+
+// 重置颜色
+tc::ColorController::setColor(tc::ColorController::Color::RESET);</code></pre>
+				<h5>便捷颜色函数</h5>
+				<blockquote><p>⚠ 注意：便捷颜色函数本质上是在字符串头尾添加 ANSI 转义序列，最好不要在输出上滥用，并且部分终端不支持 ANSI 转移序列。想要做文本带颜色输出，推荐移步其它方法。</p></blockquote>
+				<pre data-lang="cpp"><code class="language-cpp">// 基本颜色函数
+std::string coloredText = tc::colorize(&quot;彩色文本&quot;, tc::ColorController::Color::CYAN);
+std::cout &lt;&lt; coloredText &lt;&lt; std::endl;
+
+// RGB颜色函数
+std::string rgbText = tc::colorizeRGB(&quot;RGB颜色文本&quot;, 255, 128, 0);
+std::cout &lt;&lt; rgbText &lt;&lt; std::endl;
+
+// 标准颜色函数
+std::cout &lt;&lt; tc::red(&quot;红色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::green(&quot;绿色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::blue(&quot;蓝色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::yellow(&quot;黄色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::cyan(&quot;青色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::magenta(&quot;洋红色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::white(&quot;白色文本&quot;) &lt;&lt; std::endl;
+
+// 亮色函数
+std::cout &lt;&lt; tc::brightRed(&quot;亮红色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::brightGreen(&quot;亮绿色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::brightBlue(&quot;亮蓝色文本&quot;) &lt;&lt; std::endl;
+std::cout &lt;&lt; tc::brightYellow(&quot;亮黄色文本&quot;) &lt;&lt; std::endl;</code></pre>
+				<h4>字体样式宏（TFONT_XXX）</h4>
+				<div class="table-wrap"><table><thead><tr><th scope="col">宏名</th><th scope="col">效果</th><th scope="col">兼容性说明</th></tr></thead><tbody><tr><td>TFONT_FAINT</td><td>微弱/淡色</td><td>Windows完全支持，其他终端部分支持</td></tr><tr><td>TFONT_ITALIC</td><td>斜体</td><td>Windows完全支持，其他终端部分支持</td></tr><tr><td>TFONT_UNDERLINE</td><td>下划线</td><td>所有平台完全支持</td></tr><tr><td>TFONT_BLINK_SLOW</td><td>慢速闪烁</td><td>Windows完全支持，其他终端部分支持</td></tr><tr><td>TFONT_BLINK_FAST</td><td>快速闪烁</td><td>Windows完全支持，其他终端很少支持</td></tr><tr><td>TFONT_REVERSE</td><td>反色</td><td>所有平台完全支持</td></tr><tr><td>TFONT_CONCEAL</td><td>隐藏</td><td>Windows完全支持，其他终端很少支持</td></tr><tr><td>TFONT_CROSSED</td><td>删除线</td><td>Windows完全支持，其他终端部分支持</td></tr><tr><td>TFONT_DEFAULT</td><td>默认字体</td><td>Windows完全支持，其他终端很少支持</td></tr><tr><td>TFONT_FRAKTUR</td><td>Fraktur字体</td><td>Windows完全支持，其他终端极少支持</td></tr><tr><td>TFONT_DOUBLE_UNDERLINE</td><td>双下划线/粗体关闭</td><td>Windows完全支持，其他终端部分支持</td></tr><tr><td>TFONT_NORMAL</td><td>粗体/淡色关闭</td><td>所有平台完全支持</td></tr><tr><td>TFONT_NOT_ITALIC</td><td>关闭斜体/Fraktur</td><td>Windows完全支持，其他终端部分支持</td></tr><tr><td>TFONT_NO_UNDERLINE</td><td>关闭下划线</td><td>所有平台完全支持</td></tr><tr><td>TFONT_NO_BLINK</td><td>关闭闪烁</td><td>Windows完全支持，其他终端很少支持</td></tr><tr><td>TFONT_NO_REVERSE</td><td>关闭反色</td><td>所有平台完全支持</td></tr><tr><td>TFONT_REVEAL</td><td>关闭隐藏</td><td>Windows完全支持，其他终端很少支持</td></tr><tr><td>TFONT_NOT_CROSSED</td><td>关闭删除线</td><td>Windows完全支持，其他终端部分支持</td></tr><tr><td>TFONT_THICK</td><td>粗体（别名）</td><td>同TFONT_BOLD</td></tr><tr><td>TFONT_RESET</td><td>全部重置</td><td>所有平台完全支持</td></tr></tbody></table></div>
+				<blockquote><p>⚠️ <strong>兼容性说明</strong>：</p>
+				<ul><li>TC.hpp 在 Windows 平台上使用 Windows Console API（Win32 API）实现终端控制功能，而不使用 ANSI 转义序列，因此所有字体样式在 Windows 平台上都能完全支持，不受终端对 ANSI 转义序列支持程度的限制。</li><li>Linux/macOS 下使用 ANSI 转义序列实现，主流终端（如 GNOME Terminal、iTerm2、Konsole、Alacritty 等）大多支持常用样式（粗体、下划线、反色、部分斜体/删除线）。</li><li>TFONT_FRAKTUR、TFONT_DEFAULT、TFONT_DOUBLE_UNDERLINE 等为扩展/实验性样式，在非 Windows 平台上支持度较低。</li></ul></blockquote>
+				<p>用法示例：<code>tc::println(TCOLOR_RED, BCOLOR_YELLOW, TFONT_BOLD, &quot;红字黄底粗体&quot;)</code></p>
+				<h4>🖥️ 终端控制</h4>
+				<h5>tc::terminal命名空间</h5>
+				<pre data-lang="cpp"><code class="language-cpp">// 清空屏幕
+tc::terminal::clear();
+
+// 移动光标到指定位置
+tc::terminal::moveCursor(10, 5);
+std::cout &lt;&lt; &quot;这是位置(10,5)&quot; &lt;&lt; std::endl;
+
+// 获取终端大小
+auto [width, height] = tc::terminal::getSize();
+std::cout &lt;&lt; &quot;终端大小: &quot; &lt;&lt; width &lt;&lt; &quot;x&quot; &lt;&lt; height &lt;&lt; std::endl;</code></pre>
+				<h5>tc::Printer链式类</h5>
+				<pre data-lang="cpp"><code class="language-cpp">// 创建Printer对象并执行一系列操作
+tc::printer()
+    .clear()                                  // 清屏
+    .hideCursor()                             // 隐藏光标
+    .moveCursor(10, 5)                        // 移动到绝对位置
+    .println(&quot;这是位置(10,5)&quot;)                 // 打印并换行
+    .moveCursor(tc::Printer::Direction::Down, 2) // 相对移动（向下2行）
+    .println(&quot;向下移动了2行&quot;)
+    .moveCursor(1, 10)                        // 移动到第10行开头
+    .print(&quot;在第10行: &quot;)                       // 打印不换行
+    .print(&quot;继续在同一行打印&quot;)
+    .println()                                // 换行
+    .showCursor();                            // 显示光标</code></pre>
+				<h4>🔤 输出与打印</h4>
+				<ul><li><code>tc::tout</code>：流式输出（支持颜色/样式/延时）</li><li><code>tc::print(...)</code> / <code>tc::println(...)</code>：多参数打印，支持颜色/样式宏</li></ul>
+				<h4>⏱️ 延时与等待</h4>
+				<ul><li><code>tc::tsleep(ms)</code> / <code>tc::tsleep_stream &lt;&lt; ms</code></li><li><code>tc::wait(seconds)</code></li><li><code>tc::waitKey()</code></li></ul>
+				<h4>📊 进度条</h4>
+				<ul><li><code>tc::ProgressBar bar(width, doneChar, todoChar, color)</code></li><li><code>bar.show(progress, msg)</code></li><li><code>bar.finish()</code></li></ul>
+				<h4>🖥️ 系统相关API</h4>
+				<ul><li><code>tc::getSystemTime(int type = SYS_TIMESTAMP)</code>：获取当前时间（年、月、日、时、分、秒、Unix时间戳）</li><li><code>tc::systemConsole(const char* 或 std::string)</code>：执行系统命令</li><li><code>tc::systemConsoleW(const wchar_t*)</code>：执行系统命令（宽字符版本，仅Windows平台可用，支持Unicode命令）</li><li><code>tc::systemCheck()</code>：检测当前操作系统，返回操作系统代码</li><li><code>tc::getOSName(int osCode)</code>：根据操作系统代码返回操作系统名称</li><li><code>tc::getOSVersionInfo()</code>：获取当前操作系统的详细版本信息</li></ul>
+				<h5>支持的系统宏</h5>
+				<div class="table-wrap"><table><thead><tr><th scope="col">类别</th><th scope="col">宏名</th><th scope="col">说明</th></tr></thead><tbody><tr><td></td><td>OS_WINDOWSNT6</td><td>Windows 7/8/8.1 (NT 6.x)</td></tr><tr><td></td><td>OS_WINDOWSNT10</td><td>Windows 10 (NT 10.0)</td></tr><tr><td></td><td>OS_WINDOWSNT11</td><td>Windows 11 (NT 10.0 build 22000+)</td></tr><tr><td><strong>Linux发行版</strong></td><td>OS_LINUX</td><td>通用Linux标识</td></tr><tr><td></td><td>OS_UBUNTU</td><td>Ubuntu Linux</td></tr><tr><td></td><td>OS_DEBIAN</td><td>Debian Linux</td></tr><tr><td></td><td>OS_FEDORA</td><td>Fedora Linux</td></tr><tr><td></td><td>OS_CENTOS</td><td>CentOS Linux</td></tr><tr><td></td><td>OS_REDHAT</td><td>Red Hat Enterprise Linux</td></tr><tr><td></td><td>OS_SUSE</td><td>SUSE/openSUSE Linux</td></tr><tr><td></td><td>OS_ARCH</td><td>Arch Linux</td></tr><tr><td></td><td>OS_GENTOO</td><td>Gentoo Linux</td></tr><tr><td></td><td>OS_SLACKWARE</td><td>Slackware Linux</td></tr><tr><td></td><td>OS_ANDROID</td><td>Android (基于Linux)</td></tr><tr><td></td><td>OS_KALI</td><td>Kali Linux</td></tr><tr><td></td><td>OS_MINT</td><td>Linux Mint</td></tr><tr><td></td><td>OS_MANJARO</td><td>Manjaro Linux</td></tr><tr><td></td><td>OS_ALPINE</td><td>Alpine Linux</td></tr><tr><td></td><td>OS_RASPBIAN</td><td>Raspbian</td></tr><tr><td></td><td>OS_DEEPIN</td><td>Deepin Linux</td></tr><tr><td></td><td>OS_ELEMENTARY</td><td>Elementary OS</td></tr><tr><td></td><td>OS_ZORIN</td><td>Zorin OS</td></tr><tr><td></td><td>OS_POPOS</td><td>Pop!_OS</td></tr><tr><td></td><td>OS_CHROMEOS</td><td>Chrome OS/Chromium OS</td></tr><tr><td><strong>Apple操作系统</strong></td><td>OS_MACOS</td><td>通用macOS标识</td></tr><tr><td></td><td>OS_MACOS_HIGHSIERRA</td><td>macOS 10.13 High Sierra (2017)</td></tr><tr><td></td><td>OS_MACOS_MOJAVE</td><td>macOS 10.14 Mojave (2018)</td></tr><tr><td></td><td>OS_MACOS_CATALINA</td><td>macOS 10.15 Catalina (2019)</td></tr><tr><td></td><td>OS_MACOS_BIGSUR</td><td>macOS 11 Big Sur (2020)</td></tr><tr><td></td><td>OS_MACOS_MONTEREY</td><td>macOS 12 Monterey (2021)</td></tr><tr><td></td><td>OS_MACOS_VENTURA</td><td>macOS 13 Ventura (2022)</td></tr><tr><td></td><td>OS_MACOS_SONOMA</td><td>macOS 14 Sonoma (2023)</td></tr><tr><td></td><td>OS_MACOS_SEQUOIA</td><td>macOS 15 Sequoia (2024)</td></tr><tr><td></td><td>OS_MACOS_TAHOE</td><td>macOS 26 Tahoe (2025)</td></tr><tr><td><strong>其他Apple操作系统</strong></td><td>OS_IOS</td><td>iOS (iPhone/iPod touch)</td></tr><tr><td></td><td>OS_IPADOS</td><td>iPadOS (iPad)</td></tr><tr><td></td><td>OS_WATCHOS</td><td>watchOS (Apple Watch)</td></tr><tr><td></td><td>OS_TVOS</td><td>tvOS (Apple TV)</td></tr><tr><td></td><td>OS_VISIONOS</td><td>visionOS (Apple Vision Pro)</td></tr><tr><td></td><td>OS_BRIDGEOS</td><td>bridgeOS (Apple T2芯片)</td></tr><tr><td></td><td>OS_AUDIOOS</td><td>audioOS (HomePod)</td></tr><tr><td><strong>BSD系列</strong></td><td>OS_BSD</td><td>通用BSD标识</td></tr><tr><td></td><td>OS_FREEBSD</td><td>FreeBSD</td></tr><tr><td><strong>Unix系列</strong></td><td>OS_UNIX</td><td>通用Unix标识</td></tr><tr><td><strong>新兴操作系统</strong></td><td>OS_FUCHSIA</td><td>Google Fuchsia</td></tr><tr><td></td><td>OS_HARMONYOS</td><td>Harmony OS</td></tr><tr><td><strong>其它操作系统</strong></td><td>OS_REACTOS</td><td>ReactOS</td></tr><tr><td><strong>未知操作系统</strong></td><td>OS_UNKNOWN</td><td>无法识别的操作系统</td></tr></tbody></table></div>
+				<h5>用法示例</h5>
+				<pre data-lang="cpp"><code class="language-cpp">// 获取系统信息
+int osCode = tc::systemCheck();
+const char* osName = tc::getOSName(osCode);
+std::string osVersionInfo = tc::getOSVersionInfo();
+
+// 显示系统信息
+tc::println(&quot;操作系统: &quot;, osName);
+tc::println(&quot;系统版本: &quot;, osVersionInfo);
+
+// 根据系统类型执行不同操作
+switch (osCode) {
+    case OS_WINDOWSNT11:
+        tc::println(&quot;Windows 11系统特定操作&quot;);
+        break;
+    case OS_UBUNTU:
+        tc::println(&quot;Ubuntu系统特定操作&quot;);
+        break;
+    case OS_MACOS:
+        tc::println(&quot;macOS系统特定操作&quot;);
+        break;
+    // ... 其他系统 ...
+    default:
+        tc::println(&quot;未知系统操作&quot;);
+}</code></pre>
+				<h4>⏱️ 获取系统时间</h4>
+				<div class="table-wrap"><table><thead><tr><th scope="col">宏名</th><th scope="col">说明</th></tr></thead><tbody><tr><td>SYS_MONTH</td><td>月</td></tr><tr><td>SYS_DAY</td><td>日</td></tr><tr><td>SYS_HOUR</td><td>时</td></tr><tr><td>SYS_MINUTE</td><td>分</td></tr><tr><td>SYS_SECOND</td><td>秒</td></tr><tr><td>SYS_TIMESTAMP</td><td>Unix时间戳（默认）</td></tr></tbody></table></div>
+				<pre data-lang="cpp"><code class="language-cpp">int year = tc::getSystemTime(SYS_YEAR);
+int timestamp = tc::getSystemTime(); // Unix时间戳</code></pre>
+				<h4>⌨️ 按键处理</h4>
+				<h5>waitKey - 等待按键</h5>
+				<ul><li><code>tc::waitKey()</code>：等待任意按键</li><li><code>tc::waitKey(char key)</code> / <code>tc::waitKey(int key)</code>：等待特定按键（如 tc::waitKey('A')、tc::waitKey(KEY_ESC)）</li></ul>
+				<pre data-lang="cpp"><code class="language-cpp">tc::waitKey(); // 等待任意键
+// 等待按下A键
+tc::waitKey('A');
+// 等待ESC键
+tc::waitKey(KEY_ESC);</code></pre>
+				<h5>isKeyPressed - 检测按键状态</h5>
+				<ul><li><code>tc::isKeyPressed(char key)</code> / <code>tc::isKeyPressed(int key)</code>：检测指定按键是否被按下</li></ul>
+				<pre data-lang="cpp"><code class="language-cpp">// 检测ESC键是否被按下
+if (tc::isKeyPressed(KEY_ESC)) {
+    std::cout &lt;&lt; &quot;ESC键被按下&quot; &lt;&lt; std::endl;
+}
+
+// 检测方向键
+if (tc::isKeyPressed(KEY_UP)) {
+    std::cout &lt;&lt; &quot;上方向键被按下&quot; &lt;&lt; std::endl;
+}
+
+// 检测字母键
+if (tc::isKeyPressed('A') || tc::isKeyPressed('a')) {
+    std::cout &lt;&lt; &quot;A键被按下&quot; &lt;&lt; std::endl;
+}</code></pre>
+				<h5>常用特殊按键宏</h5>
+				<div class="table-wrap"><table><thead><tr><th scope="col">宏名</th><th scope="col">说明</th></tr></thead><tbody><tr><td>KEY_SPACE</td><td>空格</td></tr><tr><td>KEY_ENTER</td><td>回车</td></tr><tr><td>KEY_TAB</td><td>Tab</td></tr><tr><td>KEY_BACKSPACE</td><td>退格</td></tr><tr><td>KEY_INSERT</td><td>Insert</td></tr><tr><td>KEY_DELETE</td><td>Delete</td></tr><tr><td>KEY_HOME</td><td>Home</td></tr><tr><td>KEY_END</td><td>End</td></tr><tr><td>KEY_PAGEUP</td><td>PageUp</td></tr><tr><td>KEY_PAGEDOWN</td><td>PageDown</td></tr><tr><td>KEY_UP</td><td>上方向键</td></tr><tr><td>KEY_DOWN</td><td>下方向键</td></tr><tr><td>KEY_LEFT</td><td>左方向键</td></tr><tr><td>KEY_RIGHT</td><td>右方向键</td></tr><tr><td>KEY_F1 ~ KEY_F12</td><td>F1~F12 功能键</td></tr></tbody></table></div>
+				<hr />
+				<h3>🛠️ 编译</h3>
+				<ul><li>Windows: <code>g++ -std=c++17 test.cpp -o test.exe</code></li><li>Linux/macOS: <code>g++ -std=c++17 -pthread test.cpp -o test</code></li></ul>
+				<hr />
+				<h3>📄 协议</h3>
+				<p>MIT</p>
+				<hr />
+				<h3>🌐 联系</h3>
+				<ul><li>📥 电子邮件：<a href="mailto:wushaoquan666@outlook.com">wushaoquan666@outlook.com</a></li></ul>]]></content:encoded>
 		</item>
 		<item>
 			<title>C++入门——你的第一个Windows控制台应用程序</title>
 			<link>https://www.ithink537.top/blogs/3/</link>
 			<guid isPermaLink="true">https://www.ithink537.top/blogs/3/</guid>
+			<author>wushaoquan666@outlook.com (山地奥斯卡537)</author>
+			<dc:creator>山地奥斯卡537</dc:creator>
 			<pubDate>Sat, 21 Jun 2025 23:00:00 +0800</pubDate>
-			<description>从头文件、主函数到输入输出，用 Dev-C++ 写出第一个 Windows 控制台程序。</description>
+			<category>C++</category>
+			<category>入门</category>
+			<category>Windows</category>
+			<category>专栏 · C++ 编程实践</category>
+			<description><![CDATA[从头文件、主函数到输入输出，用 Dev-C++ 写出第一个 Windows 控制台程序。]]></description>
+			<content:encoded><![CDATA[<blockquote><p>首先声明：我使用的是Dev-C++ IDE 5.11。这款软件属于IDE（集成开发环境），即自动配置了编辑器、编译器等，不需要输入传统的命令即可进行编译等操作。个人认为它比Visual Studio要简洁易用得多，不过只能编写C/C++的程序。</p></blockquote>
+				<h2>头文件</h2>
+				<p>在C++程序中，头文件是基础组成部分。头文件声明了我们要使用的各种函数。</p>
+				<p>系统头文件使用尖括号<code>&lt;&gt;</code>，本地头文件使用双引号<code>&quot;&quot;</code>。可以通过以下方式导入：</p>
+				<pre data-lang="cpp"><code class="language-cpp">#include &lt;iostream&gt;    //已在环境变量中配置好，可以直接使用
+#include &quot;test.h&quot;    //需要头文件的具体路径，支持绝对路径和相对路径</code></pre>
+				<p>其中<code>iostream</code>是标准输入输出库，提供<code>cin</code>和<code>cout</code>功能。除此之外，还有许多库。</p>
+				<h3>C语言头文件</h3>
+				<ul><li>后缀为<code>.h</code>（如windows.h）</li><li>可被C/C++使用</li></ul>
+				<blockquote><p>内容仅包含函数、常量声明等。如：</p>
+				<pre data-lang="c"><code class="language-c">//test.h
+#ifndef _TEST_H_    //避免重复包含
+#define _TEST_H_
+#endif
+
+#include &lt;string&gt;
+#define APP_NAME &quot;YourAppName&quot;    //定义软件名称
+void functionName();    //声明函数（不包含定义）</code></pre></blockquote>
+				<h3>C++头文件</h3>
+				<ul><li>无后缀（如iostream）或<code>.hpp</code>后缀</li><li>仅C++可用</li></ul>
+				<blockquote><p>内容即包含函数声明又包含函数定义，还支持更多C++特性，例如模板、命名空间等。如：</p>
+				<pre data-lang="cpp"><code class="language-cpp">// Example.hpp  
+#pragma once  //避免重复包含（也可以使用#ifndef）
+
+#include &lt;string&gt;  
+
+class Example {  
+    public:  
+        void print(const std::string&amp; message);  
+    private:  
+        int count;  
+};  
+
+// 内联函数实现  
+inline void Example::print(const std::string&amp; message) {  
+    std::cout &lt;&lt; message &lt;&lt; std::endl;  
+}</code></pre></blockquote>
+				<h3>命名空间</h3>
+				<p>接下来是这段代码：</p>
+				<pre data-lang="cpp"><code class="language-cpp">using namespace std;</code></pre>
+				<p>这段代码声明要使用<code>std</code>这一命名空间，可写可不写，我用输出代码来举例： 写了：<code>cout&lt;&lt;a;</code> 不写：<code>std::cout&lt;&lt;a;</code></p>
+				<p>命名空间的作用就是避免函数标识符冲突，如输出用的<code>cout</code>实际就被包含在<code>std</code>这个命名空间里，保证不会与其它同名函数冲突。</p>
+				<p>在面对大项目时，函数重名是常有的事，此时就建议不写<code>using namespace</code>，而是直接显式指定命名空间，如完整地写<code>std::cout</code>。不过在写小项目时，为了<del>偷懒</del>（方便）我们也可以写上这一大行的命名空间使用声明。</p>
+				<blockquote><p>命名空间的创建往往在C++头文件中，这么写：</p>
+				<pre data-lang="cpp"><code class="language-cpp">namespace YourNameSpaceName {    //声明并定义命名空间
+   int yourVariable;    //变量
+    void yourFunction() {    //函数
+        // 代码实现
+    }
+}</code></pre></blockquote>
+				<h2>主函数</h2>
+				<p>主函数是程序入口，格式为：</p>
+				<pre data-lang="cpp"><code class="language-cpp">int main(int argc, char* argv[]) {
+    //这部分就是代码区域
+
+    return 0;
+}</code></pre>
+				<p>所有C++程序都需要有主函数，即<code>int main()</code>。</p>
+				<p>可以看到主函数的括号当中还有<code>int argc</code>和<code>char* argv[]</code>，这是程序启动时的参数，也可以空着。第一个<code>int</code>类型的变量是一个整数，表示程序启动时的参数数量。第二个<code>char</code>类型的指代一个字符数组，即各个参数内容。</p>
+				<p>命令行示例：</p>
+				<pre data-lang="bash"><code class="language-bash">程序文件名 参数一 参数二</code></pre>
+				<p>此时<code>argc=3</code>，因为有3个参数，其中第一个参数<code>argv[0]</code>是你的程序文件名，<code>argv[1]</code>是参数一，参数二同理。</p>
+				<p>很多命令行程序通过启动参数，来完成任务，极大地方便了命令行用户的操作，例如：</p>
+				<pre data-lang="bash"><code class="language-bash">cp test.txt ./test/target.txt</code></pre>
+				<p><code>cp</code>是类Unix系统里的复制程序，命令功能是将<code>test.txt</code>复制到<code>./test/target.txt</code>的位置。我们在开发时可以通过用户提供的参数让程序进行对应操作。</p>
+				<blockquote><p>如果你要写Win32程序，那么恭喜你，你的主函数长这样：</p>
+				<pre data-lang="cpp"><code class="language-cpp">int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);</code></pre>
+				<p>个人评价是巨硬挺抽象的（</p></blockquote>
+				<p><code>return 0;</code>表示程序正常退出。控制台程序通常要明确终止点。</p>
+				<hr />
+				<p>这就是刚刚所编的所有代码。</p>
+				<figure class="article-figure"><img src="https://img2024.cnblogs.com/blog/3664555/202506/3664555-20250621192701386-1503041939.png" alt="image" loading="lazy" /></figure>
+				<p>这就是运行结果，是空的。下方的“---”、“Process exited……”和“请按任意键继续”不用管它，这是集成开发环境加上的，实际单独运行就不会显示。</p>
+				<figure class="article-figure"><img src="https://img2024.cnblogs.com/blog/3664555/202506/3664555-20250621192714200-1841601289.png" alt="image" loading="lazy" /></figure>
+				<h2>输入输出</h2>
+				<p>在C++中，可以使用<code>cin</code>和<code>cout</code>实现基本的输入输出功能。<code>cin</code>用于接收用户输入，<code>cout</code>用于输出结果。同时，C风格的<code>scanf</code>和<code>printf</code>也可用于类似功能。</p>
+				<h3>数据类型的选择</h3>
+				<p>C++提供了多种数据类型用于存储不同类型的数据。常见的数据类型包括：</p>
+				<ul><li>int：存储整数</li><li>char：存储单个字符</li><li>string：存储字符串</li><li>float：存储单精度浮点数</li><li>double：存储双精度浮点数</li></ul>
+				<p>选择合适的数据类型是程序设计的关键步骤。若数据类型与输入内容不匹配，可能导致意外结果。例如，若程序预期输入整数但用户输入字符，输出的可能是字符的ASCII值而非预期数值。</p>
+				<h3>示例</h3>
+				<pre data-lang="cpp"><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a;    //声明变量
+    cin&gt;&gt;a; //输入
+    cout&lt;&lt;a; //输出
+    return 0;
+}</code></pre>
+				<p>该程序中，变量<code>a</code>为<code>int</code>类型，仅能存储整数。若用户输入浮点数如<code>1.1</code>，程序仅会存储整数部分<code>1</code>。</p>
+				<figure class="article-figure"><img src="https://img2024.cnblogs.com/blog/3664555/202506/3664555-20250621192747667-1000520503.png" alt="image" loading="lazy" /></figure>
+				<p>当然，在声明时也可以赋值：<code>int a=0;</code>这样它的初始值就是0。这时候我们删去输入的部分，就会输出0。 int类型还有一个特点，它是32位的，其中内存中的第一位是正负位（0表示正数，1表示负数），所以它的数据范围是2的正负31次方（<code>-2147483648 ~ 2147483647</code>）的整数，所以在任何时候都不要超出或小于这个范围，超出或小于，编程术语为“溢出”，可能引发程序错误，在早期不够成熟的应用程序中都容易发生这种情况。</p>
+				<figure class="article-figure article-figure-small"><img src="https://img2024.cnblogs.com/blog/3664555/202506/3664555-20250621192806510-1548289029.png" alt="溢出的int类型变量" loading="lazy" /></figure>
+				<p>下面是专门接收字符的：</p>
+				<pre data-lang="cpp"><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    char n[10001]={};
+    cin&gt;&gt;n;
+    cout&lt;&lt;n[0]&lt;&lt;&quot; &quot;&lt;&lt;n[1];
+    return 0;
+}</code></pre>
+				<p>字符数组声明时需指定大小，通常为最大字符数加1。初始化时建议使用<code>= {}</code>以清空该内存区域。输出字符数组时需通过下标访问，下标从0开始。例如<code>n[0]</code>表示第一个字符，<code>n[1]</code>表示第二个字符。</p>]]></content:encoded>
 		</item>
 		<item>
 			<title>乙巳四月十九淬刃未展翼赋</title>
 			<link>https://www.ithink537.top/blogs/2/</link>
 			<guid isPermaLink="true">https://www.ithink537.top/blogs/2/</guid>
+			<author>wushaoquan666@outlook.com (山地奥斯卡537)</author>
+			<dc:creator>山地奥斯卡537</dc:creator>
 			<pubDate>Tue, 27 May 2025 23:00:00 +0800</pubDate>
-			<description>以古典辞赋写一段热情、挫折与自我勉励。霜刃未磨，仍愿守住心里的锋芒。</description>
+			<category>辞赋</category>
+			<category>随笔</category>
+			<description><![CDATA[以古典辞赋写一段热情、挫折与自我勉励。霜刃未磨，仍愿守住心里的锋芒。]]></description>
+			<content:encoded><![CDATA[<p>霜刃未磨匣已藏，镰锤刺眼愧行囊。</p>
+				<p>热情碧血燃星火，寒枝冰心何由彻？</p>
+				<p>万叠征衣凝夜紫，一襟风骨立苍茫。</p>
+				<p>此身若许红旗卷，不共青山论短长！</p>
+				<blockquote>
+					<p>呜呼哀哉，这就是“怀才不遇”的感受吗？</p>
+					<cite>创作于 2025年5月16日</cite>
+				</blockquote>
+				<figure class="article-figure article-figure-small">
+					<img src="/blogs/2/images/Chinese_Communist_Youth_League.png" alt="中国共产主义青年团主题配图" loading="lazy" />
+				</figure>
+				<figure class="article-figure">
+					<img src="/blogs/2/images/blog2.jpg" alt="文章配图" loading="lazy" />
+				</figure>]]></content:encoded>
 		</item>
 		<item>
 			<title>Hello, world! 我的第一篇博客</title>
 			<link>https://www.ithink537.top/blogs/1/</link>
 			<guid isPermaLink="true">https://www.ithink537.top/blogs/1/</guid>
-			<pubDate>Sat, 17 May 2025 23:49:00 +0800</pubDate>
-			<description>这是博客的起点。记录搭建个人博客的尝试，也期待在这里持续分享学习与创作。</description>
+			<author>wushaoquan666@outlook.com (山地奥斯卡537)</author>
+			<dc:creator>山地奥斯卡537</dc:creator>
+			<pubDate>Sat, 17 May 2025 23:00:00 +0800</pubDate>
+			<category>随笔</category>
+			<category>建站</category>
+			<description><![CDATA[这是博客的起点。记录搭建个人博客的尝试，也期待在这里持续分享学习与创作。]]></description>
+			<content:encoded><![CDATA[<figure class="article-figure">
+					<img src="/blogs/1/images/blog1.jpg" alt="个人博客文章配图" loading="lazy" />
+				</figure>
+				<p>这是一篇博客测试。</p>
+				<p>我未来打算在这个网站上发布一些干货文章，敬请期待。</p>
+				<blockquote>每个长期项目，都从一个简单的 Hello, world! 开始。</blockquote>
+				<p>下面是无序列表测试：</p>
+				<ul>
+					<li>第一句。</li>
+					<li>第二句。</li>
+					<li>第三句，酷吧。</li>
+				</ul>
+				<p>除此之外，也可以在文章里放置图片、链接和其他内容。</p>]]></content:encoded>
 		</item>
-		<!-- 新增文章时，请同步在此添加一条 <item> -->
 	</channel>
 </rss>
