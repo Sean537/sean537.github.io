@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:," />
+<title>文章 · 文章管理台</title>
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html"><span class="mark"><img src="https://cdn.imgos.cn/vip/2025/05/27/6835cc6e1b3aa.png" alt="537logo" width="30" height="30" /></span>文章管理台<small>山地奥斯卡537 的博客</small></a>
+		<div class="spacer"></div>
+		<a class="topbar-link desktop-only" href="https://www.ithink537.top/" target="_blank" rel="noopener noreferrer">查看线上站点</a>
+		<a class="btn btn-primary" href="post.html">+ 新建文章</a>
+	</div>
+</header>
+
+<div class="shell">
+	<nav class="side">
+		<p class="side-title">内容</p>
+		<a href="index.html" data-page="posts">文章<span class="badge" id="navCount"></span></a>
+		<a href="post.html" data-page="new">新建文章</a>
+		<a href="columns.html" data-page="columns">专栏<span class="badge" id="navColumns"></span></a>
+		<p class="side-title">站点</p>
+		<a href="tools.html" data-page="tools">订阅与站点</a>
+		<p class="side-note">只改本地文件，不会自动发布到线上；上线仍需自行 git 提交推送。</p>
+	</nav>
+
+	<main class="main">
+		<div class="notices" id="notices"></div>
+
+		<div class="page-head">
+			<h1>文章</h1>
+			<div class="spacer"></div>
+			<a class="btn btn-ghost" href="tools.html">重建 RSS / sitemap</a>
+			<a class="btn btn-primary" href="post.html">+ 新建文章</a>
+		</div>
+		<p class="page-sub" id="listSummary"></p>
+
+		<div class="card">
+			<div class="toolbar">
+				<input type="search" id="searchInput" placeholder="搜索标题、摘要、标签、编号" style="width:260px" />
+				<select id="statusFilter">
+					<option value="">全部</option>
+					<option value="pinned">置顶</option>
+					<option value="notes">随笔</option>
+					<option value="columns">专栏文章</option>
+				</select>
+				<select id="columnFilter"><option value="">全部专栏</option></select>
+				<button type="button" class="btn" id="applyFilter">筛选</button>
+				<button type="button" class="btn" id="resetFilter">重置</button>
+				<div class="spacer"></div>
+				<span class="muted" id="filterSummary"></span>
+			</div>
+
+			<div class="toolbar bulk" id="bulkBar" hidden>
+				<strong id="bulkCount"></strong>
+				<select id="bulkAction">
+					<option value="">批量操作…</option>
+					<option value="join">加入专栏</option>
+					<option value="leave">移出专栏</option>
+					<option value="pin">设为置顶</option>
+					<option value="unpin">取消置顶</option>
+					<option value="delete">删除（编号不重排）</option>
+				</select>
+				<select id="bulkColumn" hidden></select>
+				<label class="check" id="keepFilesWrap" hidden><input type="checkbox" id="keepFiles" /> 保留 blogs/&lt;id&gt;/ 下的文件</label>
+				<button type="button" class="btn btn-small btn-primary" id="bulkApply">应用</button>
+				<button type="button" class="btn btn-small" id="bulkClear">清空选择</button>
+			</div>
+
+			<div class="card-body flush">
+				<table class="table">
+					<thead>
+						<tr>
+							<th class="check-col"><input type="checkbox" id="checkAll" aria-label="全选" /></th>
+							<th>标题</th>
+							<th class="narrow">编号</th>
+							<th class="hide-sm">专栏</th>
+							<th class="hide-sm">状态</th>
+							<th class="narrow hide-sm">字数</th>
+							<th class="narrow hide-sm">日期</th>
+							<th class="narrow">操作</th>
+						</tr>
+					</thead>
+					<tbody id="postsBody"></tbody>
+				</table>
+			</div>
+		</div>
+
+		<details class="command-log">
+			<summary>命令记录（每次操作对应的实际命令）</summary>
+			<pre id="commandLog"></pre>
+		</details>
+	</main>
+</div>
+
+<dialog id="prompt">
+	<form method="dialog">
+		<h3 id="promptTitle">选择</h3>
+		<p id="promptText"></p>
+		<div id="promptField"></div>
+		<div class="dialog-actions">
+			<button type="submit" class="btn btn-primary" value="ok">确定</button>
+			<button type="submit" class="btn" value="cancel">取消</button>
+		</div>
+	</form>
+</dialog>
+
+<script>window.ADMIN_TOKEN = "__ADMIN_TOKEN__";window.ADMIN_PORT = "__ADMIN_PORT__";</script>
+<script src="core.js"></script>
+<script src="posts.js"></script>
+</body>
+</html>

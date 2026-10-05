@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:," />
+<title>新建文章 · 文章管理台</title>
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html"><span class="mark"><img src="https://cdn.imgos.cn/vip/2025/05/27/6835cc6e1b3aa.png" alt="537logo" width="30" height="30" /></span>文章管理台<small>山地奥斯卡537 的博客</small></a>
+		<div class="spacer"></div>
+		<a class="topbar-link desktop-only" href="https://www.ithink537.top/" target="_blank" rel="noopener noreferrer">查看线上站点</a>
+		<a class="btn btn-primary" href="post.html">+ 新建文章</a>
+	</div>
+</header>
+
+<div class="shell">
+	<nav class="side">
+		<p class="side-title">内容</p>
+		<a href="index.html" data-page="posts">文章<span class="badge" id="navCount"></span></a>
+		<a href="post.html" data-page="new">新建文章</a>
+		<a href="columns.html" data-page="columns">专栏<span class="badge" id="navColumns"></span></a>
+		<p class="side-title">站点</p>
+		<a href="tools.html" data-page="tools">订阅与站点</a>
+		<p class="side-note">只改本地文件，不会自动发布到线上；上线仍需自行 git 提交推送。</p>
+	</nav>
+
+	<main class="main">
+		<div class="notices" id="notices"></div>
+
+		<div class="page-head">
+			<a class="btn btn-ghost" href="index.html">← 文章列表</a>
+			<h1 id="pageTitle">新建文章</h1>
+			<div class="spacer"></div>
+			<button type="button" class="btn btn-danger" id="headDelete" hidden>删除文章</button>
+			<button type="button" class="btn btn-primary" id="saveTop">发布文章</button>
+		</div>
+		<p class="page-sub" id="pageSub"></p>
+
+		<form id="postForm">
+			<div class="editor-grid">
+				<!-- 主区 -->
+				<div>
+					<div class="card">
+						<div class="card-body">
+							<input type="text" id="title" class="title-input" required placeholder="文章标题" autocomplete="off" />
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-head">
+							<h2>正文</h2>
+							<div class="spacer"></div>
+							<span class="counts muted" id="mdStats"></span>
+						</div>
+						<div class="card-body">
+							<div class="tabs">
+								<button type="button" class="is-on" data-pane="md">Markdown 源码</button>
+								<button type="button" data-pane="preview">预览</button>
+							</div>
+							<div class="pane is-on" data-pane="md">
+								<label class="field" id="mdNameField" hidden>
+									<span>源文文件名</span>
+									<input type="text" id="mdName" placeholder="正文.md" autocomplete="off" />
+									<span class="note">保存在 blogs/&lt;编号&gt;/ 下，文章页面由它生成</span>
+								</label>
+								<textarea id="mdBody" spellcheck="false" placeholder="# 小标题&#10;&#10;正文…"></textarea>
+							</div>
+							<div class="pane" data-pane="preview">
+								<div id="previewBox" class="preview"><span class="preview-empty">写点内容，这里会实时显示渲染结果（与线上完全一致）。</span></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 侧栏 -->
+				<div>
+					<div class="side-card">
+						<h2 id="publishTitle">发布</h2>
+						<div class="inside">
+							<label class="field">
+								<span>发布日期</span>
+								<input type="date" id="date" required />
+							</label>
+							<label class="check"><input type="checkbox" id="pinned" /> 在博客首页置顶显示</label>
+							<label class="check"><input type="checkbox" id="sourceKeep" /> 保留 cnblogs 等原始出处链接</label>
+							<div style="display:flex;gap:10px;flex-wrap:wrap">
+								<button type="button" class="btn btn-primary" id="saveSide">发布文章</button>
+								<button type="button" class="btn" id="saveContinue">保存</button>
+							</div>
+							<p class="note" id="saveHint">发布后可在列表页继续管理；改动不会自动上线。</p>
+						</div>
+					</div>
+
+					<div class="side-card" id="idCard">
+						<h2>文章信息</h2>
+						<div class="inside">
+							<label class="field" id="idField">
+								<span>编号</span>
+								<input type="number" id="postId" min="1" />
+								<span class="note" id="idHint"></span>
+							</label>
+							<div class="grid-2">
+								<label class="field">
+									<span>标签</span>
+									<input type="text" id="tags" placeholder="C++,入门" />
+								</label>
+								<label class="field">
+									<span>原始出处</span>
+									<input type="url" id="source" placeholder="https://www.cnblogs.com/…" />
+								</label>
+							</div>
+							<label class="field">
+								<span>摘要</span>
+								<textarea id="excerpt" rows="3" placeholder="显示在首页预览、博客索引与 meta description"></textarea>
+							</label>
+						</div>
+					</div>
+
+					<div class="side-card">
+						<h2>所属专栏</h2>
+						<div class="inside">
+							<ul class="radio-list" id="columnRadios"></ul>
+							<p class="note">一篇文章只能属于一个专栏；选「无」即作为随笔发布，不显示专栏翻页。</p>
+						</div>
+					</div>
+
+					<div class="side-card" id="mdFilesCard" hidden>
+						<h2>Markdown 源文</h2>
+						<div class="inside">
+							<ul class="radio-list" id="mdFileList"></ul>
+							<p class="note" id="mdFileNote">点一下载入该源文；换文件不会立刻改页面，需要点「保存」。</p>
+							<button type="button" class="btn btn-small" id="mdGen">从页面 HTML 生成 Markdown</button>
+							<p class="note">早期手写 HTML 的文章没有源文，生成一份即可直接在这里编辑。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<details class="command-log">
+			<summary>命令记录（每次操作对应的实际命令）</summary>
+			<pre id="commandLog"></pre>
+		</details>
+	</main>
+</div>
+
+<dialog id="prompt">
+	<form method="dialog">
+		<h3 id="promptTitle">选择</h3>
+		<p id="promptText"></p>
+		<div id="promptField"></div>
+		<div class="dialog-actions">
+			<button type="submit" class="btn btn-primary" value="ok">确定</button>
+			<button type="submit" class="btn" value="cancel">取消</button>
+		</div>
+	</form>
+</dialog>
+
+<script>window.ADMIN_TOKEN = "__ADMIN_TOKEN__";window.ADMIN_PORT = "__ADMIN_PORT__";</script>
+<script src="core.js"></script>
+<script src="post.js"></script>
+</body>
+</html>

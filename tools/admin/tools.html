@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:," />
+<title>订阅与站点 · 文章管理台</title>
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html"><span class="mark"><img src="https://cdn.imgos.cn/vip/2025/05/27/6835cc6e1b3aa.png" alt="537logo" width="30" height="30" /></span>文章管理台<small>山地奥斯卡537 的博客</small></a>
+		<div class="spacer"></div>
+		<a class="topbar-link desktop-only" href="https://www.ithink537.top/" target="_blank" rel="noopener noreferrer">查看线上站点</a>
+		<a class="btn btn-primary" href="post.html">+ 新建文章</a>
+	</div>
+</header>
+
+<div class="shell">
+	<nav class="side">
+		<p class="side-title">内容</p>
+		<a href="index.html" data-page="posts">文章<span class="badge" id="navCount"></span></a>
+		<a href="post.html" data-page="new">新建文章</a>
+		<a href="columns.html" data-page="columns">专栏<span class="badge" id="navColumns"></span></a>
+		<p class="side-title">站点</p>
+		<a href="tools.html" data-page="tools">订阅与站点</a>
+		<p class="side-note">管理台只写本地文件，任何改动都需要你自己提交并推送后才会线上生效。</p>
+	</nav>
+
+	<main class="main">
+		<div class="notices" id="notices"></div>
+
+		<div class="page-head">
+			<h1>订阅与站点</h1>
+			<div class="spacer"></div>
+			<button type="button" class="btn btn-primary" id="syncFeeds">重建 RSS / sitemap</button>
+		</div>
+		<p class="page-sub">订阅文件由 <code>blogs/articles.html</code> 的模板区生成，改动文章时会自动重建，这里可以随时手动重来一次。</p>
+
+		<div class="editor-grid">
+			<div>
+				<div class="card">
+					<div class="card-head"><h2>订阅文件</h2></div>
+					<div class="card-body flush">
+						<table class="table">
+							<thead><tr><th>文件</th><th class="narrow">条目</th><th class="narrow hide-sm">大小</th><th class="narrow hide-sm">最后重建</th><th class="narrow">操作</th></tr></thead>
+							<tbody>
+								<tr>
+									<td>
+										<div class="cell-title"><a class="name" id="rssLink" href="#" target="_blank" rel="noopener noreferrer">rss.xml</a></div>
+										<div class="cell-sub">每个 <code>&lt;item&gt;</code> 含标题、分类、摘要、日期与全文 CDATA</div>
+									</td>
+									<td class="narrow" id="rssItems">–</td>
+									<td class="narrow hide-sm" id="rssSize">–</td>
+									<td class="narrow hide-sm" id="rssTime">–</td>
+									<td class="narrow"><button type="button" class="btn btn-small" id="openRss">查看</button></td>
+								</tr>
+								<tr>
+									<td>
+										<div class="cell-title"><a class="name" id="mapLink" href="#" target="_blank" rel="noopener noreferrer">sitemap.xml</a></div>
+										<div class="cell-sub">每篇文章一个 <code>&lt;url&gt;</code>，带 <code>lastmod</code>，按日期新到旧</div>
+									</td>
+									<td class="narrow" id="mapUrls">–</td>
+									<td class="narrow hide-sm" id="mapSize">–</td>
+									<td class="narrow hide-sm" id="mapTime">–</td>
+									<td class="narrow"><button type="button" class="btn btn-small" id="openMap">查看</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="card-head"><h2>站点信息</h2></div>
+					<div class="card-body flush">
+						<table class="table">
+							<tbody>
+								<tr><td class="narrow">站点目录</td><td><code id="siteRoot">–</code></td></tr>
+								<tr><td class="narrow">线上地址</td><td><a id="siteUrl" href="#" target="_blank" rel="noopener noreferrer">–</a></td></tr>
+								<tr><td class="narrow">订阅地址</td><td><code id="rssUrl">–</code></td></tr>
+								<tr><td class="narrow">文章 / 专栏</td><td><span id="counts">–</span></td></tr>
+								<tr><td class="narrow">下一个可用编号</td><td><span id="nextId">–</span></td></tr>
+								<tr><td class="narrow">本地预览</td><td class="muted">项目根目录执行 <code>python -m http.server 8000</code>，访问 <code>http://localhost:8000/</code></td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div class="side-card">
+					<h2>本地服务与安全</h2>
+					<div class="inside">
+						<p class="note" style="margin-top:0">监听 <code id="adminPort">127.0.0.1</code>，只有本机能访问；端口用 <code>--port</code> 改。</p>
+						<p class="note">令牌每次启动随机生成并注入页面，写操作都要带 <code>X-Admin-Token</code>；同源校验 + 不返回 CORS 头，别的网站调不动。</p>
+						<p class="note">Markdown 读写限定在 <code>blogs/&lt;编号&gt;/</code> 目录内，拒绝路径穿越。</p>
+						<p class="note" style="margin-bottom:0">管理台不会自动发布，改完请自行 <code>git commit</code> 与推送。</p>
+					</div>
+				</div>
+
+				<div class="side-card">
+					<h2>对应命令</h2>
+					<div class="inside">
+						<p class="note" style="margin:0 0 6px"><code>node tools/manage.js list</code></p>
+						<p class="note" style="margin:0 0 6px"><code>node tools/manage.js update &lt;id&gt; &lt;md&gt;</code></p>
+						<p class="note" style="margin:0 0 6px"><code>node tools/manage.js column list</code></p>
+						<p class="note" style="margin:0"><code>node tools/add-article.js --sync-feeds</code></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<details class="command-log">
+			<summary>命令记录（每次操作对应的实际命令）</summary>
+			<pre id="commandLog"></pre>
+		</details>
+	</main>
+</div>
+
+<dialog id="prompt">
+	<form method="dialog">
+		<h3 id="promptTitle">选择</h3>
+		<p id="promptText"></p>
+		<div id="promptField"></div>
+		<div class="dialog-actions">
+			<button type="submit" class="btn btn-primary" value="ok">确定</button>
+			<button type="submit" class="btn" value="cancel">取消</button>
+		</div>
+	</form>
+</dialog>
+
+<script>window.ADMIN_TOKEN = "__ADMIN_TOKEN__";window.ADMIN_PORT = "__ADMIN_PORT__";</script>
+<script src="core.js"></script>
+<script src="tools.js"></script>
+</body>
+</html>

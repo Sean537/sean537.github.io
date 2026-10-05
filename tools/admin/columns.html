@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:," />
+<title>专栏 · 文章管理台</title>
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+<header class="topbar">
+	<div class="topbar-inner">
+		<a class="brand" href="index.html"><span class="mark">537</span>文章管理台<small>山地奥斯卡537 的博客</small></a>
+		<div class="spacer"></div>
+		<a class="topbar-link desktop-only" href="https://www.ithink537.top/" target="_blank" rel="noopener noreferrer">查看线上站点</a>
+		<a class="btn btn-primary" href="post.html">+ 新建文章</a>
+	</div>
+</header>
+
+<div class="shell">
+	<nav class="side">
+		<p class="side-title">内容</p>
+		<a href="index.html" data-page="posts">文章<span class="badge" id="navCount"></span></a>
+		<a href="post.html" data-page="new">新建文章</a>
+		<a href="columns.html" data-page="columns">专栏<span class="badge" id="navColumns"></span></a>
+		<p class="side-title">站点</p>
+		<a href="tools.html" data-page="tools">订阅与站点</a>
+		<p class="side-note">专栏定义写在 <code>js/articles.js</code> 的 <code>COLUMNS</code> 里，工具改写后会做语法校验。</p>
+	</nav>
+
+	<main class="main">
+		<div class="notices" id="notices"></div>
+
+		<div class="page-head">
+			<h1>专栏</h1>
+			<div class="spacer"></div>
+			<button type="button" class="btn btn-primary" id="newColumn">+ 新建专栏</button>
+		</div>
+		<p class="page-sub" id="columnSummary"></p>
+
+		<div class="editor-grid">
+			<div class="card">
+				<div class="card-head">
+					<h2>全部专栏</h2>
+					<div class="spacer"></div>
+					<span class="counts" id="columnCount"></span>
+				</div>
+				<div class="card-body flush">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>专栏名称与简介</th>
+								<th class="narrow">key</th>
+								<th class="narrow">文章</th>
+								<th class="narrow">操作</th>
+							</tr>
+						</thead>
+						<tbody id="columnBody"></tbody>
+					</table>
+				</div>
+			</div>
+
+			<div>
+				<div class="side-card">
+					<h2 id="columnFormTitle">新建专栏</h2>
+					<div class="inside">
+						<label class="field" id="keyField">
+							<span>key</span>
+							<input type="text" id="columnKey" placeholder="cpp" autocomplete="off" />
+							<span class="note">小写字母开头的字母数字或连字符，例如 cpp、web-dev</span>
+						</label>
+						<label class="field" id="titleField">
+							<span>名称</span>
+							<input type="text" id="columnTitle" placeholder="C++ 编程实践" />
+						</label>
+						<label class="field" id="descField">
+							<span>简介</span>
+							<textarea id="columnDesc" rows="3" placeholder="一句话说明这个专栏写什么"></textarea>
+						</label>
+						<label class="field" id="moveField" hidden>
+							<span>删除后文章转入</span>
+							<select id="columnMoveTo"></select>
+							<span class="note">留空表示放回随笔（页面文件保留）</span>
+						</label>
+						<div style="display:flex;gap:10px;flex-wrap:wrap">
+							<button type="button" class="btn btn-primary" id="submitColumn">创建专栏</button>
+							<button type="button" class="btn" id="cancelColumn" hidden>取消</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="side-card">
+					<h2>专栏规则</h2>
+					<div class="inside">
+						<p class="note" style="margin-top:0">改 key 会同步改所有文章的 <code>data-column</code>；删专栏时可以把文章转入另一个专栏或放回随笔。</p>
+						<p class="note" style="margin-bottom:0">专栏内文章按时间正序排列，专栏卡片按最早一篇排序。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<details class="command-log">
+			<summary>命令记录（每次操作对应的实际命令）</summary>
+			<pre id="commandLog"></pre>
+		</details>
+	</main>
+</div>
+
+<dialog id="prompt">
+	<form method="dialog">
+		<h3 id="promptTitle">选择</h3>
+		<p id="promptText"></p>
+		<div id="promptField"></div>
+		<div class="dialog-actions">
+			<button type="submit" class="btn btn-primary" value="ok">确定</button>
+			<button type="submit" class="btn" value="cancel">取消</button>
+		</div>
+	</form>
+</dialog>
+
+<script>window.ADMIN_TOKEN = "__ADMIN_TOKEN__";window.ADMIN_PORT = "__ADMIN_PORT__";</script>
+<script src="core.js"></script>
+<script src="columns.js"></script>
+</body>
+</html>

@@ -82,13 +82,14 @@ function buildColumnMap(root) {
 	}
 }
 
-/* 取 <div class="article-body"> … </div> 的内部 HTML，按 div 层级配对 */
-function extractBody(inner) {
+/* 取 <div class="article-body"> … </div> 的范围，按 div 层级配对。
+   返回 { from, close }：from 为内容起点，close 为收尾 </div> 的起点 */
+function bodyRange(inner) {
 	const openTag = '<div class="article-body">';
 	const open = inner.indexOf(openTag);
 
 	if (open === -1) {
-		return '';
+		return null;
 	}
 
 	const from = open + openTag.length;
@@ -111,12 +112,18 @@ function extractBody(inner) {
 
 		depth--;
 		if (depth === 0) {
-			return inner.slice(from, nextClose).trim();
+			return { from, close: nextClose };
 		}
 		cursor = nextClose + 6;
 	}
 
-	return '';
+	return null;
+}
+
+/* 正文内部 HTML */
+function extractBody(inner) {
+	const range = bodyRange(inner);
+	return range ? inner.slice(range.from, range.close).trim() : '';
 }
 
 /* 解析 blogs/articles.html，返回按时间自新至旧排列的文章列表 */
@@ -296,6 +303,7 @@ module.exports = {
 	buildRss,
 	buildSitemap,
 	buildColumnMap,
+	bodyRange,
 	syncFeeds,
 	rfc822,
 	escapeXml,

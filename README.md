@@ -64,13 +64,18 @@ php -S localhost:8000
 │   └── image-preview.js  # 图片灯箱预览
 ├── tools/
 │   ├── md2html.js        # Markdown → 文章正文 HTML 转换器（零依赖）
+│   ├── html2md.js        # 文章正文 HTML → Markdown 转换器（md2html 的逆向）
 │   ├── feeds.js          # 从 articles.html 生成 rss.xml + sitemap.xml（零依赖）
-│   └── add-article.js    # 新增文章一键工具（生成文章页 + 插入模板 + 同步订阅）
+│   ├── add-article.js    # 新增文章一键工具（生成文章页 + 插入模板 + 同步订阅）
+│   ├── manage.js         # 文章与专栏管理（删除 / 更新 / 进出专栏 / 专栏增删改名 / HTML 转 Markdown）
+│   ├── admin-server.js   # 可视化管理台的本地服务（127.0.0.1 + 一次性 token）
+│   └── admin/            # 管理台页面（index / post / columns / tools + admin.css + core.js）
+├── 启动管理台.bat        # 双击即启动管理台并自动打开浏览器（可带端口参数）
 ├── blogs/
 │   ├── index.html        # 博客列表页（含博客概览、专栏与文章索引）
 │   ├── articles.html     # 文章数据源（唯一入口，含新增文章说明）
-│   ├── 1/index.html      # 第 1 篇文章（data-article-view="1"）
-│   ├── 2/index.html      # 第 2 篇文章（data-article-view="2"）
+│   ├── 1/index.html      # 第 1 篇文章（data-article-view="1"，正文 HTML 另存了同名 .md）
+│   ├── 2/index.html      # 第 2 篇文章（data-article-view="2"，正文 HTML 另存了同名 .md）
 │   ├── 3/                # 第 3 篇文章（Markdown 源文 + index.html）
 │   ├── 4/
 │   └── 5/
@@ -160,7 +165,11 @@ node tools/add-article.js --sync-feeds
 | --- | --- | --- |
 | `# 标题` ~ `##### 标题` | `<h2>` ~ `<h6>` | 页面标题已占用 `h1`，故整体下移一级 |
 | ` ```cpp ` 围栏代码 | `<pre data-lang="cpp"><code class="language-cpp">` | **代码块的续行紧贴最左列，不加任何缩进** |
+| ` ```html ` / ` ```css ` / ` ```js ` | `<pre data-lang="html"><code class="language-html">` | 代码块内容整体转义，`<div>`、`<style>`、`</script>`、`&&` 都按原文显示，绝不会当成真实标签执行 |
+| ` ```js.6 `、` ```html lang=x ` | 同上 | 语言标注可带参数：只取首个词的前导字母段（`js.6` → `js`），别名归一（`c++`→`cpp`、`sh`→`bash`、`py`→`python`、`js`/`javascript`→`js`） |
+| ` ```` ` 四反引号、`~~~` | 同上 | 围栏按「同字符、长度不短于开头」闭合，块里再写 ``` 或~~~ 也不会提前结束 |
 | `> 引用` | `<blockquote>` | 引用内同样支持代码块、列表、标题 |
+| 引用里以 `> —— ` 开头的那段 | `<cite>` | 出处行；`html2md` 也按这个写法还原 `<cite>` |
 | 表格 | `<div class="table-wrap"><table>` | 宽表在窄屏内横向滚动，不会撑破布局 |
 | `- 列表` / `1. 列表` | `<ul>` / `<ol>` | 支持缩进嵌套；跨代码块续编号用 `<ol start="n">` |
 | 独占一行的 `![alt](url)` | `<figure class="article-figure">` | 点击可放大（`js/image-preview.js`） |
@@ -203,6 +212,130 @@ node tools/add-article.js --sync-feeds
 >     return 0;
 > }</code></pre>
 > ```
+
+## 文章与专栏管理
+
+`tools/manage.js` 负责站点上线的日常维护：删文章、改文章、进出专栏、增删改专栏。所有命令都会在需要时自动重建 `rss.xml` 与 `sitemap.xml`。
+
+```bash
+node tools/manage.js list                          # 文章与专栏一览
+node tools/manage.js delete 5 --yes                # 删除文章 5（编号空缺，不重排）
+node tools/manage.js update 3 blogs/3/x.md         # 用 Markdown 重写正文
+node tools/manage.js update 3 --title="新标题"     # 只改元信息，不动正文
+node tools/manage.js sync                          # 重建 rss.xml 与 sitemap.xml
+node tools/manage.js join 1 cpp                    # 文章 1 加入专栏 cpp
+node tools/manage.js leave 1                       # 文章 1 移出专栏，变回随笔
+node tools/manage.js column add notes --title "随手记" --desc "不成体系的小记。"
+node tools/manage.js column rename notes misc      # 改专栏 key，文章归属自动跟进
+node tools/manage.js column set misc --title "随手记录"
+node tools/manage.js column rm misc --move-to=cpp  # 删专栏，文章转入 cpp
+node tools/manage.js md list 3                     # 列出文章 3 的 Markdown 源文
+node tools/manage.js md read 3 x.md                # 打印该源文
+node tools/manage.js md from-html 1               # 由页面 HTML 反向生成 blogs/1/标题.md
+```
+
+> 记不住命令也没关系：下一节的[可视化管理台](#可视化管理台toolsadmin)把上面每一条都做成了按钮。
+
+### 删除文章（编号不变）
+
+```bash
+node tools/manage.js delete <id> [--yes] [--keep-files] [--dry-run]
+```
+
+- 只删这一篇：移除 `blogs/articles.html` 里的模板 + 删除 `blogs/<id>/` 目录（`index.html`、`images/`、`.md` 源文）；
+- **编号保持不变**，其余文章不重排 —— 例如删掉 `4` 后，`5` 仍是 `5`，`blogs/6/` 不会被占用；
+- `--keep-files` 只下架文章、保留本地文件；`--dry-run` 只打印将删除的内容；
+- 删除后 `rss.xml` / `sitemap.xml` 自动重建，不会留下失效链接。
+
+### 用 Markdown 更新文章
+
+```bash
+node tools/manage.js update <id> [md 文件] [选项]
+```
+
+| 选项 | 作用 |
+| --- | --- |
+| `--title=` / `--date=` / `--tags=` / `--excerpt=` | 改模板属性，并同步 `<h1>`、`<time datetime>` 与文章页的 `<title>`、`meta description` |
+| `--column=<key>` / `--leave-column` | 加入专栏 / 移出专栏 |
+| `--pin` / `--unpin` | 置顶 / 取消置顶（首页「置顶文章」） |
+| `--source=<url>` / `--no-source` | 原始出处链接 / 清除出处 |
+
+省略 `<md 文件>` 就只改元信息、不动正文。正文按 `md2html` 重新转换后**整段替换** `.article-body`，模板其余部分（专栏导航、作者卡片、评论区）原样保留；只改正文时不必带任何选项。
+
+### 由页面 HTML 反向生成 Markdown
+
+早期手写 HTML 的文章（1、2 号）没有 `.md` 源文，改不了正文。用 `html2md`（`md2html` 的逆向）从模板里的正文 HTML 生成一份，之后就能像其它文章一样在管理台里编辑：
+
+```bash
+node tools/manage.js md from-html <id> [--out=<文件名.md>] [--force] [--stdout]
+node tools/html2md.js <id> --stdout            # 只打印，不落盘
+```
+
+- 正文取自 `blogs/articles.html` 里该篇的 `<div class="article-body">`，模板头部的标题、日期、作者卡片、评论区不写进 Markdown；
+- 文件名默认与文章标题同名（与 3、4、5 号一致）；同名文件存在时必须加 `--force`；
+- 生成后**不会**自动改页面。确认内容没问题再执行 `node tools/manage.js update <id> <文件名.md>` 写回模板；
+- 转换是保真的：段落、标题、列表（含嵌套）、引用、代码块、表格（含对齐）、图片、链接、加粗/斜体/删除线、行内代码往返一致。小图写成 `![alt](src "small")`；引用里的出处写成最后一段 `> —— 出处`，对应 `<cite>`。
+- Markdown 表达不了的一处会降级：`<blockquote>` 里的裸文本会多包一层 `<p>`（两种写法渲染完全一样，`.article-body blockquote` 的样式作用在引用块本身）。
+
+### 专栏增删改
+
+```bash
+node tools/manage.js column list
+node tools/manage.js column add <key> --title "标题" [--desc "简介"]
+node tools/manage.js column rename <旧 key> <新 key>
+node tools/manage.js column set <key> [--title "标题"] [--desc "简介"]
+node tools/manage.js column rm <key> [--move-to=<其它 key>]
+```
+
+- 专栏定义就写在 `js/articles.js` 顶部的 `COLUMNS`，工具改写后会用 `node --check` 校验语法，**不通过自动回滚**；
+- key 只能是小写字母开头的字母数字或连字符（`cpp`、`web-dev`）；
+- `rename` 会同步改所有文章的 `data-column`；`rm` 默认把文章放回随笔，`--move-to=` 则整体转到另一个专栏；
+- 一篇文章同一时间只属于一个专栏（`data-column` 是单值），要换专栏直接 `join` 新的即可。
+
+### 通用选项
+
+| 选项 | 说明 |
+| --- | --- |
+| `--dry-run` | 只打印将要发生的改动，不写任何文件 |
+| `--no-feeds` | 不重建 rss.xml / sitemap.xml（默认会自动重建） |
+| `--yes` | 跳过删除类命令的交互确认（脚本 / CI 里必加） |
+| `--option value` 与 `--option=value` | 两种写法都支持 |
+
+## 可视化管理台（tools/admin）
+
+不想记命令的话，启动本地管理台，浏览器里点点就行：
+
+```bat
+双击 启动管理台.bat            :: 自动起服务并打开浏览器；也可以带端口，如 启动管理台.bat 5000
+```
+
+```bash
+node tools/admin-server.js            # 默认 http://127.0.0.1:4173/admin/
+node tools/admin-server.js --port 5000
+```
+
+四个页面沿用博客后台的信息架构，视觉与博客主页一致：
+
+| 页面 | 能做什么 |
+| --- | --- |
+| 文章（`index.html`） | 搜索、按专栏/置顶/随笔筛选（条件写进地址栏，可直接分享）、全选与批量加入专栏 / 移出 / 置顶 / 删除、逐篇编辑与删除 |
+| 新建 / 编辑文章（`post.html`） | 编辑既有文章（`post.html?id=5`）或新建；改标题、日期、标签、摘要、出处、置顶与专栏；Markdown 源码与实时预览双栏；保存时可「保存并继续」或「保存并返回列表」 |
+| 专栏（`columns.html`） | 专栏列表，新建 / 改名 / 改简介；删除时可选把文章转入别的专栏或放回随笔 |
+| 订阅与站点（`tools.html`） | 查看 rss.xml / sitemap.xml 的条目数、大小与最后重建时间，一键重建；站点目录、线上地址、统计与对应命令 |
+
+`post.html` 的「Markdown 源文」卡片里还有一个 **从页面 HTML 生成 Markdown** 按钮：早期手写 HTML 的文章（1、2 号）本来没有源文，点一下就按当前页面 HTML 生成一份并载入编辑器，确认后再点「保存」写回页面。等价命令是 `node tools/manage.js md from-html <id>`。
+
+每次操作底部都会打印实际执行的命令和结果（例如 `$ node tools/manage.js update 5 --title=…`），方便照着学命令行。
+
+直接双击 `index.html`（不经服务）时，页面会提示先启动服务并把控件置灰，只读不写。
+
+安全上的取舍（本地工具，但按能写文件的服务来防）：
+
+- 只监听 `127.0.0.1`，局域网与公网都访问不到；端口可用 `--port` / `ADMIN_PORT` 改；
+- 启动时生成一次性 token 注入页面，所有写操作都要带 `X-Admin-Token`，token 随进程重启变化；
+- 只接受同源请求、`Content-Type: application/json`，且**不返回任何 CORS 头** —— 别的网站无法用浏览器脚本调这个接口；
+- Markdown 读写限定在 `blogs/<id>/` 目录内，`../`、绝对路径、非 `.md` 文件名一律拒绝；
+- 管理台只写本地文件，不会自动发布到线上，改完仍需自行 git 提交推送。
 
 ## 博客功能说明
 

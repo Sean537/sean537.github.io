@@ -18,6 +18,15 @@
 		    node tools/add-article.js <id> "<标题>" <YYYY-MM-DD> "<标签,逗号分隔>" \
 		        "<摘要>" "blogs/<id>/文章名.md" [--column=key] [--source=https://…]
 		    想只重建模板（转换规则调整后）：追加 --only-templates
+		    或者双击 启动管理台.bat，在浏览器里点「+ 新建文章」
+
+		【把手写 HTML 改成 Markdown 源文】
+		早期文章（1、2 号）的正文是直接手写在本文件里的，没有 .md 源文。
+		用下面的命令从正文 HTML 反向生成一份，之后就能像其它文章一样编辑：
+		    node tools/manage.js md from-html <id>
+		生成后不会自动改本文件；确认内容无误再执行
+		    node tools/manage.js update <id> "blogs/<id>/<文件名>.md"
+		把 Markdown 写回模板区。
 
 		手动写法：
 		1. 复制下面任意一段 <template> 整段（从 <template 到 </template>）；
@@ -39,6 +48,7 @@
 		- 正文：<p> 段落、<h2>/<h3> 标题、<ul>/<ol> 列表、
 		  <blockquote> 引用（内含 <cite> 出处）、<pre><code> 代码块、
 		  <a href="#"> 链接、<hr> 分隔线
+		  （Markdown 侧：引用里的出处写成最后一段「> —— 出处」）
 		- 图片：<figure class="article-figure"><img src="…" alt="…"></figure>
 		  居中小图加 class="article-figure-small"
 		======================================================================
