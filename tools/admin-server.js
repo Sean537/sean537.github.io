@@ -317,6 +317,7 @@ const routes = {
 			pinned: !!body.pinned,
 			markdown: typeof body.markdown === 'string' ? body.markdown : undefined,
 			mdFile: body.mdFile,
+			mdFileName: body.mdFileName,
 			skipFeeds: !!body.skipFeeds
 		});
 		sendJson(res, 200, {

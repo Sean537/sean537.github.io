@@ -12,6 +12,7 @@
 	let article = null;
 	let mdFiles = [];
 	let previewTimer = null;
+	let uploadedMdName = '';
 
 	/* ---------- 界面切换 ---------- */
 
@@ -66,14 +67,15 @@
 			el('pageSub').innerHTML = '编号 ' + article.id + ' · 发布于 ' + article.date +
 				' · 正文 ' + article.chars + ' 字、' + article.headings + ' 个标题。' +
 				'<a href="' + article.url + '" target="_blank" rel="noopener noreferrer">查看线上页面</a>';
-			el('saveTop').textContent = '保存更改';
-			el('saveSide').textContent = '保存更改';
-			el('saveContinue').textContent = '保存并继续';
-			el('headDelete').hidden = false;
-			el('idField').hidden = true;
-			el('mdNameField').hidden = false;
-			el('mdName').value = article.mdFiles[0] || '正文.md';
-			renderMdFiles(article);
+		el('saveTop').textContent = '保存更改';
+		el('saveSide').textContent = '保存更改';
+		el('saveContinue').textContent = '保存并继续';
+		el('headDelete').hidden = false;
+		el('idField').hidden = true;
+		el('mdNameField').hidden = false;
+		el('mdUploadField').hidden = true;
+		el('mdName').value = article.mdFiles[0] || '正文.md';
+		renderMdFiles(article);
 
 			el('title').value = article.title;
 			el('date').value = article.date;
@@ -94,6 +96,10 @@
 		el('idHint').textContent = '默认下一个可用编号 ' + A.state.nextId + '（删除留下的空号不再复用）';
 		el('mdStats').textContent = '';
 		el('previewBox').innerHTML = '<span class="preview-empty">左侧写点内容，这里会实时显示渲染结果（与线上完全一致）。</span>';
+		el('mdUploadField').hidden = false;
+		uploadedMdName = '';
+		el('mdUpload').value = '';
+		el('mdUploadName').textContent = '选择 .md 文件后自动填入正文';
 	}
 
 	/* 源文清单：编辑既有文章时一直显示，没有源文时给出生成入口 */
@@ -112,6 +118,19 @@
 
 	/* 由页面 HTML 反向生成 Markdown 源文，早期手写 HTML 的文章靠它进入编辑流程 */
 	async function generateMarkdown() {
+		if (!editId) {
+			notice('新建文章还没有页面 HTML 可转换，请直接粘贴 Markdown 或上传 .md 文件。', 'error');
+			return;
+		}
+		if (!article) {
+			notice('文章信息尚未加载，请稍后再试。', 'error');
+			return;
+		}
+		if (!article.body) {
+			notice('该文章没有可转换的正文 HTML。', 'error');
+			return;
+		}
+
 		const name = (article.title || ('文章' + editId)) + '.md';
 		const exists = (article.mdFiles || []).indexOf(name) !== -1;
 		const args = ['md', 'from-html', editId, '--out=' + name].concat(exists ? ['--force'] : []);
@@ -193,7 +212,8 @@
 			source: el('sourceKeep').checked ? el('source').value.trim() : '',
 			column: pickedColumn(),
 			pinned: el('pinned').checked,
-			markdown: el('mdBody').value
+			markdown: el('mdBody').value,
+			mdFileName: uploadedMdName || ''
 		};
 	}
 
@@ -298,6 +318,31 @@
 
 		el('mdGen').addEventListener('click', () => {
 			generateMarkdown().catch(report);
+		});
+
+		el('mdUpload').addEventListener('change', () => {
+			const file = el('mdUpload').files[0];
+			if (!file) {
+				return;
+			}
+			if (!file.name.endsWith('.md') && file.type !== 'text/markdown') {
+				notice('请选择 .md 文件。', 'error');
+				el('mdUpload').value = '';
+				return;
+			}
+			const reader = new FileReader();
+			reader.onload = () => {
+				el('mdBody').value = reader.result;
+				uploadedMdName = file.name;
+				el('mdUploadName').textContent = '已选择: ' + file.name + ' (' + file.size + ' 字节)';
+				updateStats();
+				schedulePreview();
+				notice('已载入 ' + file.name + '，确认内容后点「发布文章」。', 'success');
+			};
+			reader.onerror = () => {
+				notice('读取文件失败: ' + reader.error.message, 'error');
+			};
+			reader.readAsText(file, 'UTF-8');
 		});
 
 		el('sourceKeep').addEventListener('change', () => {

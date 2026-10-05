@@ -68,6 +68,11 @@
 									<input type="text" id="mdName" placeholder="正文.md" autocomplete="off" />
 									<span class="note">保存在 blogs/&lt;编号&gt;/ 下，文章页面由它生成</span>
 								</label>
+								<label class="field" id="mdUploadField">
+									<span>上传 Markdown 文件</span>
+									<input type="file" id="mdUpload" accept=".md,text/markdown" />
+									<span class="note" id="mdUploadName">选择 .md 文件后自动填入正文</span>
+								</label>
 								<textarea id="mdBody" spellcheck="false" placeholder="# 小标题&#10;&#10;正文…"></textarea>
 							</div>
 							<div class="pane" data-pane="preview">

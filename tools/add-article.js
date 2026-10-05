@@ -53,8 +53,9 @@ function dateTextOf(date) {
 
 /* 生成一篇文章：文章页 + 模板 + 订阅文件。
    options: { id, title, date, tags, excerpt, mdFile, column, source, pinned,
-              onlyTemplates, skipFeeds, markdown }
+               onlyTemplates, skipFeeds, markdown, mdFileName }
    markdown 可直接给正文内容，省去先写 .md 文件（管理台用这个）。
+   mdFileName 指定落盘文件名（默认用标题），保存到 blogs/<id>/ 下。
    返回 { lines } —— 过程信息，由调用方决定打印还是返回给界面。 */
 function createArticle(options) {
 	const lines = [];
@@ -99,6 +100,14 @@ function createArticle(options) {
 		}
 		markdown = readText(mdPath);
 	}
+
+	/* 把 Markdown 源文也保存到 blogs/<id>/，方便后续在管理台里编辑 */
+	const mdFileName = (options.mdFileName || '').trim() || (title || ('文章' + id)) + '.md';
+	const safeMdName = mdFileName.replace(/[^A-Za-z0-9_\u4e00-\u9fff.\-（）()]/g, '_');
+	const mdSavePath = path.join(ROOT, 'blogs', id, safeMdName);
+	fs.mkdirSync(path.dirname(mdSavePath), { recursive: true });
+	writeText(mdSavePath, markdown);
+	log('已保存源文  : blogs/' + id + '/' + safeMdName);
 
 	/* ---------- 1. 文章页 ---------- */
 
