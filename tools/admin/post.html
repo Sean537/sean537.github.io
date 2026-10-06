@@ -13,7 +13,7 @@
 	<div class="topbar-inner">
 		<a class="brand" href="index.html"><span class="mark"><img src="https://cdn.imgos.cn/vip/2025/05/27/6835cc6e1b3aa.png" alt="537logo" width="30" height="30" /></span>文章管理台<small>山地奥斯卡537 的博客</small></a>
 		<div class="spacer"></div>
-		<a class="topbar-link desktop-only" href="https://www.ithink537.top/" target="_blank" rel="noopener noreferrer">查看线上站点</a>
+		<a class="topbar-link desktop-only" href="__LOCAL_URL__" target="_blank" rel="noopener noreferrer">查看线上站点</a>
 		<a class="btn btn-primary" href="post.html">+ 新建文章</a>
 	</div>
 </header>
@@ -37,7 +37,6 @@
 			<h1 id="pageTitle">新建文章</h1>
 			<div class="spacer"></div>
 			<button type="button" class="btn btn-danger" id="headDelete" hidden>删除文章</button>
-			<button type="button" class="btn btn-primary" id="saveTop">发布文章</button>
 		</div>
 		<p class="page-sub" id="pageSub"></p>
 
@@ -63,16 +62,21 @@
 								<button type="button" data-pane="preview">预览</button>
 							</div>
 							<div class="pane is-on" data-pane="md">
-								<label class="field" id="mdNameField" hidden>
-									<span>源文文件名</span>
-									<input type="text" id="mdName" placeholder="正文.md" autocomplete="off" />
-									<span class="note">保存在 blogs/&lt;编号&gt;/ 下，文章页面由它生成</span>
-								</label>
-								<label class="field" id="mdUploadField">
-									<span>上传 Markdown 文件</span>
-									<input type="file" id="mdUpload" accept=".md,text/markdown" />
-									<span class="note" id="mdUploadName">选择 .md 文件后自动填入正文</span>
-								</label>
+								<div class="md-toolbar">
+									<label class="field md-name-field">
+										<span>文件名</span>
+										<input type="text" id="mdName" placeholder="正文.md" autocomplete="off" />
+									</label>
+									<div class="md-actions">
+										<label class="btn btn-small btn-upload">
+											<span>上传 .md 文件</span>
+											<input type="file" id="mdUpload" accept=".md,text/markdown" hidden />
+										</label>
+										<button type="button" class="btn btn-small" id="mdGen">从页面 HTML 生成</button>
+									</div>
+								</div>
+								<p class="note" id="mdUploadName">上传文件或粘贴 Markdown，文件名会自动填入上方。</p>
+								<ul class="radio-list" id="mdFileList"></ul>
 								<textarea id="mdBody" spellcheck="false" placeholder="# 小标题&#10;&#10;正文…"></textarea>
 							</div>
 							<div class="pane" data-pane="preview">
@@ -93,11 +97,8 @@
 							</label>
 							<label class="check"><input type="checkbox" id="pinned" /> 在博客首页置顶显示</label>
 							<label class="check"><input type="checkbox" id="sourceKeep" /> 保留 cnblogs 等原始出处链接</label>
-							<div style="display:flex;gap:10px;flex-wrap:wrap">
-								<button type="button" class="btn btn-primary" id="saveSide">发布文章</button>
-								<button type="button" class="btn" id="saveContinue">保存</button>
-							</div>
-							<p class="note" id="saveHint">发布后可在列表页继续管理；改动不会自动上线。</p>
+							<button type="button" class="btn btn-primary btn-block" id="saveSide">发布文章</button>
+							<p class="note">发布后可在列表页继续管理；改动不会自动上线。</p>
 						</div>
 					</div>
 
@@ -131,16 +132,6 @@
 						<div class="inside">
 							<ul class="radio-list" id="columnRadios"></ul>
 							<p class="note">一篇文章只能属于一个专栏；选「无」即作为随笔发布，不显示专栏翻页。</p>
-						</div>
-					</div>
-
-					<div class="side-card" id="mdFilesCard" hidden>
-						<h2>Markdown 源文</h2>
-						<div class="inside">
-							<ul class="radio-list" id="mdFileList"></ul>
-							<p class="note" id="mdFileNote">点一下载入该源文；换文件不会立刻改页面，需要点「保存」。</p>
-							<button type="button" class="btn btn-small" id="mdGen">从页面 HTML 生成 Markdown</button>
-							<p class="note">早期手写 HTML 的文章没有源文，生成一份即可直接在这里编辑。</p>
 						</div>
 					</div>
 				</div>

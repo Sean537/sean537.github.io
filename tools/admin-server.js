@@ -134,6 +134,7 @@ function state() {
 	return {
 		root: ROOT,
 		site: SITE,
+		local: 'http://' + HOST + ':' + PORT,
 		nextId: nextFreeId(),
 		columns,
 		articles: articles.map(article => ({
@@ -145,7 +146,7 @@ function state() {
 			column: article.column,
 			pinned: article.pinned,
 			source: article.source,
-			url: article.url,
+			url: 'http://' + HOST + ':' + PORT + '/blogs/' + article.id + '/',
 			chars: article.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, '').length,
 			headings: (article.body.match(/<h[2-6][ >]/g) || []).length,
 			mdFiles: manage.listMdFiles(article.id)
@@ -296,6 +297,7 @@ const routes = {
 			info: {
 				root: ROOT,
 				site: SITE,
+				local: 'http://' + HOST + ':' + PORT,
 				nextId: data.nextId,
 				articles: data.articles.length,
 				columns: data.columns.length,
@@ -336,11 +338,12 @@ function serveGui(req, res, url) {
 	const parts = url.pathname.split('/').filter(Boolean);
 	const name = url.pathname.endsWith('/') || !parts.length ? 'index.html' : parts[parts.length - 1];
 
-	/* 页面里的 token 与端口占位符由服务端注入，每个 .html 都要替换 */
+	/* 页面里的 token、端口与本地地址占位符由服务端注入，每个 .html 都要替换 */
 	if (path.extname(name) === '.html') {
 		const html = fs.readFileSync(path.join(GUI_DIR, name), 'utf8')
 			.replace(/__ADMIN_TOKEN__/g, TOKEN)
-			.replace(/__ADMIN_PORT__/g, String(PORT));
+			.replace(/__ADMIN_PORT__/g, String(PORT))
+			.replace(/__LOCAL_URL__/g, 'http://' + HOST + ':' + PORT + '/');
 		send(res, 200, html, MIME['.html']);
 		return;
 	}

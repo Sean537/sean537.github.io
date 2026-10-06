@@ -96,6 +96,7 @@ function inline(text) {
 	out = out.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
 	out = out.replace(/__([^_]+)__/g, '<strong>$1</strong>');
 	out = out.replace(/(^|[\s(（])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+	out = out.replace(/(^|[\s(（])_([^_\n]+)_/g, '$1<em>$2</em>');
 	out = out.replace(/~~([^~]+)~~/g, '<del>$1</del>');
 
 	/* 还原占位符 */

@@ -34,7 +34,7 @@
 			if (view.status === 'columns' && !article.column) return false;
 			if (view.column && article.column !== view.column) return false;
 			if (view.q) {
-				const haystack = [article.id, article.title, article.excerpt, article.tags, article.columnTitle].join(' ').toLowerCase();
+				const haystack = [article.id, article.title, article.excerpt, (article.tags || []).join(' '), columnTitle(article.column)].join(' ').toLowerCase();
 				if (haystack.indexOf(view.q.toLowerCase()) === -1) return false;
 			}
 			return true;
@@ -98,7 +98,7 @@
 
 			const excerpt = document.createElement('div');
 			excerpt.className = 'cell-sub';
-			excerpt.textContent = (article.excerpt || '（没有摘要）') + ' · ' + (article.tags || '无标签');
+			excerpt.textContent = (article.excerpt || '（没有摘要）') + ' · ' + (article.tags.length ? article.tags.join('、') : '无标签');
 			cell.appendChild(excerpt);
 			title.appendChild(cell);
 
@@ -283,14 +283,12 @@
 			const previous = select.value;
 			select.textContent = '';
 
-			if (isBulk) {
-				const blank = document.createElement('option');
-				blank.value = '';
-				blank.textContent = '选择专栏…';
-				select.appendChild(blank);
-			}
+		const blank = document.createElement('option');
+		blank.value = '';
+		blank.textContent = isBulk ? '选择专栏…' : '全部专栏';
+		select.appendChild(blank);
 
-			A.state.columns.forEach(column => {
+		A.state.columns.forEach(column => {
 				const option = document.createElement('option');
 				option.value = column.key;
 				option.textContent = column.key + '（' + column.title + '）';

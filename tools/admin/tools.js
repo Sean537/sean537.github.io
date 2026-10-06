@@ -24,9 +24,9 @@
 		el('mapTime').textContent = info.sitemap.file ? info.sitemap.file.updated : '未生成';
 
 		el('siteRoot').textContent = info.root;
-		el('siteUrl').href = info.site;
-		el('siteUrl').textContent = info.site;
-		el('rssUrl').textContent = info.site + '/rss.xml';
+		el('siteUrl').href = info.local;
+		el('siteUrl').textContent = info.local;
+		el('rssUrl').textContent = info.local + '/rss.xml';
 		el('counts').textContent = info.articles + ' 篇文章 · ' + info.columns + ' 个专栏';
 		el('nextId').textContent = String(info.nextId).padStart(2, '0');
 	}
@@ -50,13 +50,15 @@
 		['rss', 'map'].forEach(prefix => {
 			const link = el(prefix + 'Link');
 			const button = el('open' + (prefix === 'rss' ? 'Rss' : 'Map'));
+			const path = prefix === 'rss' ? '/rss.xml' : '/sitemap.xml';
 
 			const open = async () => {
 				await refresh();
-				window.open(link.href, '_blank', 'noopener');
+				const url = (el('siteUrl').href || '').replace(/\/$/, '') + path;
+				window.open(url, '_blank', 'noopener');
 			};
 
-			link.href = 'about:blank';
+			link.href = '#';
 			link.addEventListener('click', event => {
 				event.preventDefault();
 				open();

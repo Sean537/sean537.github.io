@@ -63,17 +63,16 @@
 
 			document.title = '编辑文章 · 文章管理台';
 			el('pageTitle').textContent = '编辑文章';
-			el('publishTitle').textContent = '更新';
+			el('publishTitle').textContent = '保存更改';
 			el('pageSub').innerHTML = '编号 ' + article.id + ' · 发布于 ' + article.date +
 				' · 正文 ' + article.chars + ' 字、' + article.headings + ' 个标题。' +
 				'<a href="' + article.url + '" target="_blank" rel="noopener noreferrer">查看线上页面</a>';
-		el('saveTop').textContent = '保存更改';
 		el('saveSide').textContent = '保存更改';
-		el('saveContinue').textContent = '保存并继续';
 		el('headDelete').hidden = false;
-		el('idField').hidden = true;
-		el('mdNameField').hidden = false;
-		el('mdUploadField').hidden = true;
+		el('idField').hidden = false;
+		el('postId').value = article.id;
+		el('postId').disabled = true;
+		el('idHint').textContent = '编号固定，不可修改';
 		el('mdName').value = article.mdFiles[0] || '正文.md';
 		renderMdFiles(article);
 
@@ -96,24 +95,23 @@
 		el('idHint').textContent = '默认下一个可用编号 ' + A.state.nextId + '（删除留下的空号不再复用）';
 		el('mdStats').textContent = '';
 		el('previewBox').innerHTML = '<span class="preview-empty">左侧写点内容，这里会实时显示渲染结果（与线上完全一致）。</span>';
-		el('mdUploadField').hidden = false;
+		el('mdName').value = '';
 		uploadedMdName = '';
 		el('mdUpload').value = '';
-		el('mdUploadName').textContent = '选择 .md 文件后自动填入正文';
+		el('mdUploadName').textContent = '上传 .md 文件，或直接粘贴 Markdown 到下方编辑区。';
+		el('mdFileList').innerHTML = '';
+		el('mdGen').hidden = true;
 	}
 
-	/* 源文清单：编辑既有文章时一直显示，没有源文时给出生成入口 */
+	/* 源文清单：编辑既有文章时在正文区上方显示已有源文列表 */
 	function renderMdFiles(item) {
 		const files = (item && item.mdFiles) || [];
 
-		el('mdFilesCard').hidden = false;
-		el('mdFileList').innerHTML = files
-			.map(name => '<li><label><input type="radio" name="mdPick" value="' + A.escapeHtml(name) + '" /> ' + A.escapeHtml(name) + '</label></li>')
-			.join('');
-		el('mdFileNote').textContent = files.length
-			? '点一下载入该源文；换文件不会立刻改页面，需要点「保存」。'
-			: '这篇还没有 Markdown 源文，正文只存在于页面 HTML 里。';
-		el('mdGen').textContent = files.length ? '按当前 HTML 重新生成一份' : '从页面 HTML 生成 Markdown';
+		el('mdFileList').innerHTML = files.length
+			? files.map(name => '<li><label><input type="radio" name="mdPick" value="' + A.escapeHtml(name) + '" /> ' + A.escapeHtml(name) + '</label></li>').join('')
+			: '<li class="muted">这篇还没有 .md 源文，正文只存在于页面 HTML 里。</li>';
+		el('mdGen').hidden = !isEdit;
+		el('mdGen').textContent = files.length ? '按当前 HTML 重新生成' : '从页面 HTML 生成';
 	}
 
 	/* 由页面 HTML 反向生成 Markdown 源文，早期手写 HTML 的文章靠它进入编辑流程 */
@@ -239,7 +237,7 @@
 			return;
 		}
 
-		const buttons = queryAll('#saveTop, #saveSide, #saveContinue');
+		const buttons = queryAll('#saveSide');
 		buttons.forEach(button => { button.disabled = true; });
 
 		try {
@@ -302,9 +300,7 @@
 			schedulePreview();
 		});
 
-		el('saveTop').addEventListener('click', () => save());
-		el('saveSide').addEventListener('click', () => save('list'));
-		el('saveContinue').addEventListener('click', () => save());
+		el('saveSide').addEventListener('click', () => save());
 		el('headDelete').addEventListener('click', event => {
 			event.preventDefault();
 			remove().catch(report);
@@ -334,6 +330,7 @@
 			reader.onload = () => {
 				el('mdBody').value = reader.result;
 				uploadedMdName = file.name;
+				el('mdName').value = file.name;
 				el('mdUploadName').textContent = '已选择: ' + file.name + ' (' + file.size + ' 字节)';
 				updateStats();
 				schedulePreview();
