@@ -1,18 +1,22 @@
 /* 本地文章管理台的服务端（零依赖）
  *
  * 用法：
- *   node tools/admin-server.js            默认 http://127.0.0.1:4173/admin/
+ *   node tools/admin-server.js            默认 http://127.0.0.1:4173/
  *   node tools/admin-server.js --port 5000
  *
  * 它做两件事：
- *   1. 提供 tools/admin/ 下的可视化界面；
- *   2. 把界面上的操作转成 tools/manage.js / tools/add-article.js 的调用（同一套逻辑，不重复实现）。
+ *   1. 作为开发服务器，在根路径提供完整博客站点；
+ *   2. 在 /admin/ 下提供可视化文章管理台，把界面操作转成 tools/manage.js / tools/add-article.js 的调用。
  *
- * 安全约定（本地工具，仍然按能写文件的服务来防）：
+ * Live Server 兼容：
+ *   - 管理台页面可以从任意 localhost 端口访问，API 允许跨端口同机器调用；
+ *   - 若通过 Live Server 等其它服务打开管理台页面，可在 HTML <head> 里加
+ *     <script>window.ADMIN_API = 'http://127.0.0.1:实际端口/admin/';</script> 指定 API 地址。
+ *
+ * 安全约定：
  *   - 只监听 127.0.0.1，局域网与公网都访问不到；
  *   - 启动时生成一次性 token，注入到页面里，所有写操作都要带 X-Admin-Token；
- *   - 只接受同源请求（Origin / Host 校验），配合 Content-Type: application/json，
- *     浏览器对其它站点的跨域预检一律拒绝，避免网页偷偷调用本地接口删文章；
+ *   - 管理台页面只接受本机来源，API 接受本机任意端口来源；
  *   - Markdown 文件的读写限定在 blogs/<id>/ 目录内，禁止路径穿越。
  */
 'use strict';
@@ -94,27 +98,49 @@ function readBody(req, limit) {
 	});
 }
 
-/* 只接受来自本机管理台页面的请求 */
+/* 只接受来自本机管理台页面的请求；允许任意 localhost/127.0.0.1 端口（Live Server 兼容） */
 function sameOrigin(req) {
 	const origin = req.headers.origin;
-	if (origin && origin !== 'http://' + HOST + ':' + PORT && origin !== 'http://localhost:' + PORT) {
+	if (origin && !/^https?:\/\/(127\.0\.0\.1|localhost)(:\d+)?$/i.test(origin)) {
 		return false;
 	}
 	const host = (req.headers.host || '').split(':')[0];
 	return host === HOST || host === 'localhost';
 }
 
+function addCors(req, res) {
+	const origin = req.headers.origin;
+	if (origin && /^https?:\/\/(127\.0\.0\.1|localhost)/i.test(origin)) {
+		res.setHeader('Access-Control-Allow-Origin', origin);
+		res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+		res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Admin-Token');
+		res.setHeader('Vary', 'Origin');
+	}
+}
+
 function authorized(req) {
 	return req.headers['x-admin-token'] === TOKEN;
 }
 
-/* 读取文本文件，文件不存在时返回空串（订阅信息页用来判断是否已生成） */
+/* 读取文本文件，文件不存在时返回空串 */
 function readSafe(file) {
 	try {
 		return fs.readFileSync(file, 'utf8');
 	} catch (error) {
 		return '';
 	}
+}
+
+/* 安全读取站点根目录下的文件，防止路径穿越 */
+function readSiteFile(filePath) {
+	const target = path.resolve(ROOT, filePath);
+	if (target.indexOf(path.resolve(ROOT)) !== 0) {
+		return null;
+	}
+	if (!fs.existsSync(target) || fs.statSync(target).isDirectory()) {
+		return null;
+	}
+	return { target, mime: MIME[path.extname(target)] || 'text/plain; charset=utf-8' };
 }
 
 /* ---------- 状态 ---------- */
@@ -334,7 +360,7 @@ const routes = {
 
 function serveGui(req, res, url) {
 	/* 只认文件名，不接受任何目录片段，因此不可能读到 GUI 目录之外；
-   以 / 结尾（/admin/）当作首页 */
+    以 / 结尾（/admin/）当作首页 */
 	const parts = url.pathname.split('/').filter(Boolean);
 	const name = url.pathname.endsWith('/') || !parts.length ? 'index.html' : parts[parts.length - 1];
 
@@ -358,7 +384,31 @@ function serveGui(req, res, url) {
 	send(res, 200, fs.readFileSync(target, 'utf8'), MIME[path.extname(target)] || 'text/plain; charset=utf-8');
 }
 
-/* ---------- 主流程 ---------- */
+/* 服务博客站点：从站点根目录提供静态文件 */
+function serveSite(req, res, url) {
+	let filePath = decodeURIComponent(url.pathname);
+	// 去掉前导 /，否则 path.resolve(ROOT, '/index.html') 会把它当绝对路径，忽略 ROOT
+	filePath = filePath.replace(/^\//, '');
+	if (!filePath || filePath.endsWith('/')) {
+		filePath += 'index.html';
+	}
+
+	const hit = readSiteFile(filePath);
+	if (!hit) {
+		send(res, 404, 'Not Found');
+		return;
+	}
+
+	send(res, 200, fs.readFileSync(hit.target, 'utf8'), hit.mime);
+}
+
+/* ---------- 主流程 ----------
+ *
+ * 路由分三层：
+ *   /api/*    → 管理台 API（仅本机来源，跨端口时带 CORS 头）
+ *   /admin/*  → 管理台静态界面
+ *   其余路径  → 博客站点（从项目根目录提供静态文件）
+ */
 
 const server = http.createServer(async (req, res) => {
 	let url;
@@ -369,49 +419,57 @@ const server = http.createServer(async (req, res) => {
 		return;
 	}
 
-	if (!sameOrigin(req)) {
-		send(res, 403, '仅允许来自本机管理台页面的请求');
-		return;
-	}
-
-	/* 路由按结尾匹配：/api/run 与 /admin/api/run 都认，
-	   这样页面被挂在别的路径下（代理、编辑器预览）时也能工作 */
 	const apiPath = url.pathname.replace(/^.*(?=\/api\/)/, '');
 	const route = routes[apiPath];
+	const isApi = !!route || url.pathname.includes('/api/');
 
-	if (!route) {
-		if (req.method === 'GET' && (url.pathname === '/' || url.pathname.indexOf('/admin') !== -1)) {
-			serveGui(req, res, url);
+	if (isApi) {
+		if (!sameOrigin(req)) {
+			addCors(req, res);
+			sendJson(res, 403, { ok: false, error: '仅允许来自本机管理台页面的请求' });
 			return;
 		}
-		send(res, 404, 'Not Found');
+
+		addCors(req, res);
+
+		if (req.method === 'OPTIONS') {
+			res.writeHead(204);
+			res.end();
+			return;
+		}
+
+		if (req.method !== 'POST') {
+			sendJson(res, 405, { ok: false, error: '该接口只接受 POST' });
+			return;
+		}
+
+		if (!authorized(req)) {
+			sendJson(res, 403, { ok: false, error: '缺少或错误的 X-Admin-Token（请重新打开管理台页面）' });
+			return;
+		}
+
+		if (!route) {
+			sendJson(res, 404, { ok: false, error: '未知接口' });
+			return;
+		}
+
+		try {
+			const body = await readBody(req, 2 * 1024 * 1024);
+			await route(req, res, body);
+		} catch (error) {
+			sendJson(res, 400, { ok: false, error: error.message });
+		}
 		return;
 	}
 
-	if (req.method !== 'POST') {
-		sendJson(res, 405, { ok: false, error: '该接口只接受 POST' });
+	/* 管理台页面：直接提供静态文件，不限制来源 */
+	if (url.pathname.indexOf('/admin') !== -1) {
+		serveGui(req, res, url);
 		return;
 	}
 
-	/* 要求 application/json：浏览器的跨域简单请求无法带上这个类型，
-	   配合不返回任何 CORS 头，别的网站就调不动本地接口 */
-	const type = String(req.headers['content-type'] || '').split(';')[0].trim().toLowerCase();
-	if (type !== 'application/json') {
-		sendJson(res, 415, { ok: false, error: '请以 application/json 提交' });
-		return;
-	}
-
-	if (!authorized(req)) {
-		sendJson(res, 403, { ok: false, error: '缺少或错误的 X-Admin-Token（请重新打开管理台页面）' });
-		return;
-	}
-
-	try {
-		const body = await readBody(req, 2 * 1024 * 1024);
-		await route(req, res, body);
-	} catch (error) {
-		sendJson(res, 400, { ok: false, error: error.message });
-	}
+	/* 博客站点：从项目根目录提供静态文件 */
+	serveSite(req, res, url);
 });
 
 /* 启动前确认这里确实是站点仓库 */
@@ -421,8 +479,9 @@ if (!fs.existsSync(path.join(ROOT, 'blogs', 'articles.html'))) {
 }
 
 server.listen(PORT, HOST, () => {
-	console.log('文章管理台已启动：');
-	console.log('  http://' + HOST + ':' + PORT + '/admin/');
+	console.log('开发服务器已启动：');
+	console.log('  博客站点 : http://' + HOST + ':' + PORT + '/');
+	console.log('  管理台   : http://' + HOST + ':' + PORT + '/admin/');
 	console.log('');
 	console.log('站点目录 : ' + ROOT);
 	console.log('只监听   : ' + HOST + '（本机才能访问）');

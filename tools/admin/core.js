@@ -8,8 +8,14 @@
 	/* 直接双击打开时没有服务端注入的 token，页面降级为只读 */
 	const READ_ONLY = location.protocol === 'file:' || TOKEN.indexOf('__ADMIN_TOKEN__') !== -1;
 
-	/* 接口基址取当前页面目录，被挂在别的路径下也能对上 */
-	const BASE = location.pathname.replace(/[^/]*$/, '');
+	/* 接口基址：
+	   1. 优先使用 window.ADMIN_API（Live Server 等跨服务场景下手动指定）；
+	   2. 否则取当前页面目录（由 admin-server.js 托管时自动对上）；
+	   3. 最后回退到根目录 / */
+	const BASE = global.ADMIN_API || (function () {
+		const dir = location.pathname.replace(/[^/]*$/, '');
+		return dir && dir !== '/' ? dir : '/';
+	})();
 
 	const state = { data: null };
 
