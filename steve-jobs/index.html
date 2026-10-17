@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Steve Jobs · 致敬</title>
+	<meta name="description" content="致敬史蒂夫·乔布斯：以名言为序的时间轴，配合产品图与黑白肖像。" />
+	<style>
+		:root {
+			--bg: #000;
+			--text: #f5f5f7;
+			--subtext: #a1a1a6;
+			--line: rgba(255,255,255,.18);
+		}
+		* { box-sizing: border-box; }
+		html, body {
+			margin: 0;
+			padding: 0;
+			background: radial-gradient(1500px 1000px at 50% -12%, #1f1f23 0%, var(--bg) 68%);
+			color: var(--text);
+			font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+			-webkit-font-smoothing: antialiased;
+			text-rendering: optimizeLegibility;
+			scroll-behavior: smooth;
+		}
+		a { color: #2997ff; text-decoration: none; }
+		a:hover { text-decoration: underline; }
+		header {
+			position: sticky;
+			top: 0;
+			z-index: 30;
+			backdrop-filter: saturate(180%) blur(20px);
+			background: rgba(0,0,0,.74);
+			border-bottom: 1px solid rgba(255,255,255,.08);
+		}
+		.nav {
+			max-width: 1080px;
+			margin: 0 auto;
+			padding: 0 24px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 52px;
+			font-size: 12px;
+			letter-spacing: -.01em;
+		}
+		.nav a { color: var(--subtext); transition: color .25s ease; }
+		.nav a:hover { color: var(--text); text-decoration: none; }
+		main { overflow: hidden; }
+		.hero {
+			max-width: 1080px;
+			margin: 0 auto;
+			padding: 110px 24px 0;
+			text-align: center;
+			position: relative;
+		}
+		.hero::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			background: radial-gradient(700px 460px at 50% 18%, rgba(255,255,255,.08) 0%, transparent 72%);
+		}
+		.hero-content { position: relative; z-index: 2; }
+		.kicker { color: var(--subtext); font-size: 17px; margin: 0 0 14px; }
+		.hero h1 {
+			font-size: clamp(56px, 12vw, 118px);
+			line-height: .86;
+			letter-spacing: -.05em;
+			margin: 0;
+			font-weight: 600;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.hero-sub {
+			margin: 28px auto 0;
+			max-width: 820px;
+			color: var(--subtext);
+			font-size: clamp(17px, 2.2vw, 22px);
+			line-height: 1.56;
+		}
+		.hero-portrait {
+			position: relative;
+			z-index: 2;
+			margin: 64px auto -160px;
+			max-width: 920px;
+			filter: grayscale(1) contrast(1.08) drop-shadow(0 140px 220px rgba(0,0,0,.9));
+			animation: fade-up 1.4s ease both;
+		}
+		.hero-portrait img {
+			width: 100%;
+			height: auto;
+			display: block;
+		}
+		@keyframes fade-up {
+			from { opacity: 0; transform: translateY(44px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.timeline {
+			max-width: 1120px;
+			margin: 220px auto 150px;
+			padding: 0 24px;
+			position: relative;
+		}
+		.timeline-head {
+			text-align: center;
+			margin-bottom: 80px;
+		}
+		.timeline-head h2 {
+			font-size: clamp(36px, 6vw, 60px);
+			margin: 0;
+			letter-spacing: -.02em;
+		}
+		.timeline-head p { color: var(--subtext); margin: 12px 0 0; font-size: clamp(17px, 2vw, 20px); }
+		.item {
+			display: grid;
+			grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.2fr);
+			gap: clamp(36px, 8vw, 80px);
+			align-items: center;
+			margin: 110px 0;
+			opacity: 0;
+			transform: translateY(60px);
+			transition: opacity 1.2s ease, transform 1.2s ease;
+		}
+		.item.is-visible { opacity: 1; transform: translateY(0); }
+		@media (max-width: 960px) {
+			.item { grid-template-columns: 1fr; gap: 40px; text-align: left; }
+		}
+		.meta { position: relative; }
+		.meta .year {
+			font-size: clamp(26px, 4vw, 34px);
+			color: var(--subtext);
+			letter-spacing: -.02em;
+			margin: 0;
+		}
+		.meta .context {
+			margin: 10px 0 0;
+			color: var(--subtext);
+			font-size: clamp(16px, 2vw, 18px);
+		}
+		.quote-block {
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			gap: clamp(24px, 6vw, 48px);
+			align-items: center;
+		}
+		.quote-text {
+			grid-column: 1 / 8;
+		}
+		.quote-media {
+			grid-column: 8 / -1;
+			position: relative;
+		}
+		@media (max-width: 960px) {
+			.quote-text, .quote-media { grid-column: 1 / -1; }
+		}
+		.quote-text blockquote {
+			margin: 0;
+			font-size: clamp(24px, 4.6vw, 44px);
+			line-height: 1.16;
+			letter-spacing: -.02em;
+			font-weight: 500;
+		}
+		.quote-text .zh {
+			margin: 18px 0 0;
+			color: var(--subtext);
+			font-size: clamp(16px, 2.2vw, 20px);
+			line-height: 1.88;
+		}
+		.quote-text cite {
+			display: block;
+			margin-top: 24px;
+			font-style: normal;
+			color: var(--subtext);
+			font-size: clamp(14px, 1.8vw, 17px);
+		}
+		.quote-media figure {
+			margin: 0;
+			position: relative;
+		}
+		.quote-media img {
+			width: 100%;
+			height: auto;
+			display: block;
+			filter: drop-shadow(0 80px 160px rgba(0,0,0,.8));
+		}
+		.quote-media figcaption {
+			margin-top: 14px;
+			text-align: center;
+			color: var(--subtext);
+			font-size: 13px;
+		}
+		.divider {
+			height: 1px;
+			max-width: 1080px;
+			margin: 0 auto;
+			background: radial-gradient(circle, rgba(255,255,255,.18) 0%, transparent 74%);
+		}
+		.extra {
+			max-width: 1080px;
+			margin: 110px auto 150px;
+			padding: 0 24px;
+			display: grid;
+			grid-template-columns: repeat(12, 1fr);
+			gap: 32px;
+		}
+		@media (max-width: 1080px) { .extra { grid-template-columns: repeat(6, 1fr); } }
+		@media (max-width: 720px) { .extra { grid-template-columns: 1fr; } }
+		.card {
+			grid-column: span 4;
+			border: 1px solid rgba(255,255,255,.14);
+			border-radius: 26px;
+			padding: clamp(28px, 4vw, 42px);
+			background: radial-gradient(580px 360px at 50% -10%, rgba(255,255,255,.07) 0%, transparent 72%);
+			opacity: 0;
+			transform: translateY(52px);
+			transition: opacity 1.2s ease, transform 1.2s ease;
+		}
+		.card.is-visible { opacity: 1; transform: translateY(0); }
+		.card.wide { grid-column: 1 / -1; }
+		@media (max-width: 1080px) { .card { grid-column: 1 / -1; } }
+		.card h3 { margin: 0; font-size: clamp(24px, 4vw, 30px); letter-spacing: -.02em; }
+		.card p { color: var(--subtext); margin: 14px 0 0; font-size: clamp(16px, 2vw, 18px); line-height: 1.92; }
+		.card ul { margin: 18px 0 0; padding-left: 22px; color: var(--subtext); font-size: clamp(16px, 2vw, 18px); line-height: 1.92; }
+		.card li + li { margin-top: 10px; }
+		.footer {
+			border-top: 1px solid rgba(255,255,255,.08);
+			padding: 34px 24px 50px;
+			text-align: center;
+			color: var(--subtext);
+			font-size: 13px;
+		}
+		.footer .motto { margin-bottom: 10px; color: var(--text); font-size: 16px; }
+		.footer .back { display: inline-block; margin-top: 12px; }
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="nav">
+			<a href="../">← 返回首页</a>
+			<span style="color:var(--subtext)">Steve Jobs · 1955–2011</span>
+			<a href="../blogs/">博客</a>
+		</nav>
+	</header>
+	<main>
+		<section class="hero">
+			<div class="hero-content">
+				<p class="kicker">In Memory of</p>
+				<h1>
+					<span>Steve</span>
+					<span>Jobs</span>
+				</h1>
+				<p class="hero-sub">“The people who are crazy enough to think they can change the world are the ones who do.”<br/>“那些疯狂到认为自己能改变世界的人，往往是最终真的改变了世界的人。”</p>
+			</div>
+			<figure class="hero-portrait">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg" alt="史蒂夫·乔布斯黑白肖像（2010年）" loading="eager" />
+			</figure>
+		</section>
+
+		<section class="timeline">
+			<div class="timeline-head">
+				<h2>以名言为序 · 时间轴</h2>
+				<p>每一句话，都对应着一个关键时刻与一件改变世界的产品。</p>
+			</div>
+
+			<article class="item">
+				<div class="meta">
+					<p class="year">1976 · 创立 Apple</p>
+					<p class="context">Apple Computer Co. 成立</p>
+				</div>
+				<div class="quote-block">
+					<div class="quote-text">
+						<blockquote>“I want to put a ding in the universe.”</blockquote>
+						<p class="zh">“我要在宇宙中留下一道印记。”</p>
+						<cite>—— Steve Jobs</cite>
+					</div>
+					<div class="quote-media">
+						<figure>
+							<img src="https://images.macrumors.com/article-images/1984/05/apple-ii.jpg?auto=webp&width=1200&quality=75" alt="Apple II 计算机" loading="lazy" />
+							<figcaption>Apple II（1977）</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+
+			<article class="item">
+				<div class="meta">
+					<p class="year">1984 · Macintosh</p>
+					<p class="context">图形界面走进大众</p>
+				</div>
+				<div class="quote-block">
+					<div class="quote-text">
+						<blockquote>“It takes a lot of hard work to make something simple, to truly understand the underlying challenges and come up with elegant solutions.”</blockquote>
+						<p class="zh">“要把一件事做到极简，需要付出大量努力，真正理解本质难题并给出优雅的答案。”</p>
+						<cite>—— Steve Jobs</cite>
+					</div>
+					<div class="quote-media">
+						<figure>
+							<img src="https://images.macrumors.com/article-images/1984/01/macintosh.jpg?auto=webp&width=1200&quality=75" alt="原版 Macintosh 计算机" loading="lazy" />
+							<figcaption>Macintosh 128K（1984）</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+
+			<article class="item">
+				<div class="meta">
+					<p class="year">1997 · 重返 Apple</p>
+					<p class="context">扭转颓势，重塑愿景</p>
+				</div>
+				<div class="quote-block">
+					<div class="quote-text">
+						<blockquote>“Innovation distinguishes between a leader and a follower.”</blockquote>
+						<p class="zh">“创新决定了你是领导者还是追随者。”</p>
+						<cite>—— Steve Jobs</cite>
+					</div>
+					<div class="quote-media">
+						<figure>
+							<img src="https://images.macrumors.com/article-images/1998/08/imac-g3.jpg?auto=webp&width=1200&quality=75" alt="初代 iMac G3" loading="lazy" />
+							<figcaption>iMac G3（1998）</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+
+			<article class="item">
+				<div class="meta">
+					<p class="year">2001 · iPod</p>
+					<p class="context">1000首歌，装进口袋</p>
+				</div>
+				<div class="quote-block">
+					<div class="quote-text">
+						<blockquote>“Design is not just what it looks like and feels like. Design is how it works.”</blockquote>
+						<p class="zh">“设计不仅是外观和触感，设计是产品如何运作。”</p>
+						<cite>—— Steve Jobs</cite>
+					</div>
+					<div class="quote-media">
+						<figure>
+							<img src="https://images.macrumors.com/article-images/2001/10/ipod-1g.jpg?auto=webp&width=1200&quality=75" alt="第一代 iPod" loading="lazy" />
+							<figcaption>第一代 iPod（2001）</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+
+			<article class="item">
+				<div class="meta">
+					<p class="year">2005 · 斯坦福演讲</p>
+					<p class="context">关于死亡、热爱与勇气</p>
+				</div>
+				<div class="quote-block">
+					<div class="quote-text">
+						<blockquote>“Your time is limited, so don't waste it living someone else's life.”</blockquote>
+						<p class="zh">“你的时间有限，不要浪费在过别人的生活上。”</p>
+						<cite>—— Steve Jobs，Stanford Commencement 2005</cite>
+					</div>
+					<div class="quote-media">
+						<figure>
+							<img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg" alt="2005年斯坦福演讲时期的乔布斯黑白肖像" loading="lazy" />
+							<figcaption>Stanford Commencement（2005）</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+
+			<article class="item">
+				<div class="meta">
+					<p class="year">2007 · iPhone</p>
+					<p class="context">重新发明手机</p>
+				</div>
+				<div class="quote-block">
+					<div class="quote-text">
+						<blockquote>“You've got to start with the customer experience and work backwards to the technology.”</blockquote>
+						<p class="zh">“要从用户体验出发，再反推技术方案。”</p>
+						<cite>—— Steve Jobs</cite>
+					</div>
+					<div class="quote-media">
+						<figure>
+							<img src="https://images.macrumors.com/article-images/2007/01/iphone-1.jpg?auto=webp&width=1200&quality=75" alt="第一代 iPhone" loading="lazy" />
+							<figcaption>第一代 iPhone（2007）</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+
+			<article class="item">
+				<div class="meta">
+					<p class="year">2010 · iPad</p>
+					<p class="context">开启平板时代</p>
+				</div>
+				<div class="quote-block">
+					<div class="quote-text">
+						<blockquote>“A lot of times, people don't know what they want until you show it to them.”</blockquote>
+						<p class="zh">“很多时候，人们直到你把产品展示在他们面前，才知道自己想要什么。”</p>
+						<cite>—— Steve Jobs</cite>
+					</div>
+					<div class="quote-media">
+						<figure>
+							<img src="https://images.macrumors.com/article-images/2010/01/ipad-1.jpg?auto=webp&width=1200&quality=75" alt="第一代 iPad" loading="lazy" />
+							<figcaption>第一代 iPad（2010）</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+
+			<article class="item">
+				<div class="meta">
+					<p class="year">2005 · 斯坦福演讲</p>
+					<p class="context">寄语后来者</p>
+				</div>
+				<div class="quote-block">
+					<div class="quote-text">
+						<blockquote>“Stay hungry. Stay foolish.”</blockquote>
+						<p class="zh">“求知若饥，虚心若愚。”</p>
+						<cite>—— Steve Jobs，Stanford Commencement 2005</cite>
+					</div>
+					<div class="quote-media">
+						<figure>
+							<img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg" alt="乔布斯黑白肖像" loading="lazy" />
+							<figcaption>Steve Jobs</figcaption>
+						</figure>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<div class="divider"></div>
+
+		<section class="extra">
+			<article class="card">
+				<h3>生平速览</h3>
+				<ul>
+					<li>1955年2月24日：生于旧金山</li>
+					<li>1976年：与沃兹尼亚克创立 Apple</li>
+					<li>1984年：推出 Macintosh</li>
+					<li>1985年：离开 Apple，创立 NeXT</li>
+					<li>1986年：收购 Pixar</li>
+					<li>1997年：重返 Apple</li>
+					<li>2001–2010年：iPod、iPhone、iPad 相继问世</li>
+					<li>2011年10月5日：病逝于加州，享年56岁</li>
+				</ul>
+			</article>
+			<article class="card">
+				<h3>设计与产品哲学</h3>
+				<ul>
+					<li>软硬一体：追求端到端的极致体验</li>
+					<li>极简克制：去除一切多余</li>
+					<li>以用户为中心：先想体验，再做技术</li>
+					<li>注重细节：包装、动效、质感都讲究</li>
+					<li>“焦点”原则：一次只做最重要的事</li>
+					<li>热衷于“魔法时刻”：创造意想不到的惊喜</li>
+				</ul>
+			</article>
+			<article class="card">
+				<h3>皮克斯与文化影响</h3>
+				<ul>
+					<li>收购后推动 Pixar 成为 CGI 动画先驱</li>
+					<li>《玩具总动员》（1995）开创全电脑动画长片</li>
+					<li>影响了无数科技产品的极简美学</li>
+					<li>“现实扭曲力场”成为硅谷文化符号</li>
+					<li>斯坦福演讲成为全球最广为传诵的毕业演讲之一</li>
+				</ul>
+			</article>
+			<article class="card wide">
+				<h3>延伸阅读</h3>
+				<ul>
+					<li><a href="https://zh.wikipedia.org/wiki/%E5%8F%B2%E8%92%82%E5%A4%AB%C2%B7%E4%B9%94%E5%B8%83%E6%96%AF" target="_blank" rel="noopener noreferrer">维基百科 · 史蒂夫·乔布斯</a></li>
+					<li><a href="https://www.apple.com.cn/stevejobs/" target="_blank" rel="noopener noreferrer">Apple · Remembering Steve Jobs</a></li>
+					<li><a href="https://news.stanford.edu/2005/06/14/jobs-061505/" target="_blank" rel="noopener noreferrer">Stanford Commencement Address 2005（英文原文）</a></li>
+					<li><a href="https://www.bilibili.com/video/BV1oW411Y7Lb" target="_blank" rel="noopener noreferrer">Bilibili · 乔布斯斯坦福演讲（中英字幕）</a></li>
+					<li><a href="https://www.pixar.com/" target="_blank" rel="noopener noreferrer">Pixar 官方网站</a></li>
+				</ul>
+			</article>
+		</section>
+	</main>
+	<footer class="footer">
+		<div class="motto">“Stay hungry. Stay foolish.” · “求知若饥，虚心若愚。”</div>
+		<div>1955–2011</div>
+		<a class="back" href="../">← 返回首页</a>
+	</footer>
+	<script>
+		(function () {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+			document.querySelectorAll('.item, .card').forEach((el) => observer.observe(el));
+		}());
+	</script>
+</body>
+</html>
