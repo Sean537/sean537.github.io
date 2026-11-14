@@ -31,6 +31,23 @@
 		el('nextId').textContent = String(info.nextId).padStart(2, '0');
 	}
 
+	async function submitIndexNow() {
+		const resultEl = el('indexNowResult');
+		resultEl.textContent = '提交中…';
+		try {
+			const result = await api('indexnow', {});
+			if (result.ok) {
+				resultEl.textContent = '提交成功：' + result.urls + ' 个 URL 已提交到 IndexNow（HTTP ' + result.status + '）';
+				resultEl.style.color = 'green';
+			} else {
+				resultEl.textContent = '提交失败：' + (result.error || result.message || '未知错误') + '（HTTP ' + result.status + '）';
+				resultEl.style.color = 'red';
+			}
+		} catch (error) {
+			resultEl.textContent = '提交失败：' + error.message;
+			resultEl.style.color = 'red';
+		}
+	}
 	async function sync() {
 		try {
 			const result = await run(['sync']);
@@ -46,6 +63,8 @@
 		await refresh().catch(report);
 
 		el('syncFeeds').addEventListener('click', sync);
+
+		el('submitIndexNow').addEventListener('click', submitIndexNow);
 
 		['rss', 'map'].forEach(prefix => {
 			const link = el(prefix + 'Link');

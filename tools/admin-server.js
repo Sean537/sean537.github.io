@@ -36,7 +36,7 @@ const SITE = 'https://www.ithink537.top';
 
 const args = process.argv.slice(2);
 const portArg = args.indexOf('--port');
-const PORT = Number(process.env.ADMIN_PORT || (portArg !== -1 ? args[portArg + 1] : 4173));
+const PORT = Number(process.env.ADMIN_PORT || (portArg !== -1 ? args[portArg + 1] : 3000));
 
 if (!Number.isInteger(PORT) || PORT < 1024 || PORT > 65535) {
 	console.error('端口无效，请用 --port 指定 1024 以上的端口（当前值：' + PORT + '）');
@@ -182,6 +182,21 @@ function state() {
 
 /* ---------- 接口 ---------- */
 
+/* 读取 IndexNow 密钥：从根目录找 *.txt 文件，内容为 32 位十六进制 */
+function findIndexNowKey() {
+	try {
+		const files = fs.readdirSync(ROOT).filter(f => f.endsWith('.txt'));
+		for (const file of files) {
+			const content = fs.readFileSync(path.join(ROOT, file), 'utf8').trim();
+			const key = file.replace(/\.txt$/, '');
+			if (/^[a-f0-9]{32}$/i.test(key) && content === key) {
+				return { key, file };
+			}
+		}
+	} catch (error) {}
+	return null;
+}
+
 const routes = {
 	/* 界面需要的全部数据 */
 	async '/api/state'(req, res) {
@@ -303,6 +318,64 @@ const routes = {
 		});
 	},
 
+	/* 手动提交 IndexNow：不与新建文章自动化，独立触发 */
+	async '/api/indexnow'(req, res, body) {
+		const info = findIndexNowKey();
+		if (!info) {
+			throw new Error('未找到 IndexNow 密钥文件（根目录下需要 <key>.txt，内容与文件名一致）');
+		}
+
+		const https = require('https');
+		const data = state();
+		const host = 'www.ithink537.top';
+		const urlList = ['https://' + host + '/'];
+		for (const article of data.articles) {
+			urlList.push('https://' + host + '/blogs/' + article.id + '/');
+		}
+
+		const payload = {
+			host: host,
+			key: info.key,
+			keyLocation: 'https://' + host + '/' + info.file,
+			urlList: urlList
+		};
+
+		return new Promise((resolve, reject) => {
+			const reqData = JSON.stringify(payload);
+			const options = {
+				hostname: 'www.bing.com',
+				path: '/indexnow',
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json; charset=utf-8',
+					'Content-Length': Buffer.byteLength(reqData)
+				}
+			};
+
+			const bingReq = https.request(options, (bingRes) => {
+				let responseBody = '';
+				bingRes.on('data', chunk => responseBody += chunk);
+				bingRes.on('end', () => {
+					sendJson(res, bingRes.statusCode >= 200 && bingRes.statusCode < 300 ? 200 : 502, {
+						ok: bingRes.statusCode >= 200 && bingRes.statusCode < 300,
+						status: bingRes.statusCode,
+						message: bingRes.statusCode === 200 || bingRes.statusCode === 202 ? '提交成功' : '提交失败',
+						urls: urlList.length,
+						response: responseBody
+					});
+					resolve();
+				});
+			});
+
+			bingReq.on('error', (error) => {
+				sendJson(res, 502, { ok: false, error: '网络错误：' + error.message });
+				reject(error);
+			});
+
+		bingReq.write(reqData);
+		bingReq.end();
+	});
+	},
 	/* 订阅与站点信息 */
 	async '/api/info'(req, res) {
 		const stat = file => {
